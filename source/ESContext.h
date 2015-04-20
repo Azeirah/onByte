@@ -30,11 +30,13 @@ class ESContext {
     Display*            x_display;
     // ??
     // GameObject ;
+
+
+    EGLBoolean createEGLContext(EGLint[15]);
   public:
     ESContext(GLboolean);
 
     void createWindow(string, GLint, GLint, GLuint);
 
-    EGLBoolean createEGLContext(EGLNativeWindowType, EGLDisplay*, EGLContext*, EGLSurface*, EGLint[15]);
     EGLBoolean winCreate(string);
 };

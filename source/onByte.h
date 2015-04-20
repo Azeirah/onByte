@@ -11,12 +11,14 @@ using namespace std;
 // "deze dingen"
 #include <string>
 
-// om het een beetje getest te houden gooi
-// ik er zo nu en dan asserts bij in de code
-#include <assert.h>
-
 // gestolen functies om te werken met openGL
 #include "esUtil.h"
 
 // dingen zoals schermgrootte, schermnamen e.d.
 #include "globals.h"
+
+// extra dingetjes die handig kunnen zijn
+#include "util.h"
+
+// assert voor wat sanity checks
+#include "assert.h"

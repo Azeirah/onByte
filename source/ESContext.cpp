@@ -1,58 +1,57 @@
 #include "ESContext.h"
 
-EGLBoolean ESContext::createEGLContext (EGLNativeWindowType hWnd, EGLDisplay* eglDisplay,
-                                        EGLContext* eglContext, EGLSurface* eglSurface,
-                                        EGLint attribList[]) {
-   EGLint numConfigs;
-   EGLint majorVersion;
-   EGLint minorVersion;
+EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
+   EGLint     numConfigs;
+   EGLint     majorVersion;
+   EGLint     minorVersion;
    EGLDisplay display;
    EGLContext context;
    EGLSurface surface;
-   EGLConfig config;
-   EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
+   EGLConfig  config;
+   EGLint     contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
 
    // Get Display
    display = eglGetDisplay((EGLNativeDisplayType) this->x_display);
    if (display == EGL_NO_DISPLAY) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
    // Initialize EGL
    if (!eglInitialize(display, &majorVersion, &minorVersion)) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
    // Get configs
    if (!eglGetConfigs(display, NULL, 0, &numConfigs)) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
    // Choose config
    if (!eglChooseConfig(display, attribList, &config, 1, &numConfigs)) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
    // Create a surface
-   surface = eglCreateWindowSurface(display, config, (EGLNativeWindowType)hWnd, NULL);
+   surface = eglCreateWindowSurface(display, config, this->hWnd, NULL);
    if (surface == EGL_NO_SURFACE) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
    // Create a GL context
-   context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs );
+   context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs);
    if (context == EGL_NO_CONTEXT) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
    // Make the context current
    if (!eglMakeCurrent(display, surface, surface, context)) {
-      return EGL_FALSE;
+       return EGL_FALSE;
    }
 
-   *eglDisplay = display;
-   *eglSurface = surface;
-   *eglContext = context;
+   this->eglDisplay = display;
+   this->eglSurface = surface;
+   this->eglContext = context;
+
    return EGL_TRUE;
 }
 
@@ -100,7 +99,7 @@ EGLBoolean ESContext::winCreate(string title) {
 
     // get identifiers for the provided atom name strings
     wm_state    = XInternAtom (this->x_display, "_NET_WM_STATE", false);
-    x11_fs_atom = XInternAtom( this->x_display, "_NET_WM_STATE_FULLSCREEN", False );
+    x11_fs_atom = XInternAtom( this->x_display, "_NET_WM_STATE_FULLSCREEN", false);
 
     // dit zou eigenlijk ook een classe moeten zijn lijkt me...
     memset(&xev, 0, sizeof(xev));
@@ -110,7 +109,7 @@ EGLBoolean ESContext::winCreate(string title) {
     xev.xclient.format       = 32;
     xev.xclient.data.l[0]    = 1;
     xev.xclient.data.l[1]    = (FULLSCREEN) ? x11_fs_atom : false;
-    XSendEvent (
+    XSendEvent(
        this->x_display,
        DefaultRootWindow (this->x_display),
        false,
@@ -149,15 +148,6 @@ void ESContext::createWindow(string title, GLint width, GLint height, GLuint fla
     this->window_width  = width;
     this->window_height = height;
 
-    cout << "CREATING WINDOW";
-
     assert(this->winCreate(title));
-
-    assert(this->createEGLContext(
-        this->hWnd,
-        &this->eglDisplay,
-        &this->eglContext,
-        &this->eglSurface,
-        attributeList
-    ));
+    assertS(this->createEGLContext(attributeList), "creating window failed..");
 }
