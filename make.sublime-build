@@ -1,0 +1,5 @@
+{
+    "shell_cmd": "make",
+    "working_dir": "$project",
+    "shell": "bash",
+}
