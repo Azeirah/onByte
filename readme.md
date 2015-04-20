@@ -13,3 +13,5 @@ Nieuwe versie van c++
 Optimizer op niveau 3
 -O3
 
+Warnings op max
+-Wall en -Wextra
