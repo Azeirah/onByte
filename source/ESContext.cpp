@@ -1,5 +1,61 @@
 #include "ESContext.h"
 
+EGLBoolean ESContext::createEGLContext (EGLNativeWindowType hWnd, EGLDisplay* eglDisplay,
+                                        EGLContext* eglContext, EGLSurface* eglSurface,
+                                        EGLint attribList[]) {
+   EGLint numConfigs;
+   EGLint majorVersion;
+   EGLint minorVersion;
+   EGLDisplay display;
+   EGLContext context;
+   EGLSurface surface;
+   EGLConfig config;
+   EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
+
+   // Get Display
+   display = eglGetDisplay((EGLNativeDisplayType) this->x_display);
+   if (display == EGL_NO_DISPLAY) {
+      return EGL_FALSE;
+   }
+
+   // Initialize EGL
+   if (!eglInitialize(display, &majorVersion, &minorVersion)) {
+      return EGL_FALSE;
+   }
+
+   // Get configs
+   if (!eglGetConfigs(display, NULL, 0, &numConfigs)) {
+      return EGL_FALSE;
+   }
+
+   // Choose config
+   if (!eglChooseConfig(display, attribList, &config, 1, &numConfigs)) {
+      return EGL_FALSE;
+   }
+
+   // Create a surface
+   surface = eglCreateWindowSurface(display, config, (EGLNativeWindowType)hWnd, NULL);
+   if (surface == EGL_NO_SURFACE) {
+      return EGL_FALSE;
+   }
+
+   // Create a GL context
+   context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs );
+   if (context == EGL_NO_CONTEXT) {
+      return EGL_FALSE;
+   }
+
+   // Make the context current
+   if (!eglMakeCurrent(display, surface, surface, context)) {
+      return EGL_FALSE;
+   }
+
+   *eglDisplay = display;
+   *eglSurface = surface;
+   *eglContext = context;
+   return EGL_TRUE;
+}
+
 EGLBoolean ESContext::winCreate(string title) {
     Window root;
     XSetWindowAttributes swa;
@@ -96,4 +152,12 @@ void ESContext::createWindow(string title, GLint width, GLint height, GLuint fla
     cout << "CREATING WINDOW";
 
     assert(this->winCreate(title));
+
+    assert(this->createEGLContext(
+        this->hWnd,
+        &this->eglDisplay,
+        &this->eglContext,
+        &this->eglSurface,
+        attributeList
+    ));
 }
