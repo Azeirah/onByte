@@ -17,3 +17,6 @@ using namespace std;
 
 // gestolen functies om te werken met openGL
 #include "esUtil.h"
+
+// dingen zoals schermgrootte, schermnamen e.d.
+#include "globals.h"

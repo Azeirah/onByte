@@ -1,4 +1,5 @@
 #include "onByte.h"
+#include "ESContext.h"
 
 enum GameState {
     TEST,
@@ -13,8 +14,8 @@ enum GameState {
 class Game {
   private:
     GameState gameState;
-    ESContext context1;
-    ESContext context2;
+    ESContext* context1;
+    ESContext* context2;
   public:
     Game();
 
