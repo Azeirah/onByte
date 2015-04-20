@@ -5,11 +5,11 @@ CFLAGS=-c -Wall -Wextra -std=C++14 -O3
 # Linker flags en zoekpaden (folders waar je moet zoeken naar bestanden)
 LDFLAGS=
 # moet aangepast worden
-SOURCES= *.cpp
+SOURCES= source/*.cpp
 # Namen van object bestanden denk ik
 # voor alle sources .cpp, zijn er gelijknamige bestanden alleen dan met .o
 # een soort van map *.cpp -> *.o I guess
-OBJECTS=$(SOURCES:.cpp=.o)
+OBJECTS=$(SOURCES:source/.cpp=.o)
 # naam van de resulterende executable
 EXECUTABLE=onByte
 
@@ -26,4 +26,4 @@ $(EXECUTABLE): $(OBJECTS)
 
 # Schoonmaak mevrouw
 clean:
-    rm *o hello
+	rm *o hello
