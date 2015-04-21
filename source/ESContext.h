@@ -31,7 +31,6 @@ class ESContext {
     // ??
     // GameObject ;
 
-
     EGLBoolean createEGLContext(EGLint[15]);
   public:
     ESContext(GLboolean);
@@ -39,4 +38,5 @@ class ESContext {
     void createWindow(string, GLint, GLint, GLuint);
 
     EGLBoolean winCreate(string);
+    void makeCurrent();
 };

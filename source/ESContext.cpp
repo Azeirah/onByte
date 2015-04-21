@@ -1,5 +1,9 @@
 #include "ESContext.h"
 
+void ESContext::makeCurrent() {
+    eglMakeCurrent(this->eglDisplay, this->eglSurface, this->eglSurface, this->eglContext);
+}
+
 EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
    EGLint     numConfigs;
    EGLint     majorVersion;
@@ -56,16 +60,16 @@ EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
 }
 
 EGLBoolean ESContext::winCreate(string title) {
-    Window root;
+    Window               root;
     XSetWindowAttributes swa;
-    XSetWindowAttributes  xattr;
-    Atom wm_state;
-    Atom  x11_fs_atom;
-    XWMHints hints;
-    XEvent xev;
-    EGLConfig ecfg;
-    EGLint num_config;
-    Window win;
+    XSetWindowAttributes xattr;
+    Atom                 wm_state;
+    Atom                 x11_fs_atom;
+    XWMHints             hints;
+    XEvent               xev;
+    EGLConfig            ecfg;
+    EGLint               num_config;
+    Window               win;
 
     /*
      * X11 native display initialization
@@ -135,9 +139,9 @@ void ESContext::createWindow(string title, GLint width, GLint height, GLuint fla
         EGL_RED_SIZE,       5,
         EGL_GREEN_SIZE,     6,
         EGL_BLUE_SIZE,      5,
-        EGL_ALPHA_SIZE,     (flags & ES_WINDOW_ALPHA) ?       8 : EGL_DONT_CARE,
-        EGL_DEPTH_SIZE,     (flags & ES_WINDOW_DEPTH) ?       8 : EGL_DONT_CARE,
-        EGL_STENCIL_SIZE,   (flags & ES_WINDOW_STENCIL) ?     8 : EGL_DONT_CARE,
+        EGL_ALPHA_SIZE,     (flags & ES_WINDOW_ALPHA)       ? 8 : EGL_DONT_CARE,
+        EGL_DEPTH_SIZE,     (flags & ES_WINDOW_DEPTH)       ? 8 : EGL_DONT_CARE,
+        EGL_STENCIL_SIZE,   (flags & ES_WINDOW_STENCIL)     ? 8 : EGL_DONT_CARE,
         EGL_SAMPLE_BUFFERS, (flags & ES_WINDOW_MULTISAMPLE) ? 1 : 0,
         EGL_NONE
     };
