@@ -2,7 +2,6 @@
 
 void assertS(bool condition, string errorMessage) {
     if (!condition) {
-        cout << errorMessage << endl;
+        cout << "assertion warning: " << errorMessage << endl;
     }
-    assert(condition);
 }
