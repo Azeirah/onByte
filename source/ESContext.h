@@ -1,7 +1,7 @@
+#pragma once
+
 #include "onByte.h"
 
-#include <GLES2/gl2.h>
-#include <EGL/egl.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
@@ -20,9 +20,6 @@
 
 class ESContext {
   private:
-    GLboolean           isPlayerOne;
-    GLint               window_width;
-    GLint               window_height;
     EGLNativeWindowType hWnd;
     EGLDisplay          eglDisplay;
     EGLContext          eglContext;
@@ -33,10 +30,14 @@ class ESContext {
 
     EGLBoolean createEGLContext(EGLint[15]);
   public:
+    GLboolean           isPlayerOne;
+    GLint               window_width;
+    GLint               window_height;
+
     ESContext(GLboolean);
-
     void createWindow(string, GLint, GLint, GLuint);
-
     EGLBoolean winCreate(string);
+    EGLBoolean userInterrupt();
     void makeCurrent();
+    void swapBuffer();
 };

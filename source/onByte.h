@@ -1,18 +1,19 @@
-using namespace std;
-
 #pragma once
+
+using namespace std;
 
 // cout
 #include <iostream>
 
 // openGL dingen
 #include <GLES2/gl2.h>
+#include <EGL/egl.h>
 
 // "deze dingen"
 #include <string>
 
 // gestolen functies om te werken met openGL
-#include "esUtil.h"
+#include "esTransform.h"
 
 // dingen zoals schermgrootte, schermnamen e.d.
 #include "globals.h"

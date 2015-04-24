@@ -1,8 +1,11 @@
+#pragma once
+
 #include "onByte.h"
 #include "Vector.h"
+#include "ESContext.h"
 
-class GameObject {
-  private:
+class Entity {
+  protected:
     // handle to a program object
     GLuint programObject;
 
@@ -25,6 +28,7 @@ class GameObject {
     Vector origin;
 
   public:
-    void update();
     void draw();
+    void render(ESContext*);
+    void update(float);
 };

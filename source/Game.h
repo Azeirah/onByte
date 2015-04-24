@@ -1,11 +1,12 @@
+#pragma once
+
+#include <map>
 #include "onByte.h"
 #include "ESContext.h"
-
-enum GameState {
-    TEST,
-    MAIN_MENU,
-    SETTINGS
-};
+#include "GameState.h"
+// for framerate and dt
+#include <sys/time.h>
+#include "GameMode.h"
 
 // Game is the startpoint for the whole game project
 // It contains the main game loop as well as the current game state
@@ -13,12 +14,15 @@ enum GameState {
 // The game loop renders and updates all components for both screens
 class Game {
   private:
-    GameState gameState;
+    GameState* currentState;
+
     ESContext* context1;
     ESContext* context2;
   public:
+  	map<string, GameState *> gameStates;
     Game();
 
-    void switchToGameState(GameState);
+    void addGameMode(GameMode*);
+    void switchToGameState(string);
     void startGameLoop();
 };

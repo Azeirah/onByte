@@ -1,11 +1,15 @@
 #include "Game.h"
+#include "TestGame.h"
+#include "GameState.h"
 
 int main(int argc, char const *argv[]) {
     Game game;
+    TestGame *testGame = new TestGame("test");
 
-    while (true) {
-        // simulates a running game to keep the windows open
-    }
+    game.addGameMode(testGame);
+    game.switchToGameState("test");
+    game.startGameLoop();
 
     return 0;
 }
+

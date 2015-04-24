@@ -4,6 +4,10 @@ void ESContext::makeCurrent() {
     eglMakeCurrent(this->eglDisplay, this->eglSurface, this->eglSurface, this->eglContext);
 }
 
+void ESContext::swapBuffer() {
+	eglSwapBuffers(this->eglDisplay, this->eglSurface);
+}
+
 EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
    EGLint     numConfigs;
    EGLint     majorVersion;
@@ -57,6 +61,39 @@ EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
    this->eglContext = context;
 
    return EGL_TRUE;
+}
+
+EGLBoolean ESContext::userInterrupt() {
+	XEvent xev;
+    KeySym key;
+    GLboolean userinterrupt = GL_FALSE;
+    char text;
+
+    // Pump all messages from X server. Keypresses are directed to keyfunc (if defined)
+    while (XPending(this->x_display)) {
+        XNextEvent(this->x_display, &xev);
+
+        if (xev.type == KeyPress) {
+            if (XLookupString(&xev.xkey, &text, 1, &key, 0) == 1) {
+            	// TODO: keyfunc callback
+                // if (this->keyFunc != NULL) {
+                //     this->keyFunc(this, text, 0, 0);
+                // }
+            }
+        } else if (xev.type == DestroyNotify) {
+            userinterrupt = GL_TRUE;
+        } else if (xev.type == ConfigureNotify) {
+            XConfigureEvent xce = xev.xconfigure;
+
+            // This event type is generated for a variety of happenings, so check whether the window has been resized.
+            if (xce.width != this->window_width || xce.height != this->window_height) {
+                this->window_width = xce.width;
+                this->window_height = xce.height;
+            }
+        }
+    }
+
+    return userinterrupt;
 }
 
 EGLBoolean ESContext::winCreate(string title) {
@@ -123,7 +160,6 @@ EGLBoolean ESContext::winCreate(string title) {
     this->hWnd = (EGLNativeWindowType) win;
     return EGL_TRUE;
 }
-
 
 ESContext::ESContext (GLboolean isPlayerOne) {
     this->isPlayerOne = isPlayerOne;

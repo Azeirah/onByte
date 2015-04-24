@@ -1,5 +1,6 @@
-#include "onByte.h"
 #pragma once
+
+#include "onByte.h"
 
 class Vector {
   public:

@@ -8,7 +8,7 @@ CC=g++
 # en optimizer niveau 3
 CFLAGS=-g -c -Wall -Wextra -std=C++14 -O3
 # Linker flags en zoekpaden (folders waar je moet zoeken naar bestanden)
-LDFLAGS=
+LDFLAGS=-g
 # moet aangepast worden
 SOURCES=source/*.cpp
 # Namen van object bestanden denk ik
