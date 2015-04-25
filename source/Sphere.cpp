@@ -1,42 +1,45 @@
 #include "Sphere.h"
-#include "globals.h"
 
-void Sphere::generateGeometry(int numSlices, float radius) {
+int Sphere::generateGeometry(int numSlices, float radius) {
   int i;
   int j;
   int numParallels = numSlices / 2;
-  int numVertices = (numParallels + 1) * (numSlices + 1);
-  int numIndices = numParallels * numSlices * 6;
-  float angleStep = (2.0f * PI) / ((float)numSlices);
+  int numVertices  = (numParallels + 1) * (numSlices + 1);
+  int numIndices   = numParallels * numSlices * 6;
+  float angleStep  = TAU / (float) numSlices;
 
-  for (i = 0; i < numParallels + 1; i++) {
-    for (j = 0; j < numSlices + 1; j++) {
+  // lekker op zijn c's
+
+  this->vertices = (GLfloat *) malloc(sizeof(GLfloat) * 3 * numVertices);
+  this->indices  = (GLuint *)  malloc(sizeof(GLuint ) *     numIndices);
+
+  for (i = 0; i < numParallels + 1; i += 1) {
+    for (j = 0; j < numSlices + 1; j += 1) {
       int vertex = (i * (numSlices + 1) + j) * 3;
+      if (vertices) {
+        this->vertices[vertex + 0] = radius * sinf (angleStep * (float) i) *
+                                              sinf (angleStep * (float) j);
 
-      if (this->vertices) {
-        this->vertices[vertex + 0] =
-            radius * sinf(angleStep * (float)i) * sinf(angleStep * (float)j);
-        this->vertices[vertex + 1] = radius * cosf(angleStep * (float)i);
-        this->vertices[vertex + 2] =
-            radius * sinf(angleStep * (float)i) * cosf(angleStep * (float)j);
+        this->vertices[vertex + 1] = radius * cosf (angleStep * (float) i);
+
+        this->vertices[vertex + 2] = radius * sinf (angleStep * (float) i) *
+                                              cosf (angleStep * (float) j);
       }
     }
   }
 
-  // Generate the indices
-  if (indices != NULL) {
-    //      GLuint *indexBuf = (*indices);
-    unsigned char indexBuf* = indices;
-    for (i = 0; i < numParallels; i++) {
-      for (j = 0; j < numSlices; j++) {
-        *indexBuf++ = i * (numSlices + 1) + j;
-        *indexBuf++ = (i + 1) * (numSlices + 1) + j;
-        *indexBuf++ = (i + 1) * (numSlices + 1) + (j + 1);
+  // this doesn't even make a copy of the insides, why copy the pointer? ;/
+  GLuint *indexBuffer = this->indices;
 
-        *indexBuf++ = i * (numSlices + 1) + j;
-        *indexBuf++ = (i + 1) * (numSlices + 1) + (j + 1);
-        *indexBuf++ = i * (numSlices + 1) + (j + 1);
-      }
+  for (i = 0; i < numParallels; i += 1) {
+    for (j = 0; j < numSlices; j += 1) {
+      indexBuffer[0] = i * (numSlices + 1) + j;
+      indexBuffer[1] = (i + 1) * (numSlices + 1) + j;
+      indexBuffer[2] = (i + 1) * (numSlices + 1) + (j + 1);
+
+      indexBuffer[3] = i * (numSlices + 1 + j);
+      indexBuffer[4] = (i + 1) * (numSlices + 1) + (j + 1);
+      indexBuffer[5] = i * (numSlices + 1 + j + 1);
     }
   }
 
@@ -44,5 +47,11 @@ void Sphere::generateGeometry(int numSlices, float radius) {
 }
 
 Sphere::Sphere(int numSlices, float radius) {
-  this->generateGeometry(numSlices, radius);
+  // ball->programObject = esLoadProgram(vShaderStrBall, fColorShader);
+  // ball->positionLoc   = glGetAttribLocation(ball->programObject, "a_position");
+  // ball->mvpLoc        = glGetUniformLocation(ball->programObject, "u_mvpMatrix");
+  this->numIndices    = this->generateGeometry(10, radius);
+  // ball->angle         = 90.0f;
+  // ball->colorLoc      = glGetUniformLocation(ball->programObject, "color");
+  // memcpy(ball->color, yellow, sizeof(yellow));
 }

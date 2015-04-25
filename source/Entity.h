@@ -25,7 +25,7 @@ class Entity {
     // rotation, position and color
     GLfloat angle;
     GLfloat color[4];
-    Vector origin;
+    Vector* origin;
 
   public:
     void draw();

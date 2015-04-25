@@ -20,8 +20,8 @@
 //
 #include "esTransform.h"
 #include <math.h>
-
-#define PI 3.1415926535897932384626433832795f
+#include "globals.h"
+#include <stdlib.h>
 
 void esScale(ESMatrix *result, GLfloat sx, GLfloat sy, GLfloat sz) {
     result->m[0][0] *= sx;
