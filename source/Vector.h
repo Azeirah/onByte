@@ -7,5 +7,5 @@ class Vector {
     GLint x;
     GLint y;
     GLint z;
-    Vector(GLint, GLint, GLint);
+    Vector();
 };

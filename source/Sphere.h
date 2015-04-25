@@ -7,4 +7,5 @@ class Sphere : public Entity {
 public:
 	Sphere(int numSlices, float radius);
 	int generateGeometry(int numSlices, float radius);
+	void update(float);
 };

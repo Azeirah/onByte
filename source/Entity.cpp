@@ -133,7 +133,6 @@ GLuint esLoadProgram (const char *vertShaderSrc, const char *fragShaderSrc) {
 }
 
 void Entity::update (float deltatime) {
-  cout << "update function not implemented" << endl;
 }
 
 void Entity::render(ESContext *context) {
@@ -152,7 +151,6 @@ void Entity::render(ESContext *context) {
   // teken het object, als fill true is dan gebruik triangles, anders gebruik wireframe, GL_LINES
   // glDrawElements(fill? GL_TRIANGLES : GL_LINES, object->numIndices, GL_UNSIGNED_BYTE, object->indices);
   glDrawElements(GL_TRIANGLES, this->numIndices, GL_UNSIGNED_BYTE, this->indices);
-  cout << "render function not implemented" << endl;
 }
 
 void Entity::loadShaders() {
@@ -161,4 +159,9 @@ void Entity::loadShaders() {
   this->positionLoc   = glGetAttribLocation(this->programObject, "a_position");
   this->mvpLoc        = glGetUniformLocation(this->programObject, "u_mvpMatrix");
   this->colorLoc      = glGetUniformLocation(this->programObject, "color");
+}
+
+Entity::Entity() {
+  cout << "constructing an entity" << endl;
+  this->position = new Vector();
 }

@@ -46,6 +46,10 @@ int Sphere::generateGeometry(int numSlices, float radius) {
   return numIndices;
 }
 
+void Sphere::update(float dt) {
+  cout << "drawing sphere" << endl;
+}
+
 Sphere::Sphere(int numSlices, float radius) {
   cout << "creating sphere object" << endl;
 
@@ -53,6 +57,10 @@ Sphere::Sphere(int numSlices, float radius) {
 
   this->numIndices    = this->generateGeometry(10, radius);
   this->angle         = 90.0f;
+
+  this->position->x = 0;
+  this->position->y = 0;
+  this->position->z = 0;
 
   memcpy(this->color, yellow, sizeof(yellow));
 }

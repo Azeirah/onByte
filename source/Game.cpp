@@ -30,15 +30,15 @@ void Game::startGameLoop () {
 		deltatime = (float) (t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
 		t1 = t2;
 
-		this->currentState->update(this->context1, deltatime);
 		this->context1->makeCurrent();
-		this->context1->swapBuffer();
+		this->currentState->update(this->context1, deltatime);
 		this->currentState->render(this->context1);
+		this->context1->swapBuffer();
 
-		this->currentState->update(this->context2, deltatime);
 		this->context2->makeCurrent();
-		this->context2->swapBuffer();
+		this->currentState->update(this->context2, deltatime);
 		this->currentState->render(this->context2);
+		this->context2->swapBuffer();
 
 		totaltime += deltatime;
 		frames    += 1;
