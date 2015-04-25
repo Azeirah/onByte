@@ -1,8 +1,15 @@
-#pragma once
+#ifndef ENTITY_H
+#define ENTITY_H
 
 #include "onByte.h"
 #include "Vector.h"
 #include "ESContext.h"
+#include <stdlib.h>
+#include <stdarg.h>
+#include "esTransform.h"
+
+extern const char *defaultFragmentShader[6];
+extern const char *defaultVertexShader[6];
 
 class Entity {
   protected:
@@ -25,10 +32,14 @@ class Entity {
     // rotation, position and color
     GLfloat angle;
     GLfloat color[4];
-    Vector* origin;
+    Vector* position;
+
+    void loadShaders();
 
   public:
     void draw();
     void render(ESContext*);
     void update(float);
 };
+
+#endif // ENTITY_H

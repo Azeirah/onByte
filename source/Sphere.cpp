@@ -28,7 +28,7 @@ int Sphere::generateGeometry(int numSlices, float radius) {
     }
   }
 
-  // this doesn't even make a copy of the insides, why copy the pointer? ;/
+  // this doesn't even make a copy of the indices, why copy the pointer? ;/
   GLuint *indexBuffer = this->indices;
 
   for (i = 0; i < numParallels; i += 1) {
@@ -47,11 +47,12 @@ int Sphere::generateGeometry(int numSlices, float radius) {
 }
 
 Sphere::Sphere(int numSlices, float radius) {
-  // ball->programObject = esLoadProgram(vShaderStrBall, fColorShader);
-  // ball->positionLoc   = glGetAttribLocation(ball->programObject, "a_position");
-  // ball->mvpLoc        = glGetUniformLocation(ball->programObject, "u_mvpMatrix");
+  cout << "creating sphere object" << endl;
+
+  this->loadShaders();
+
   this->numIndices    = this->generateGeometry(10, radius);
-  // ball->angle         = 90.0f;
-  // ball->colorLoc      = glGetUniformLocation(ball->programObject, "color");
-  // memcpy(ball->color, yellow, sizeof(yellow));
+  this->angle         = 90.0f;
+
+  memcpy(this->color, yellow, sizeof(yellow));
 }

@@ -1,18 +1,11 @@
 #pragma once
 
-#include "onByte.h"
-#include "string.h"
-
-// pragma once doesn't work here, what the hell?
-#pragma once
-
-
 #ifndef ES_TRANSFORM_H
 #define ES_TRANSFORM_H
 
-typedef struct {
-    GLfloat m[4][4];
-} ESMatrix;
+#include "onByte.h"
+#include "string.h"
+#include "globals.h"
 
 void esScale(ESMatrix *result, GLfloat sx, GLfloat sy, GLfloat sz);
 void esTranslate(ESMatrix *result, GLfloat tx, GLfloat ty, GLfloat tz);

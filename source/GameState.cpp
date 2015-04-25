@@ -1,7 +1,5 @@
 #include "GameState.h"
 
-ESMatrix mvpMatrix;
-
 GameState::GameState(string name) {
 	this->name = name;
 }

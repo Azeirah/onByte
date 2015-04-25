@@ -12,9 +12,6 @@ using namespace std;
 // "deze dingen"
 #include <string>
 
-// gestolen functies om te werken met openGL
-#include "esTransform.h"
-
 // dingen zoals schermgrootte, schermnamen e.d.
 #include "globals.h"
 
