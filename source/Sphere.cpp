@@ -28,18 +28,15 @@ int Sphere::generateGeometry(int numSlices, float radius) {
     }
   }
 
-  // this doesn't even make a copy of the indices, why copy the pointer? ;/
-  GLuint *indexBuffer = this->indices;
-
   for (i = 0; i < numParallels; i += 1) {
     for (j = 0; j < numSlices; j += 1) {
-      indexBuffer[0] = i * (numSlices + 1) + j;
-      indexBuffer[1] = (i + 1) * (numSlices + 1) + j;
-      indexBuffer[2] = (i + 1) * (numSlices + 1) + (j + 1);
+      this->indices[0] = i * (numSlices + 1) + j;
+      this->indices[1] = (i + 1) * (numSlices + 1) + j;
+      this->indices[2] = (i + 1) * (numSlices + 1) + (j + 1);
 
-      indexBuffer[3] = i * (numSlices + 1 + j);
-      indexBuffer[4] = (i + 1) * (numSlices + 1) + (j + 1);
-      indexBuffer[5] = i * (numSlices + 1 + j + 1);
+      this->indices[3] = i * (numSlices + 1) + j;
+      this->indices[4] = (i + 1) * (numSlices + 1) + (j + 1);
+      this->indices[5] = i * (numSlices + 1) + (j + 1);
     }
   }
 
@@ -47,20 +44,20 @@ int Sphere::generateGeometry(int numSlices, float radius) {
 }
 
 void Sphere::update(float dt) {
-  cout << "drawing sphere" << endl;
+  // cout << "drawing sphere" << endl;
 }
 
 Sphere::Sphere(int numSlices, float radius) {
-  cout << "creating sphere object" << endl;
+  cout << "creating sphere object, it has " << numSlices << " slices and a radius of " << radius << endl;
 
   this->loadShaders();
 
-  this->numIndices    = this->generateGeometry(10, radius);
+  this->numIndices    = this->generateGeometry(numSlices, radius);
   this->angle         = 90.0f;
 
   this->position->x = 0;
   this->position->y = 0;
   this->position->z = 0;
 
-  memcpy(this->color, yellow, sizeof(yellow));
+  memcpy(this->color, white, sizeof(white));
 }

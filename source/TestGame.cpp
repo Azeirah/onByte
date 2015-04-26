@@ -1,7 +1,7 @@
 #include "TestGame.h"
 
 TestGame::TestGame (string name) {
-	Sphere *s = new Sphere(20, 5);
+	Sphere *s = new Sphere(50, .2);
 
 	this->gameState = new GameState(name);
 	this->name = name;
