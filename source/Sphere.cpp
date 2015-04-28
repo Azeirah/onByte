@@ -8,10 +8,8 @@ int Sphere::generateGeometry(int numSlices, float radius) {
   int numIndices   = numParallels * numSlices * 6;
   float angleStep  = TAU / (float) numSlices;
 
-  // lekker op zijn c's
-
-  this->vertices = (GLfloat *) malloc(sizeof(GLfloat) * 3 * numVertices);
-  this->indices  = (GLuint *)  malloc(sizeof(GLuint ) *     numIndices);
+  this->vertices = new GLfloat[3 * numVertices];
+  this->indices  = new GLuint[numIndices];
 
   for (i = 0; i < numParallels + 1; i += 1) {
     for (j = 0; j < numSlices + 1; j += 1) {

@@ -37,8 +37,8 @@ class Entity {
     void loadShaders();
 
   public:
-    virtual void render(ESContext*);
-    virtual void update(float);
+    void render(ESContext*);
+    void update(float);
 
     Entity();
 };

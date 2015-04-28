@@ -147,7 +147,7 @@ void Entity::render(ESContext *context) {
   glUniform4fv             (this->colorLoc,    1, this->color);
   // teken het object, als fill true is dan gebruik triangles, anders gebruik wireframe, GL_LINES
   // glDrawElements(fill? GL_TRIANGLES : GL_LINES, object->numIndices, GL_UNSIGNED_BYTE, object->indices);
-  glDrawElements(GL_TRIANGLES, this->numIndices, GL_UNSIGNED_BYTE, this->indices);
+  glDrawElements(GL_LINES, this->numIndices, GL_UNSIGNED_BYTE, this->indices);
 }
 
 void Entity::loadShaders() {

@@ -34,6 +34,7 @@ void GameState::update(ESContext *context, float deltatime) {
 	esMatrixLoadIdentity(&perspective);
 	esPerspective(&perspective, 50.0f, aspect, 1.0f, 10.0f);
 	esMatrixLoadIdentity(&modelview);
+	esTranslate(&modelview, 0.0, 0.0, -5.0);
 
 	if (context->isPlayerOne == false) {
 		  esRotate(&modelview, 180, 0.0, 1.0, 0.0);

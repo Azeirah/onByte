@@ -21,15 +21,15 @@
 class ESContext {
   private:
     EGLNativeWindowType hWnd;
-    EGLDisplay          eglDisplay;
-    EGLContext          eglContext;
     EGLSurface          eglSurface;
-    Display*            x_display;
     // ??
     // GameObject ;
 
     EGLBoolean createEGLContext(EGLint[15]);
   public:
+    Display*            x_display;
+    EGLDisplay          eglDisplay;
+    EGLContext          eglContext;
     GLboolean           isPlayerOne;
     GLint               window_width;
     GLint               window_height;
