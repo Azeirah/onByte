@@ -48,8 +48,6 @@ void Sphere::update(float dt) {
 Sphere::Sphere(int numSlices, float radius) {
   cout << "creating sphere object, it has " << numSlices << " slices and a radius of " << radius << endl;
 
-  this->loadShaders();
-
   this->numIndices    = this->generateGeometry(numSlices, radius);
   this->angle         = 90.0f;
 

@@ -16,9 +16,14 @@ public:
 	GameState(string);
 	// ~GameState();
 
+	// game loop functionality
 	void update(ESContext*, float deltatime);
 	void render(ESContext*);
 
+	// loading shaders (duh..)
+	void loadShaders();
+
+	// controlling gamemode time
 	void start();
 	void pause();
 	void resume();

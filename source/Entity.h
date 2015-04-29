@@ -34,9 +34,9 @@ class Entity {
     GLfloat color[4];
     Vector* position;
 
+  public:
     void loadShaders();
 
-  public:
     void render(ESContext*);
     void update(float);
 

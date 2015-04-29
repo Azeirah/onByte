@@ -60,4 +60,11 @@ void Game::addGameMode(GameMode* gameMode) {
 void Game::switchToGameState(string name) {
 	this->currentState = this->gameStates.at(name);
 	cout << "switching to gameState " << name << endl;
+
+	// load shaders per context
+	this->context1->makeCurrent();
+	this->currentState->loadShaders();
+
+	this->context2->makeCurrent();
+	this->currentState->loadShaders();
 }

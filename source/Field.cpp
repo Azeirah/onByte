@@ -125,8 +125,6 @@ int Field::generateGeometry(float scale) {
 Field::Field (float scale) {
 	cout << "creating field object, with scale " << scale << endl;
 
-    this->loadShaders();
-
     this->numIndices    = this->generateGeometry(scale);
     this->angle         = 0.0f;
 

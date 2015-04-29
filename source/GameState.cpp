@@ -19,10 +19,19 @@ void GameState::resume() {
 	this->running = true;
 }
 
+void GameState::loadShaders() {
+	cout << "loading in shaders" << endl;
+	for (int i = 0; i < this->entities.size(); i += 1) {
+		this->entities[i]->loadShaders();
+	}
+}
+
 void GameState::update(ESContext *context, float deltatime) {
 	ESMatrix perspective;
 	ESMatrix modelview;
 	float aspect;
+
+	context->makeCurrent();
 
 	aspect = (GLfloat) context->window_width / (GLfloat) context->window_height;
 
@@ -37,7 +46,7 @@ void GameState::update(ESContext *context, float deltatime) {
 	esTranslate(&modelview, 0.0, 0.0, -5.0);
 
 	if (context->isPlayerOne == false) {
-		  esRotate(&modelview, 180, 0.0, 1.0, 0.0);
+		// esRotate(&modelview, 180, 0.0, 1.0, 0.0);
 	}
 
 	esMatrixMultiply(&mvpMatrix, &modelview, &perspective);
