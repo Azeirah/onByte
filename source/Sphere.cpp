@@ -28,13 +28,13 @@ int Sphere::generateGeometry(int numSlices, float radius) {
 
   for (i = 0; i < numParallels; i += 1) {
     for (j = 0; j < numSlices; j += 1) {
-      this->indices[0] = i * (numSlices + 1) + j;
-      this->indices[1] = (i + 1) * (numSlices + 1) + j;
-      this->indices[2] = (i + 1) * (numSlices + 1) + (j + 1);
+      this->indices[1] = i * (numSlices + 1) + j;
+      this->indices[2] = (i + 1) * (numSlices + 1) + j;
+      this->indices[3] = (i + 1) * (numSlices + 1) + (j + 1);
 
-      this->indices[3] = i * (numSlices + 1) + j;
-      this->indices[4] = (i + 1) * (numSlices + 1) + (j + 1);
-      this->indices[5] = i * (numSlices + 1) + (j + 1);
+      this->indices[4] = i * (numSlices + 1) + j;
+      this->indices[5] = (i + 1) * (numSlices + 1) + (j + 1);
+      this->indices[6] = i * (numSlices + 1) + (j + 1);
     }
   }
 

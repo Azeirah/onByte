@@ -29,6 +29,7 @@ EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
    GLint eglInitialized = eglInitialize(display, &majorVersion, &minorVersion);
    assertS(eglInitialized, "Initializing egl failed ESContext.cpp:29");
    if (!eglInitialized) {
+   	   cout << "EGL fail code was " << eglInitialized << endl;
        return EGL_FALSE;
    }
 
