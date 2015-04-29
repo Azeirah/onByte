@@ -20,39 +20,50 @@ EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
 
    // Get Display
    display = eglGetDisplay((EGLNativeDisplayType) this->x_display);
+   assertS(display != EGL_NO_DISPLAY, "Creating display failed ESContext.cpp:22");
    if (display == EGL_NO_DISPLAY) {
        return EGL_FALSE;
    }
 
    // Initialize EGL
-   if (!eglInitialize(display, &majorVersion, &minorVersion)) {
+   GLint eglInitialized = eglInitialize(display, &majorVersion, &minorVersion);
+   assertS(eglInitialized, "Initializing egl failed ESContext.cpp:29");
+   if (!eglInitialized) {
        return EGL_FALSE;
    }
 
    // Get configs
-   if (!eglGetConfigs(display, NULL, 0, &numConfigs)) {
+   GLint configsGotten = eglGetConfigs(display, NULL, 0, &numConfigs);
+   assertS(configsGotten, "Failed at getting configs ESContext.cpp:36");
+   if (!configsGotten) {
        return EGL_FALSE;
    }
 
    // Choose config
-   if (!eglChooseConfig(display, attribList, &config, 1, &numConfigs)) {
+   GLint configChosen = eglChooseConfig(display, attribList, &config, 1, &numConfigs);
+   assertS(configChosen, "Failed at choosing config ESContext.cpp:43");
+   if (!configChosen) {
        return EGL_FALSE;
    }
 
    // Create a surface
    surface = eglCreateWindowSurface(display, config, this->hWnd, NULL);
+   assertS(surface != EGL_NO_SURFACE, "Failed at creating window surface ESContext.cpp:50");
    if (surface == EGL_NO_SURFACE) {
        return EGL_FALSE;
    }
 
    // Create a GL context
    context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs);
+   assertS(context != EGL_NO_CONTEXT, "Failed at creating creating context ESContext.cpp:57");
    if (context == EGL_NO_CONTEXT) {
        return EGL_FALSE;
    }
 
    // Make the context current
-   if (!eglMakeCurrent(display, surface, surface, context)) {
+   GLint madeCurrent = eglMakeCurrent(display, surface, surface, context);
+   assertS(madeCurrent, "Failed at making the context current ESContext.cpp:64");
+   if (!madeCurrent) {
        return EGL_FALSE;
    }
 
