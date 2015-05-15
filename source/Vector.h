@@ -4,8 +4,8 @@
 
 class Vector {
   public:
-    GLint x;
-    GLint y;
-    GLint z;
+    GLfloat x;
+    GLfloat y;
+    GLfloat z;
     Vector();
 };

@@ -1,0 +1,1 @@
+/home/combocoptop/.nvim/vimrc

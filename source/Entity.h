@@ -34,11 +34,14 @@ class Entity {
     GLfloat color[4];
     Vector* position;
 
+    bool wireframe;
+    bool fill;
+
   public:
     void loadShaders();
 
-    void render(ESContext*);
-    void update(float);
+    virtual void render(ESContext*);
+    virtual void update(float);
 
     Entity();
 };

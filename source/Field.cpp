@@ -125,22 +125,13 @@ int Field::generateGeometry(float scale) {
 Field::Field (float scale) {
 	cout << "creating field object, with scale " << scale << endl;
 
-    this->numIndices    = this->generateGeometry(scale);
-    this->angle         = 0.0f;
-
-    cout << "number of indices " << this->numIndices << endl;
-
-    for (int i = 0; i < 12; i++) {
-    	cout << "indice: ";
-    	for (int j = 0; j < 2; j++) {
-    		cout << this->indices[i * 2 + j] << " ";
-    	}
-    	cout << endl;
-    }
-
+    this->numIndices  = this->generateGeometry(scale);
+    this->angle       = 0.0f;
     this->position->x = 0;
     this->position->y = 0;
     this->position->z = 0;
+    this->wireframe   = true;
+    this->fill        = false;
 
-    memcpy(this->color, yellow, sizeof(yellow));
+    memcpy(this->color, white, sizeof(white));
 }
