@@ -43,17 +43,21 @@ int Sphere::generateGeometry(int numSlices, float radius) {
 }
 
 void Sphere::update(float dt) {
-  this->position->x += 0.01f;
-  cout << this->position->x << endl;
+    static float totalTime = 0;
+    totalTime += dt;
+    this->position->z = sin(totalTime);
 }
 
 Sphere::Sphere(int numSlices, float radius) {
   cout << "creating sphere object, it has " << numSlices << " slices and a radius of " << radius << endl;
 
   this->fill        = true;
-  this->wireframe   = true;
+  this->wireframe   = false;
   this->numIndices  = this->generateGeometry(numSlices, radius);
   this->angle       = 90.0f;
+
+  this->name        = "ball";
+  this->type        = "ball";
 
   this->position->x = 0;
   this->position->y = 0;

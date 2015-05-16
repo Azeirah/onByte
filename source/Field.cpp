@@ -4,16 +4,6 @@
 #define fieldheight 0.9f
 #define fielddepth  3.0f
 
-GLfloat pointA[] = {-fieldwidth, fieldheight, -fielddepth};
-GLfloat pointB[] = {fieldwidth, fieldheight, -fielddepth};
-GLfloat pointC[] = {fieldwidth, -fieldheight, -fielddepth};
-GLfloat pointD[] = {-fieldwidth, -fieldheight, -fielddepth};
-
-GLfloat pointE[] = {-fieldwidth, fieldheight, fielddepth};
-GLfloat pointF[] = {fieldwidth, fieldheight, fielddepth};
-GLfloat pointG[] = {fieldwidth, -fieldheight, fielddepth};
-GLfloat pointH[] = {-fieldwidth, -fieldheight, fielddepth};
-
 int Field::generateGeometry(float scale) {
     int i;
     int numVertices = 8;
@@ -90,16 +80,6 @@ int Field::generateGeometry(float scale) {
     for (i = 0; i < numVertices * 3; i++) {
         this->vertices[i] *= scale;
     }
-
-    // if (normals != NULL) {
-    //     *normals = malloc (sizeof(GLfloat) * 3 * numVertices);
-    //     memcpy(*normals, cubeNormals, sizeof(cubeNormals));
-    // }
-
-    // if (texCoords != NULL) {
-    //     *texCoords = malloc (sizeof(GLfloat) * 2 * numVertices);
-    //     memcpy(*texCoords, cubeTex, sizeof(cubeTex)) ;
-    // }
 
     unsigned char cubeIndices[] = {
         0, 1,

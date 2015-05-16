@@ -20,7 +20,17 @@
 
 // math
 #define PI           3.1415926535897932384626433832795f
-#define TAU          2 * PI
+#define TAU          (2 * PI)
+
+// bat sizes
+#define batwidth 0.267f
+#define batheight 0.2f
+#define batdepth 0.02f
+
+// size of filed
+#define fieldwidth   0.9f
+#define fieldheight  0.9f
+#define fielddepth   3.0f
 
 // colors
 extern float white[4];
@@ -34,5 +44,16 @@ typedef struct {
 } ESMatrix;
 
 extern ESMatrix mvpMatrix;
+
+// all 8 outer points of the gamefield.
+extern GLfloat pointA[3];
+extern GLfloat pointB[3];
+extern GLfloat pointC[3];
+extern GLfloat pointD[3];
+
+extern GLfloat pointE[3];
+extern GLfloat pointF[3];
+extern GLfloat pointG[3];
+extern GLfloat pointH[3];
 
 #endif // GLOBALS_H

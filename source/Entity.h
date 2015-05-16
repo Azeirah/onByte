@@ -32,13 +32,21 @@ class Entity {
     // rotation, position and color
     GLfloat angle;
     GLfloat color[4];
-    Vector* position;
 
     bool wireframe;
     bool fill;
 
+    // Both name and type are used to retrieve an entity from within another entity
+    // Name is to collect a single unique object (such as score)
+    // type is to collect all objects in a group, for example, ball needs to do hit-detection on all bats.
+    string name;
+    string type;
   public:
-    void loadShaders();
+    Vector* position;
+
+    void         loadShaders();
+    string       getName();
+    string       getType();
 
     virtual void render(ESContext*);
     virtual void update(float);

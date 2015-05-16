@@ -134,6 +134,16 @@ GLuint esLoadProgram (const char *vertShaderSrc, const char *fragShaderSrc) {
 void Entity::update (float deltatime) {
 }
 
+string Entity::getName() {
+    assertS(this->name != "", "Unnamed entity");
+    return this->name;
+}
+
+string Entity::getType() {
+    assertS(this->type != "", "Untyped entity");
+    return this->type;
+}
+
 void Entity::render(ESContext *context) {
   ESMatrix modelview = mvpMatrix;
   // zet de posities
