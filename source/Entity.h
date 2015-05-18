@@ -39,16 +39,22 @@ class Entity {
     // Both name and type are used to retrieve an entity from within another entity
     // Name is to collect a single unique object (such as score)
     // type is to collect all objects in a group, for example, ball needs to do hit-detection on all bats.
+
+    vector<Entity *> *entityCollection;
+  public:
     string name;
     string type;
-  public:
     Vector* position;
+
+    void         printInfo();
 
     void         loadShaders();
     string       getName();
     string       getType();
+    void         setCollection(vector<Entity *> *entityCollection);
+    Entity      *findEntity(string name, string type);
 
-    virtual void render(ESContext*);
+    virtual void render();
     virtual void update(float);
 
     Entity();

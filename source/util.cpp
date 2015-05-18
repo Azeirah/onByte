@@ -5,3 +5,7 @@ void assertS(bool condition, string errorMessage) {
         cout << "assertion warning: " << errorMessage << endl;
     }
 }
+
+float generateFloat(float low, float high) {
+    return low + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/(high-low)));
+}

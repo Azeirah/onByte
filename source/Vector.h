@@ -7,5 +7,11 @@ class Vector {
     GLfloat x;
     GLfloat y;
     GLfloat z;
-    Vector();
+
+    void      add(Vector* v2);
+    void multiply(Vector* v2);
+
+    void printInfo();
+
+    Vector(float x=0.0f, float y=0.0f, float z=0.0f);
 };

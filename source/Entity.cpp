@@ -131,7 +131,34 @@ GLuint esLoadProgram (const char *vertShaderSrc, const char *fragShaderSrc) {
    return programObject;
 }
 
+void Entity::printInfo() {
+    cout << "I have " << this->numIndices << " indices" << endl;
+    cout << "my color is (rgba) " << this->color[0] << ", " << this->color[1] << ", " << this->color[2] << ", " << this->color[3] << endl;
+    if (this->wireframe) {
+        cout << "I am wireframed" << endl;
+    } else {
+        cout << "No wireframe for me" << endl;
+    }
+
+    if (this->fill) {
+        cout << "I am filled" << endl;
+    } else {
+        cout << "No fill for me" << endl;
+    }
+
+    cout << "position" << endl;
+    this->position->printInfo();
+
+    cout << "mvpLoc is " << this->mvpLoc << endl;
+    cout << "colorLoc is " << this->colorLoc << endl;
+    cout << "angle is " << this->angle << endl;
+}
+
 void Entity::update (float deltatime) {
+}
+
+void Entity::setCollection(vector<Entity *> *entityCollection) {
+    this->entityCollection = entityCollection;
 }
 
 string Entity::getName() {
@@ -144,7 +171,7 @@ string Entity::getType() {
     return this->type;
 }
 
-void Entity::render(ESContext *context) {
+void Entity::render() {
   ESMatrix modelview = mvpMatrix;
   // zet de posities
   esTranslate(&modelview, this->position->x, this->position->y, this->position->z);
@@ -175,6 +202,15 @@ void Entity::loadShaders() {
   assertS(this->positionLoc != -1, "positionLocation is -1, bad stuff :(");
   assertS(this->mvpLoc      != -1, "mvpLocation is -1, bad stuff :(");
   assertS(this->colorLoc    != -1, "colorLocation is -1, bad stuff :(");
+}
+
+Entity* Entity::findEntity(string name, string type) {
+    for (int i = 0; i < this->entityCollection->size(); i += 1) {
+        Entity *entity = (* this->entityCollection)[i];
+        if (entity->name == name && entity->type == type) {
+            return entity;
+        }
+    }
 }
 
 Entity::Entity() {

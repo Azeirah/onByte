@@ -23,6 +23,9 @@ public:
 	// loading shaders (duh..)
 	void loadShaders();
 
+    // adding entities to the gamestate
+    void addEntity(Entity *entity);
+
 	// controlling gamemode time
 	void start();
 	void pause();

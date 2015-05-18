@@ -20,3 +20,9 @@ using namespace std;
 
 // assert voor wat sanity checks
 #include "assert.h"
+
+// rand()
+#include <stdlib.h>
+
+// what could this possibly be?
+#include <vector>

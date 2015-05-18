@@ -67,6 +67,7 @@ void Bat::update(float dt) {
     static float totaltime = 0;
     totaltime += dt;
     this->position->y = sin(totaltime) * fieldheight;
+    this->angle += 0.1;
 }
 
 Bat::Bat(float scale, GLfloat position, float color[4], int batNumber) {
@@ -80,6 +81,8 @@ Bat::Bat(float scale, GLfloat position, float color[4], int batNumber) {
   this->position->x = 0;
   this->position->y = 0;
   this->position->z = position;
+
+  cout << "creating a bat with a transparency of " << color[3] << endl;
 
   memcpy(this->color, color, sizeof(color));
 }

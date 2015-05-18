@@ -41,12 +41,12 @@ void GameState::update(ESContext *context, float deltatime) {
 	}
 
 	esMatrixLoadIdentity(&perspective);
-	esPerspective(&perspective, 50.0f, aspect, 1.0f, 10.0f);
+	       esPerspective(&perspective, 50.0f, aspect, 1.0f, 10.0f);
 	esMatrixLoadIdentity(&modelview);
-	esTranslate(&modelview, 0.0, 0.0, -5.0);
+	         esTranslate(&modelview, 0.0, 0.0, -5.0);
 
 	if (context->isPlayerOne == false) {
-		// esRotate(&modelview, 180, 0.0, 1.0, 0.0);
+		esRotate(&modelview, 180, 0.0, 1.0, 0.0);
 	}
 
 	esMatrixMultiply(&mvpMatrix, &modelview, &perspective);
@@ -56,7 +56,20 @@ void GameState::render(ESContext *context) {
 	glViewport(0, 0, context->window_width, context->window_height);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	for (int i = 0; i < this->entities.size(); i += 1) {
-		this->entities[i]->render(context);
-	}
+
+    if (context->isPlayerOne) {
+    	for (int i = 0; i < this->entities.size(); i += 1) {
+    		this->entities[i]->render();
+    	}
+    } else {
+        for (int i = this->entities.size() - 1; i > -1; i -= 1) {
+            this->entities[i]->render();
+        }
+    }
+}
+
+void GameState::addEntity(Entity *entity) {
+    this->entities.push_back(entity);
+    cout << "added " << entity->name << endl;
+    entity->setCollection(&this->entities);
 }

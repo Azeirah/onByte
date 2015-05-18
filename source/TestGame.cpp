@@ -10,9 +10,25 @@ TestGame::TestGame (string name) {
     this->gameState      = new GameState(name);
     this->name           = name;
 
-	this->gameState->entities.push_back(field);
-	this->gameState->entities.push_back(ball);
-    this->gameState->entities.push_back(player1);
-    this->gameState->entities.push_back(player2);
-    this->gameState->entities.push_back(follow);
+	this->gameState->addEntity(field  );
+    this->gameState->addEntity(player1);
+    this->gameState->addEntity(ball   );
+    this->gameState->addEntity(player2);
+    this->gameState->addEntity(follow );
+
+    cout << "Field:" << endl;
+    field->printInfo();
+    cout << endl;
+    cout << "Ball:" << endl;
+    ball->printInfo();
+    cout << endl;
+    cout << "Player1:" << endl;
+    player1->printInfo();
+    cout << endl;
+    cout << "Player2:" << endl;
+    player2->printInfo();
+    cout << endl;
+    cout << "follower:" << endl;
+    follow->printInfo();
+    cout << endl;
 }

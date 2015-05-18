@@ -74,7 +74,6 @@ int Field::generateGeometry(float scale) {
         1.0f, 0.0f,
     };
 
-	cout << "we get here" << endl;
     this->vertices = new GLfloat[numVertices * 3];
     memcpy(this->vertices, cubeVerts, sizeof(cubeVerts));
     for (i = 0; i < numVertices * 3; i++) {
@@ -106,7 +105,7 @@ Field::Field (float scale) {
 	cout << "creating field object, with scale " << scale << endl;
 
     this->numIndices  = this->generateGeometry(scale);
-    this->angle       = 0.0f;
+    this->angle       = 90.0f;
     this->position->x = 0;
     this->position->y = 0;
     this->position->z = 0;
