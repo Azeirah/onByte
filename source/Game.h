@@ -17,7 +17,6 @@ class Game {
     GameState* currentState;
 
     ESContext* context1;
-    ESContext* context2;
   public:
   	map<string, GameState *> gameStates;
     Game();
