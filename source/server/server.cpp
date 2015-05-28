@@ -43,18 +43,22 @@ void SocketServer::start() {
 
     assertS(newSocketFileDescriptor >= 0, "Error on accept@server");
 
-    // empty buffer
-    bzero(buffer, MAX_MESSAGE_LENGTH);
-    // read from socket
-    n = read(newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
+    // keep listening forever.
+    while (true) {
+        cout << "listening for message" << endl;
+        // empty buffer
+        bzero(buffer, MAX_MESSAGE_LENGTH);
+        // read from socket
+        n = read(newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
 
-    assertS(n >= 0, "Error reading from socket@server");
-    cout << "Received message " << buffer << endl;
+        assertS(n >= 0, "Error reading from socket@server");
+        cout << "Received message '" << buffer << "'" << endl;
 
-    n = write(newSocketFileDescriptor, "I got your message", 18);
+        n = write(newSocketFileDescriptor, "I got your message", 18);
+    }
 }
 
 void SocketServer::stop() {
-  close(this->newSocketFileDescriptor);
-  close(this->socketFileDescriptor);
+    close(this->newSocketFileDescriptor);
+    close(this->socketFileDescriptor);
 }

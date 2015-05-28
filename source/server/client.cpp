@@ -44,17 +44,19 @@ void SocketClient::start() {
     char buffer[MAX_MESSAGE_LENGTH];
     int  n;
 
-    // getting user input
-    cout << "Please enter your message: " << endl;
-    bzero(buffer, MAX_MESSAGE_LENGTH);
-    fgets(buffer, MAX_MESSAGE_LENGTH - 1, stdin);
-    n = write(this->socketFileDescriptor, buffer, strlen(buffer));
-    assertS(n >= 0, "Error writing to socket@client");
+    while (true) {
+        // getting user input
+        cout << "Please enter your message: " << endl;
+        bzero(buffer, MAX_MESSAGE_LENGTH);
+        fgets(buffer, MAX_MESSAGE_LENGTH - 1, stdin);
+        n = write(this->socketFileDescriptor, buffer, strlen(buffer) - 1);
+        assertS(n >= 0, "Error writing to socket@client");
 
-    // reading response
-    bzero(buffer, MAX_MESSAGE_LENGTH);
-    n = read(socketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
-    assertS(n >= 0, "Error reading from socket@client");
+        // reading response
+        bzero(buffer, MAX_MESSAGE_LENGTH);
+        n = read(socketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
+        assertS(n >= 0, "Error reading from socket@client");
+    }
 }
 
 void SocketClient::stop() {
