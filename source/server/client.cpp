@@ -39,23 +39,39 @@ SocketClient::SocketClient(string host, int port) {
     assertS(succesvolConnection, "Error connecting@client");
 }
 
-void SocketClient::start() {
-    // declaring variables
+bool SocketClient::send(Json::Value *data) {
+  string encodedValue = data->toStyledString();
+
+  cout << "Sending " << encodedValue << endl;
+  int n = write(this->socketFileDescriptor, encodedValue.c_str(), strlen(encodedValue.c_str()) - 1);
+  assertS(n >= 0, "Error writing to socket@client");
+
+  return n >= 0;
+}
+
+bool SocketClient::receive(Json::Value receiver) {
     char buffer[MAX_MESSAGE_LENGTH];
-    int  n;
+    int n;
+    Json::Reader reader;
 
+    n = read(this->socketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
+    reader.parse(buffer, receiver, false);
+
+    cout << "Received " << receiver.toStyledString() << endl;
+    cout << "Plucking 'pong' out of data: " << receiver.get("pong", "no pong...") << endl;
+
+    return n >= 0;
+}
+
+void SocketClient::start() {
+    Json::Value toSend;
+    toSend["ping"] = true;
+
+    Json::Value toReceive;
+    // declaring variables
     while (true) {
-        // getting user input
-        cout << "Please enter your message: " << endl;
-        bzero(buffer, MAX_MESSAGE_LENGTH);
-        fgets(buffer, MAX_MESSAGE_LENGTH - 1, stdin);
-        n = write(this->socketFileDescriptor, buffer, strlen(buffer) - 1);
-        assertS(n >= 0, "Error writing to socket@client");
-
-        // reading response
-        bzero(buffer, MAX_MESSAGE_LENGTH);
-        n = read(socketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
-        assertS(n >= 0, "Error reading from socket@client");
+        assertS(this->send(&toSend) >= 0, "Error writing to socket@client");
+        this->receive(toReceive);
     }
 }
 

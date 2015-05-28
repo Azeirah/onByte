@@ -1,5 +1,7 @@
 #include "server.h"
 
+// #define assertS
+
 void assertS(int truthy, string message) {
     if (!truthy) {
         cout << message << " on line " << __LINE__ << endl;
@@ -28,12 +30,36 @@ SocketServer::SocketServer(int port) {
     assertS(!bindResult, "Error on binding socket@server");
 }
 
+bool SocketServer::send(Json::Value *data) {
+  string encodedValue = data->toStyledString();
+
+  cout << "Sending " << encodedValue << endl;
+  int n = write(this->newSocketFileDescriptor, encodedValue.c_str(), strlen(encodedValue.c_str()) - 1);
+  assertS(n >= 0, "Error writing to socket@client");
+
+  return n >= 0;
+}
+
+bool SocketServer::receive(Json::Value receiver) {
+    char buffer[MAX_MESSAGE_LENGTH];
+    int n;
+    Json::Reader reader;
+
+    n = read(this->newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
+    reader.parse(buffer, receiver, false);
+
+    cout << "Received " << receiver.toStyledString() << endl;
+    cout << "Plucking 'ping' out of data: " << receiver.get("ping", "no ping...") << endl;
+
+    return n >= 0;
+}
+
 void SocketServer::start() {
     // declaring variables
     struct sockaddr_in clientAddress;
     socklen_t          clientLength;
-    int                n;
-    char               buffer[MAX_MESSAGE_LENGTH];
+    Json::Value        toSend;
+    Json::Value        toReceive;
 
     // start listening
     // what's that 5?...
@@ -43,18 +69,12 @@ void SocketServer::start() {
 
     assertS(newSocketFileDescriptor >= 0, "Error on accept@server");
 
+    toSend["pong"] = true;
+
     // keep listening forever.
     while (true) {
-        cout << "listening for message" << endl;
-        // empty buffer
-        bzero(buffer, MAX_MESSAGE_LENGTH);
-        // read from socket
-        n = read(newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
-
-        assertS(n >= 0, "Error reading from socket@server");
-        cout << "Received message '" << buffer << "'" << endl;
-
-        n = write(newSocketFileDescriptor, "I got your message", 18);
+        this->receive(toReceive);
+        assertS(this->send(&toSend) >= 0, "Error writing to socket@server");
     }
 }
 

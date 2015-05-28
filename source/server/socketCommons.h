@@ -9,6 +9,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <iostream>
+#include "json/json.h"
 
 #define MAX_MESSAGE_LENGTH 512
 

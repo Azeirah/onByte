@@ -18,6 +18,8 @@ class SocketClient {
     int                socketFileDescriptor;
     struct sockaddr_in serverAddress;
     struct hostent     *server;
+    bool               send(Json::Value *);
+    bool               receive(Json::Value);
   public:
     SocketClient(string host, int port);
     void start();

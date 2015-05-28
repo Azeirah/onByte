@@ -5,6 +5,6 @@
 // ./c "localhost" 2000
 
 int main(int argc, char const *argv[]) {
-    SocketServer *server = new SocketServer(1337);
+    SocketServer *server = new SocketServer(1338);
     server->start();
 }
