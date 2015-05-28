@@ -1,38 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <iostream>
-
-#define MAX_MESSAGE_LENGTH 512
-
-using namespace std;
-
-class SocketServer {
-  private:
-    int                port;
-    int                socketFileDescriptor;
-    int                newSocketFileDescriptor;
-    struct sockaddr_in serverAddress;
-  public:
-    SocketServer(int port);
-    void start();
-    void stop();
-};
+#include "server.h"
 
 void assertS(int truthy, string message) {
     if (!truthy) {
         cout << message << " on line " << __LINE__ << endl;
     }
-}
-
-void error(const char *msg) {
-    perror(msg);
-    cout << endl;
-    exit(1);
 }
 
 SocketServer::SocketServer(int port) {
@@ -86,11 +57,4 @@ void SocketServer::start() {
 void SocketServer::stop() {
   close(this->newSocketFileDescriptor);
   close(this->socketFileDescriptor);
-}
-
-int main(int argc, char *argv[]) {
-    cout << "Creating new server on port " << argv[argc - 1] << endl;
-    SocketServer *server = new SocketServer(atoi(argv[argc - 1]));
-
-    server->start();
 }

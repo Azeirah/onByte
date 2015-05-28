@@ -1,32 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <iostream>
-
-using namespace std;
-
-#define MAX_MESSAGE_LENGTH 512
-
-class SocketClient {
-  private:
-    string             host;
-    int                port;
-    int                socketFileDescriptor;
-    struct sockaddr_in serverAddress;
-    struct hostent     *server;
-  public:
-    SocketClient(string host, int port);
-    void start();
-    void stop();
-};
+#include "client.h"
 
 void assertS(int truthy, string message) {
-    // this is my most brilliant invention, prints line numbers also! :D
+    // this is my most brilliant invention, prints line numbers also!
     if (!truthy) {
         cout << message << " on line " << __LINE__ << endl;
     }
@@ -84,11 +59,4 @@ void SocketClient::start() {
 
 void SocketClient::stop() {
     close(this->socketFileDescriptor);
-}
-
-int main(int argc, char *argv[]) {
-    SocketClient *client = new SocketClient("localhost", 1337);
-    client->start();
-
-    client->stop();
 }
