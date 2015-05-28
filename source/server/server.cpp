@@ -1,5 +1,3 @@
-/* A simple server in the internet domain using TCP
-   The port number is passed as an argument */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,13 +13,14 @@ using namespace std;
 
 class SocketServer {
   private:
-    int port;
-    int socketFileDescriptor;
-    int newSocketFileDescriptor;
-    int n;
+    int                port;
+    int                socketFileDescriptor;
+    int                newSocketFileDescriptor;
+    struct sockaddr_in serverAddress;
   public:
     SocketServer(int port);
     void start();
+    void stop();
 };
 
 void assertS(int truthy, string message) {
@@ -32,50 +31,66 @@ void assertS(int truthy, string message) {
 
 void error(const char *msg) {
     perror(msg);
-    printf("");
+    cout << endl;
     exit(1);
 }
 
 SocketServer::SocketServer(int port) {
+    // setting port
     this->port = port;
-    assertS(port > 0, "No port provided@server:26...");
+    assertS(port > 0, "No port provided@server...");
 
-    socklen_t clientLength;
-    char      buffer[MAX_MESSAGE_LENGTH];
-    struct    sockaddr_in serverAddress;
-    struct    sockaddr_in clientAddress;
-
+    // opening socket
     // SOCK_STREAM = use tcp stream sockets, not udp.
     this->socketFileDescriptor = socket(AF_INET, SOCK_STREAM, 0);
-    assertS(this->socketFileDescriptor >= 0, "Error opening socket@server:34");
+    assertS(this->socketFileDescriptor >= 0, "Error opening socket@server");
 
-    bzero((char *) &serverAddress, sizeof(serverAddress));
+    // configuring server address
+    bzero((char *) &serverAddress, sizeof(this->serverAddress));
 
-    serverAddress.sin_family      = AF_INET;
-    serverAddress.sin_addr.s_addr = INADDR_ANY;
-    serverAddress.sin_port        = htons(port);
+    this->serverAddress.sin_family      = AF_INET;
+    this->serverAddress.sin_addr.s_addr = INADDR_ANY;
+    this->serverAddress.sin_port        = htons(port);
 
-    bool bindResult = bind(this->socketFileDescriptor, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) < 0;
+    // binding socket
+    bool bindResult = bind(this->socketFileDescriptor, (struct sockaddr *) &this->serverAddress, sizeof(this->serverAddress)) < 0;
     assertS(!bindResult, "Error on binding socket@server");
+}
 
+void SocketServer::start() {
+    // declaring variables
+    struct sockaddr_in clientAddress;
+    socklen_t          clientLength;
+    int                n;
+    char               buffer[MAX_MESSAGE_LENGTH];
+
+    // start listening
     // what's that 5?...
     listen(this->socketFileDescriptor, 5);
-    clientLength            = sizeof(serverAddress);
+    clientLength            = sizeof(this->serverAddress);
     newSocketFileDescriptor = accept(socketFileDescriptor, (struct sockaddr *) &clientAddress, &clientLength);
+
     assertS(newSocketFileDescriptor >= 0, "Error on accept@server");
 
+    // empty buffer
     bzero(buffer, MAX_MESSAGE_LENGTH);
+    // read from socket
     n = read(newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
+
     assertS(n >= 0, "Error reading from socket@server");
-    printf("Here is the message: %s", buffer);
+    cout << "Received message " << buffer << endl;
 
     n = write(newSocketFileDescriptor, "I got your message", 18);
+}
 
-    close(newSocketFileDescriptor);
-    close(socketFileDescriptor);
+void SocketServer::stop() {
+  close(this->newSocketFileDescriptor);
+  close(this->socketFileDescriptor);
 }
 
 int main(int argc, char *argv[]) {
-    printf("Creating new server on port 1337");
-    SocketServer server = new SocketServer(1337);
+    cout << "Creating new server on port " << argv[argc - 1] << endl;
+    SocketServer *server = new SocketServer(atoi(argv[argc - 1]));
+
+    server->start();
 }
