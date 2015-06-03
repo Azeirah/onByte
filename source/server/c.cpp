@@ -6,5 +6,13 @@
 
 int main() {
     SocketClient *client = new SocketClient("localhost", 1338);
-    client->start();
+    Json::Value send;
+    Json::Value receive;
+
+    send["pong"] = true;
+
+    while (true) {
+        client->send(&send);
+        client->receive(&receive);
+    }
 }

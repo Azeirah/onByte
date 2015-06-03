@@ -18,10 +18,9 @@ class SocketClient {
     int                socketFileDescriptor;
     struct sockaddr_in serverAddress;
     struct hostent     *server;
-    bool               send(Json::Value *);
-    bool               receive(Json::Value);
   public:
+    bool               send   (Json::Value *);
+    bool               receive(Json::Value *);
     SocketClient(string host, int port);
-    void start();
     void stop();
 };
