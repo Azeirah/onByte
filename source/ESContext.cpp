@@ -5,78 +5,78 @@ void ESContext::makeCurrent() {
 }
 
 void ESContext::swapBuffer() {
-	eglSwapBuffers(this->eglDisplay, this->eglSurface);
+	  eglSwapBuffers(this->eglDisplay, this->eglSurface);
 }
 
 EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {
-   EGLint     numConfigs;
-   EGLint     majorVersion;
-   EGLint     minorVersion;
-   EGLDisplay display;
-   EGLContext context;
-   EGLSurface surface;
-   EGLConfig  config;
-   EGLint     contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
+    EGLint     numConfigs;
+    EGLint     majorVersion;
+    EGLint     minorVersion;
+    EGLDisplay display;
+    EGLContext context;
+    EGLSurface surface;
+    EGLConfig  config;
+    EGLint     contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
 
-   // Get Display
-   display = eglGetDisplay((EGLNativeDisplayType) this->x_display);
-   assertS(display != EGL_NO_DISPLAY, "Creating display failed ESContext.cpp:22");
-   if (display == EGL_NO_DISPLAY) {
-       return EGL_FALSE;
-   }
+    // Get Display
+    display = eglGetDisplay((EGLNativeDisplayType) this->x_display);
+    assertS(display != EGL_NO_DISPLAY, "Creating display failed ESContext.cpp:22");
+    if (display == EGL_NO_DISPLAY) {
+        return EGL_FALSE;
+    }
 
-   // Initialize EGL
-   GLint eglInitialized = eglInitialize(display, &majorVersion, &minorVersion);
-   assertS(eglInitialized, "Initializing egl failed ESContext.cpp:29");
-   if (!eglInitialized) {
-   	   cout << "EGL fail code was " << eglInitialized << endl;
-       return EGL_FALSE;
-   }
+    // Initialize EGL
+    GLint eglInitialized = eglInitialize(display, &majorVersion, &minorVersion);
+    assertS(eglInitialized, "Initializing egl failed ESContext.cpp:29");
+    if (!eglInitialized) {
+        cout << "EGL fail code was " << eglInitialized << endl;
+        return EGL_FALSE;
+    }
 
-   // Get configs
-   GLint configsGotten = eglGetConfigs(display, NULL, 0, &numConfigs);
-   assertS(configsGotten, "Failed at getting configs ESContext.cpp:36");
-   if (!configsGotten) {
-       return EGL_FALSE;
-   }
+    // Get configs
+    GLint configsGotten = eglGetConfigs(display, NULL, 0, &numConfigs);
+    assertS(configsGotten, "Failed at getting configs ESContext.cpp:36");
+    if (!configsGotten) {
+        return EGL_FALSE;
+    }
 
-   // Choose config
-   GLint configChosen = eglChooseConfig(display, attribList, &config, 1, &numConfigs);
-   assertS(configChosen, "Failed at choosing config ESContext.cpp:43");
-   if (!configChosen) {
-       return EGL_FALSE;
-   }
+    // Choose config
+    GLint configChosen = eglChooseConfig(display, attribList, &config, 1, &numConfigs);
+    assertS(configChosen, "Failed at choosing config ESContext.cpp:43");
+    if (!configChosen) {
+        return EGL_FALSE;
+    }
 
-   // Create a surface
-   surface = eglCreateWindowSurface(display, config, this->hWnd, NULL);
-   assertS(surface != EGL_NO_SURFACE, "Failed at creating window surface ESContext.cpp:50");
-   if (surface == EGL_NO_SURFACE) {
-       return EGL_FALSE;
-   }
+    // Create a surface
+    surface = eglCreateWindowSurface(display, config, this->hWnd, NULL);
+    assertS(surface != EGL_NO_SURFACE, "Failed at creating window surface ESContext.cpp:50");
+    if (surface == EGL_NO_SURFACE) {
+        return EGL_FALSE;
+    }
 
-   // Create a GL context
-   context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs);
-   assertS(context != EGL_NO_CONTEXT, "Failed at creating creating context ESContext.cpp:57");
-   if (context == EGL_NO_CONTEXT) {
-       return EGL_FALSE;
-   }
+    // Create a GL context
+    context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs);
+    assertS(context != EGL_NO_CONTEXT, "Failed at creating creating context ESContext.cpp:57");
+    if (context == EGL_NO_CONTEXT) {
+        return EGL_FALSE;
+    }
 
-   // Make the context current
-   GLint madeCurrent = eglMakeCurrent(display, surface, surface, context);
-   assertS(madeCurrent, "Failed at making the context current ESContext.cpp:64");
-   if (!madeCurrent) {
-       return EGL_FALSE;
-   }
+    // Make the context current
+    GLint madeCurrent = eglMakeCurrent(display, surface, surface, context);
+    assertS(madeCurrent, "Failed at making the context current ESContext.cpp:64");
+    if (!madeCurrent) {
+        return EGL_FALSE;
+    }
 
-   this->eglDisplay = display;
-   this->eglSurface = surface;
-   this->eglContext = context;
+    this->eglDisplay = display;
+    this->eglSurface = surface;
+    this->eglContext = context;
 
-   return EGL_TRUE;
+    return EGL_TRUE;
 }
 
 EGLBoolean ESContext::userInterrupt() {
-	XEvent xev;
+	  XEvent xev;
     KeySym key;
     GLboolean userinterrupt = GL_FALSE;
     char text;
@@ -87,7 +87,7 @@ EGLBoolean ESContext::userInterrupt() {
 
         if (xev.type == KeyPress) {
             if (XLookupString(&xev.xkey, &text, 1, &key, 0) == 1) {
-            	// TODO: keyfunc callback
+                // TODO(azeirah): keyfunc callback
                 // if (this->keyFunc != NULL) {
                 //     this->keyFunc(this, text, 0, 0);
                 // }
@@ -138,7 +138,7 @@ EGLBoolean ESContext::winCreate(string title) {
                &swa);
 
     xattr.override_redirect = false;
-    XChangeWindowAttributes (this->x_display, win, CWOverrideRedirect, &xattr);
+    XChangeWindowAttributes(this->x_display, win, CWOverrideRedirect, &xattr);
 
     hints.input = true;
     hints.flags = InputHint;
@@ -149,8 +149,8 @@ EGLBoolean ESContext::winCreate(string title) {
     XStoreName(this->x_display, win, title.c_str());
 
     // get identifiers for the provided atom name strings
-    wm_state    = XInternAtom (this->x_display, "_NET_WM_STATE", false);
-    x11_fs_atom = XInternAtom( this->x_display, "_NET_WM_STATE_FULLSCREEN", false);
+    wm_state    = XInternAtom(this->x_display, "_NET_WM_STATE", false);
+    x11_fs_atom = XInternAtom(this->x_display, "_NET_WM_STATE_FULLSCREEN", false);
 
     // dit zou eigenlijk ook een classe moeten zijn lijkt me...
     memset(&xev, 0, sizeof(xev));
@@ -162,7 +162,7 @@ EGLBoolean ESContext::winCreate(string title) {
     xev.xclient.data.l[1]    = (FULLSCREEN) ? x11_fs_atom : false;
     XSendEvent(
        this->x_display,
-       DefaultRootWindow (this->x_display),
+       DefaultRootWindow(this->x_display),
        false,
        SubstructureNotifyMask,
        &xev);
@@ -171,7 +171,7 @@ EGLBoolean ESContext::winCreate(string title) {
     return EGL_TRUE;
 }
 
-ESContext::ESContext (GLboolean isPlayerOne) {
+ESContext::ESContext(GLboolean isPlayerOne) {
     this->isPlayerOne = isPlayerOne;
 
     // hoeft volgens mij voor de rest niets te doen

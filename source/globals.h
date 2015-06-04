@@ -51,6 +51,8 @@ extern GLfloat pointB[3];
 extern GLfloat pointC[3];
 extern GLfloat pointD[3];
 
+extern int     colorSize;
+
 extern GLfloat pointE[3];
 extern GLfloat pointF[3];
 extern GLfloat pointG[3];

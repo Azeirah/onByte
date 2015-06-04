@@ -2,8 +2,8 @@
 
 #include <sstream>
 
-#define SSTR( x ) dynamic_cast< std::ostringstream & >( \
-        ( std::ostringstream() << std::dec << x ) ).str()
+#define SSTR(x) dynamic_cast< std::ostringstream & >( \
+        (std::ostringstream() << std::dec << x)).str()
 
 int Bat::generateGeometry(float scale) {
   int i;
@@ -64,7 +64,7 @@ int Bat::generateGeometry(float scale) {
   return numIndices;
 }
 
-void Bat::update(float dt) {
+void Bat::update(float dt, vector<Json::Value*> input) {
     static float totaltime = 0;
     totaltime += dt;
     this->position->y = sin(totaltime) * fieldheight;
@@ -85,5 +85,5 @@ Bat::Bat(float scale, GLfloat position, float color[4], int batNumber) {
 
   cout << "creating a bat with a transparency of " << color[3] << endl;
 
-  memcpy(this->color, color, sizeof(color));
+  memcpy(this->color, color, colorSize);
 }

@@ -6,12 +6,12 @@
 #include "GameState.h"
 // for framerate and dt
 #include <sys/time.h>
-#include "GameMode.h"
 
 // for socket server, used for input
 #include "server/server.h"
 #include "server/json/json.h"
 #include <vector>
+#include <thread>
 
 // Game is the startpoint for the whole game project
 // It contains the main game loop as well as the current game state
@@ -30,7 +30,7 @@ class Game {
   	map<string, GameState *> gameStates;
     Game();
 
-    void addGameMode(GameMode*);
+    void addGameMode(GameState*);
     void switchToGameState(string);
     void startGameLoop();
 };

@@ -19,7 +19,7 @@ int BallFollower::generateGeometry(float scale) {
       pointD[1],
       0,
   };
-  
+
 
   // GLfloat cubeNormals[] = {
   //     0.0f, -1.0f, 0.0f,  0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f,
@@ -55,7 +55,7 @@ int BallFollower::generateGeometry(float scale) {
   return numIndices;
 }
 
-void BallFollower::update(float dt) {
+void BallFollower::update(float dt, vector<Json::Value*> input) {
     this->position->z = *this->positionToTrack;
 }
 
@@ -74,5 +74,4 @@ BallFollower::BallFollower(GLfloat scale, GLfloat* positionToTrack) {
     this->positionToTrack = positionToTrack;
 
     memcpy(this->color, blue, sizeof(blue));
-
 }

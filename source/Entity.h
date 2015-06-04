@@ -55,7 +55,7 @@ class Entity {
     Entity      *findEntity(string name, string type);
 
     virtual void render();
-    virtual void update(float);
+    virtual void update(float dt, vector<Json::Value*> input);
 
     Entity();
 };

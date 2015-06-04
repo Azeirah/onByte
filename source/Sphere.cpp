@@ -5,33 +5,32 @@ Vector* bounceY = new Vector( 1, -1,  1);
 Vector* bounceZ = new Vector( 1,  1, -1);
 
 int Sphere::generateGeometry(int numSlices, float radius) {
-  int i;
-  int j;
-  int numParallels = numSlices / 2;
-  int numVertices = ( numParallels + 1 ) * ( numSlices + 1 );
-  int numIndices = numParallels * numSlices * 6;
-  float angleStep = TAU / ((float) numSlices);
+    int i;
+    int j;
+    int numParallels = numSlices / 2;
+    int numVertices = ( numParallels + 1 ) * ( numSlices + 1 );
+    int numIndices = numParallels * numSlices * 6;
+    float angleStep = TAU / ((float) numSlices);
 
 
   this->vertices = new GLfloat[3 * numVertices];
   this->indices  = new GLuint[numIndices];
 
-  for (i = 0; i < numParallels + 1; i++) {
-    for (j = 0; j < numSlices + 1; j++) {
-      int vertex = (i * (numSlices + 1) + j) * 3;
+    for (i = 0; i < numParallels + 1; i++) {
+        for (j = 0; j < numSlices + 1; j++) {
+            int vertex = (i * (numSlices + 1) + j) * 3;
 
-        this->vertices[vertex + 0] =
-            radius * sinf(angleStep * (float)i) * sinf(angleStep * (float)j);
-        this->vertices[vertex + 1] = radius * cosf(angleStep * (float)i);
-        this->vertices[vertex + 2] =
-            radius * sinf(angleStep * (float)i) * cosf(angleStep * (float)j);
+            this->vertices[vertex + 0] =
+              radius * sinf(angleStep * (float)i) * sinf(angleStep * (float)j);
+            this->vertices[vertex + 1] = radius * cosf(angleStep * (float)i);
+            this->vertices[vertex + 2] =
+              radius * sinf(angleStep * (float)i) * cosf(angleStep * (float)j);
 
+        }
     }
-  }
 
   unsigned char *indexBuffer = (unsigned char *) this->indices;
   for (i = 0; i < numParallels; i += 1) {
-
     for (j = 0; j < numSlices; j += 1) {
       *indexBuffer++ = i * (numSlices + 1) + j;
       *indexBuffer++ = (i + 1) * (numSlices + 1) + j;
@@ -46,7 +45,7 @@ int Sphere::generateGeometry(int numSlices, float radius) {
   return numIndices;
 }
 
-void Sphere::update(float dt) {
+void Sphere::update(float dt, vector<Json::Value*> input) {
     // static float totalTime = 0;
     // totalTime += dt;
     // this->position->z = sin(totalTime);

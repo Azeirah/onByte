@@ -12,5 +12,5 @@ private:
 public:
     BallFollower(GLfloat scale, GLfloat* positionToTrack);
     int generateGeometry(GLfloat scale);
-    void update(float);
+    void update(float, vector<Json::Value*>);
 };

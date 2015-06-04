@@ -18,8 +18,10 @@ const char *defaultVertexShader[6] = {
      "}                                           \n"
 };
 
-void esLogMessage (const char *formatStr, ...) {
-    cout << "er is een error! Ik hoop dat dit er nooit komt te staan. Dit is namelijk geen duidelijke error beschrijving, lekker Martijn!" << endl;
+void esLogMessage(const char *formatStr, ...) {
+    cout << "er is een error! Ik hoop dat dit er nooit komt te staan." <<
+    " Dit is namelijk geen duidelijke error beschrijving, lekker Martijn!" <<
+    endl;
     // va_list params;
     // char buf[BUFSIZ];
     //
@@ -31,7 +33,7 @@ void esLogMessage (const char *formatStr, ...) {
     // va_end (params);
 }
 
-GLuint esLoadShader (GLenum type, const char *shaderSrc) {
+GLuint esLoadShader(GLenum type, const char *shaderSrc) {
     GLuint shader;
     GLint compiled;
 
@@ -39,7 +41,7 @@ GLuint esLoadShader (GLenum type, const char *shaderSrc) {
     shader = glCreateShader(type);
 
     if (shader == 0) {
-    	  return 0;
+        return 0;
     }
 
     // Load the shader source
@@ -72,41 +74,41 @@ GLuint esLoadShader (GLenum type, const char *shaderSrc) {
     return shader;
 }
 
-GLuint esLoadProgram (const char *vertShaderSrc, const char *fragShaderSrc) {
-   GLuint vertexShader;
-   GLuint fragmentShader;
-   GLuint programObject;
-   GLint linked;
+GLuint esLoadProgram(const char *vertShaderSrc, const char *fragShaderSrc) {
+    GLuint vertexShader;
+    GLuint fragmentShader;
+    GLuint programObject;
+    GLint linked;
 
-   // Load the vertex/fragment shaders
-   vertexShader = esLoadShader(GL_VERTEX_SHADER, vertShaderSrc);
-   if (vertexShader == 0) {
-      return 0;
-   }
+    // Load the vertex/fragment shaders
+    vertexShader = esLoadShader(GL_VERTEX_SHADER, vertShaderSrc);
+    if (vertexShader == 0) {
+       return 0;
+    }
 
-   fragmentShader = esLoadShader(GL_FRAGMENT_SHADER, fragShaderSrc);
-   if (fragmentShader == 0) {
-      glDeleteShader(vertexShader);
-      return 0;
-   }
+    fragmentShader = esLoadShader(GL_FRAGMENT_SHADER, fragShaderSrc);
+    if (fragmentShader == 0) {
+       glDeleteShader(vertexShader);
+       return 0;
+    }
 
-   // Create the program object
-   programObject = glCreateProgram();
+    // Create the program object
+    programObject = glCreateProgram();
 
-   if (programObject == 0) {
-      return 0;
-   }
+    if (programObject == 0) {
+       return 0;
+    }
 
-   glAttachShader(programObject, vertexShader);
-   glAttachShader(programObject, fragmentShader);
+    glAttachShader(programObject, vertexShader);
+    glAttachShader(programObject, fragmentShader);
 
-   // Link the program
-   glLinkProgram(programObject);
+    // Link the program
+    glLinkProgram(programObject);
 
-   // Check the link status
-   glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
+    // Check the link status
+    glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
 
-   if (!linked) {
+    if (!linked) {
       GLint infoLen = 0;
 
       glGetProgramiv(programObject, GL_INFO_LOG_LENGTH, &infoLen);
@@ -122,18 +124,23 @@ GLuint esLoadProgram (const char *vertShaderSrc, const char *fragShaderSrc) {
 
       glDeleteProgram(programObject);
       return 0;
-   }
+    }
 
-   // Free up no longer needed shader resources
-   glDeleteShader(vertexShader);
-   glDeleteShader(fragmentShader);
+    // Free up no longer needed shader resources
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
 
-   return programObject;
+    return programObject;
 }
 
 void Entity::printInfo() {
     cout << "I have " << this->numIndices << " indices" << endl;
-    cout << "my color is (rgba) " << this->color[0] << ", " << this->color[1] << ", " << this->color[2] << ", " << this->color[3] << endl;
+    cout << "my color is (rgba) " <<
+      this->color[0] << ", " <<
+        this->color[1] << ", " <<
+          this->color[2] << ", " <<
+            this->color[3] << endl;
+
     if (this->wireframe) {
         cout << "I am wireframed" << endl;
     } else {
@@ -154,7 +161,7 @@ void Entity::printInfo() {
     cout << "angle is " << this->angle << endl;
 }
 
-void Entity::update (float deltatime) {
+void Entity::update(float deltatime, vector<Json::Value*> input) {
 }
 
 void Entity::setCollection(vector<Entity *> *entityCollection) {

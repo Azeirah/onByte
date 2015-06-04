@@ -10,5 +10,5 @@ class Bat : public Entity {
 public:
     Bat(float scale, GLfloat position, float color[4], int batNumber);
     int generateGeometry(float scale);
-    void update(float);
+    void update(float, vector<Json::Value*>);
 };
