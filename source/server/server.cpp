@@ -29,6 +29,7 @@ SocketServer::SocketServer(int port) {
 
     // start listening
     // what's that 5?...
+    cout << "Waiting for a client to connect to the socket server... Use threads to make this nonblocking?" << endl;
     listen(this->socketFileDescriptor, 5);
     clientLength            = sizeof(this->serverAddress);
     newSocketFileDescriptor = accept(socketFileDescriptor, (struct sockaddr *) &clientAddress, &clientLength);

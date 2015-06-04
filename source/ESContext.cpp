@@ -116,8 +116,6 @@ EGLBoolean ESContext::winCreate(string title) {
     Atom                 x11_fs_atom;
     XWMHints             hints;
     XEvent               xev;
-    EGLConfig            ecfg;
-    EGLint               num_config;
     Window               win;
 
     /*

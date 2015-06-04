@@ -21,3 +21,9 @@ void Vector::multiply(Vector* v2) {
     this->y *= v2->y;
     this->z *= v2->z;
 }
+
+void Vector::scale(float scale) {
+    this->x *= scale;
+    this->y *= scale;
+    this->z *= scale;
+}

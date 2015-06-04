@@ -205,12 +205,14 @@ void Entity::loadShaders() {
 }
 
 Entity* Entity::findEntity(string name, string type) {
-    for (int i = 0; i < this->entityCollection->size(); i += 1) {
+    for (unsigned int i = 0; i < this->entityCollection->size(); i += 1) {
         Entity *entity = (* this->entityCollection)[i];
         if (entity->name == name && entity->type == type) {
             return entity;
         }
     }
+
+    assertS(false, "No entity found... this shouldn't happen!");
 }
 
 Entity::Entity() {

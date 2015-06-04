@@ -3,10 +3,32 @@
 Game::Game() {
     // player 1
     this->context1 = new ESContext(true);
-
     this->context1->createWindow(SCREENNAME1, SCREENWIDTH, SCREENHEIGHT, ES_WINDOW_ALPHA);
-
     this->context1->makeCurrent();
+
+    //this->channel = new SocketServer(1337);
+}
+
+// is blocking so should definitely run in a thread
+void Game::receiveInput () {
+  Json::Value *receive;
+
+    while (true) {
+        // create a new JsonValue object on the heap to receive inputs with
+        // push these values onto the input buffer, which will then be distributed over the right Entities.
+        // After distribution, the buffer will be cleared
+        // This loop of receive -> distribute -> clear will be executed on every game tick
+        receive = new Json::Value();
+        this->channel->receive(receive);
+        this->inputBuffer.push_back(receive);
+    }
+}
+
+void Game::clearInputBuffer () {
+    for (unsigned int i = 0; i < this->inputBuffer.size(); i++) {
+        Json::Value value = this->inputBuffer[i];
+        value.clear();
+    }
 }
 
 void Game::startGameLoop () {

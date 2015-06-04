@@ -10,6 +10,7 @@ class Vector {
 
     void      add(Vector* v2);
     void multiply(Vector* v2);
+    void    scale(float scale);
 
     void printInfo();
 

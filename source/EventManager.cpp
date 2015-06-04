@@ -70,38 +70,38 @@ Sphere::onMovement(EventObject input) {
 //
 // }
 
-#include <vector>
-#include <map>
-
-struct EventListener {
-    fnc_ptr callback;
-    Entity  *entity;
-};
-
-class EventManager {
-private:
-    // Socket                             connection;
-    map<string, vector<EventListener>> listeners;
-public:
-    register    (string eventName, fnc_ptr, Entity*);
-    unregister  (string eventName, fnc_ptr, Entity*);
-
-    EventManager();
-};
-
-EventManager::EventManager() {
-    // set up tcp socket stuff here
-}
-
-EventManager::register(string eventName, fnc_ptr callback, Entity *entity) {
-    listeners[eventName] = new EventListener(callback, entity);
-}
-
-EventManager::unregister(string eventName, fnc_ptr callback) {
-    // we don't need a reference to entity, since fnc_ptrs are unique already.
-    for (int i = 0; i < this->listeners[eventName].size(); i++) {
-        if (this->listeners[eventName].callback == callback) {
-            this->listeners[eventName].erase(i);
-        }
-    }
-}
+// #include <vector>
+// #include <map>
+// 
+// struct EventListener {
+//     fnc_ptr callback;
+//     Entity  *entity;
+// };
+//
+// class EventManager {
+// private:
+//     // Socket                             connection;
+//     map<string, vector<EventListener>> listeners;
+// public:
+//     register    (string eventName, fnc_ptr, Entity*);
+//     unregister  (string eventName, fnc_ptr, Entity*);
+//
+//     EventManager();
+// };
+//
+// EventManager::EventManager() {
+//     // set up tcp socket stuff here
+// }
+//
+// EventManager::register(string eventName, fnc_ptr callback, Entity *entity) {
+//     listeners[eventName] = new EventListener(callback, entity);
+// }
+//
+// EventManager::unregister(string eventName, fnc_ptr callback) {
+//     // we don't need a reference to entity, since fnc_ptrs are unique already.
+//     for (int i = 0; i < this->listeners[eventName].size(); i++) {
+//         if (this->listeners[eventName].callback == callback) {
+//             this->listeners[eventName].erase(i);
+//         }
+//     }
+// }

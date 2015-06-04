@@ -21,7 +21,7 @@ void GameState::resume() {
 
 void GameState::loadShaders() {
 	cout << "loading in shaders" << endl;
-	for (int i = 0; i < this->entities.size(); i += 1) {
+	for (unsigned int i = 0; i < this->entities.size(); i += 1) {
 		this->entities[i]->loadShaders();
 	}
 }
@@ -58,11 +58,11 @@ void GameState::render(ESContext *context) {
 
 
     if (context->isPlayerOne) {
-    	for (int i = 0; i < this->entities.size(); i += 1) {
+    	for (unsigned int i = 0; i < this->entities.size(); i += 1) {
     		this->entities[i]->render();
     	}
     } else {
-        for (int i = this->entities.size() - 1; i > -1; i -= 1) {
+        for (unsigned int i = this->entities.size() - 1; i > -1; i -= 1) {
             this->entities[i]->render();
         }
     }

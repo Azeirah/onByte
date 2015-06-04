@@ -50,8 +50,10 @@ void Sphere::update(float dt) {
     // static float totalTime = 0;
     // totalTime += dt;
     // this->position->z = sin(totalTime);
+    Vector scaledVelocity(this->velocity->x, this->velocity->y, this->velocity->z);
+    scaledVelocity.scale(dt * 100);
 
-    this->position->add(this->velocity);
+    this->position->add(&scaledVelocity);
 
     if (this->position->x > fieldwidth - this->radius || this->position->x < -fieldwidth + this->radius) {
         this->velocity->multiply(bounceX);

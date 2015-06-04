@@ -6,11 +6,11 @@ CC=g++
 # wall en wextra zijn extra warnings
 # dan nog c++14 standaard
 # en optimizer niveau 3
-CFLAGS=-g -c -Wall -Wextra -std=C++14 -O3
+CFLAGS=-g -Wall -Wextra -std=c++11 -O3
 # Linker flags en zoekpaden (folders waar je moet zoeken naar bestanden)
 LDFLAGS=-g
 # moet aangepast worden
-SOURCES=source/*.cpp
+SOURCES=source/*.cpp source/server/*.cpp
 # Namen van object bestanden denk ik
 # voor alle sources .cpp, zijn er gelijknamige bestanden alleen dan met .o
 # een soort van map *.cpp -> *.o I guess
@@ -26,7 +26,7 @@ all: $(SOURCES) $(EXECUTABLE)
 
 # Bouwt een executable van alle objecten
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
 
 # Bouwt een object file van alle sources
 .cpp.o:

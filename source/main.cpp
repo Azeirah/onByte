@@ -2,7 +2,7 @@
 #include "TestGame.h"
 #include "GameState.h"
 
-int main(int argc, char const *argv[]) {
+int main() {
     Game game;
     TestGame *testGame = new TestGame("test");
 
@@ -12,4 +12,3 @@ int main(int argc, char const *argv[]) {
 
     return 0;
 }
-
