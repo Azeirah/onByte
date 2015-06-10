@@ -13,7 +13,7 @@ public:
 	Sphere(int numSlices, float radius);
 	int generateGeometry(int numSlices, float radius);
 
-  void printInfo();
+    void printInfo();
 
 	void update(float, vector<Json::Value*>);
 };

@@ -1,10 +1,19 @@
 #include "Game.h"
 
 Game::Game() {
+
     // player 1
     this->context1 = new ESContext(true);
     this->context1->createWindow(SCREENNAME1, SCREENWIDTH, SCREENHEIGHT, ES_WINDOW_ALPHA);
     this->context1->makeCurrent();
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // poorly chosen name, this is for text rendering, should change this.
+    init_resources();
+
+    // initializeFreetype();
 
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
@@ -56,6 +65,7 @@ void Game::startGameLoop() {
         this->currentState->render(this->context1);
         this->context1->swapBuffer();
 
+
         totaltime += deltatime;
         frames    += 1;
 
@@ -66,7 +76,7 @@ void Game::startGameLoop() {
             frames    = 0;
         }
 
-    this->clearInputBuffer();
+        this->clearInputBuffer();
     }
 }
 

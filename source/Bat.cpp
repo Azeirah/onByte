@@ -71,6 +71,10 @@ void Bat::update(float dt, vector<Json::Value*> input) {
     this->angle += 0.1;
 }
 
+// void Bat::render() {
+//     render_text("bat!", this->position->x, this->position->y, FONT_MEDIUM, FONT_ABSOLUTE_POSITION);
+// }
+
 Bat::Bat(float scale, GLfloat position, float color[4], int batNumber) {
   this->fill        = true;
   this->wireframe   = false;
@@ -82,8 +86,6 @@ Bat::Bat(float scale, GLfloat position, float color[4], int batNumber) {
   this->position->x = 0;
   this->position->y = 0;
   this->position->z = position;
-
-  cout << "creating a bat with a transparency of " << color[3] << endl;
 
   memcpy(this->color, color, colorSize);
 }

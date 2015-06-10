@@ -6,7 +6,8 @@ CC=g++
 # wall en wextra zijn extra warnings
 # dan nog c++14 standaard
 # en optimizer niveau 3
-CFLAGS=-g -Wall -Wextra -std=c++11 -O3
+CFLAGS=-std=c++11 -I/usr/include/freetype2
+# CFLAGS=-g -Wall -Wextra -std=c++11 -O3 -I/usr/include/freetype2
 # Linker flags en zoekpaden (folders waar je moet zoeken naar bestanden)
 LDFLAGS=-g
 # moet aangepast worden
@@ -19,7 +20,7 @@ OBJECTS=$(SOURCES:source/.cpp=.o)
 EXECUTABLE=onByte
 
 # alle benodigde libraries
-LIBS=-lGLESv2 -lEGL -lm -lX11
+LIBS=-lGLESv2 -lEGL -lm -lX11 -lfreetype
 
 # bevestigt dat alle sources en de executable bestaan
 all: $(SOURCES) $(EXECUTABLE)
