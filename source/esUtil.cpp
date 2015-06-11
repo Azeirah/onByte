@@ -100,21 +100,6 @@ GLuint esLoadProgram(const char *vertShaderSrc, const char *fragShaderSrc) {
     return programObject;
 }
 
-void esLogMessage(const char *formatStr, ...) {
-    cout << "er is een error! Ik hoop dat dit er nooit komt te staan." <<
-    " Dit is namelijk geen duidelijke error beschrijving, lekker Martijn!" <<
-    endl;
-    // va_list params;
-    // char buf[BUFSIZ];
-    //
-    // va_start (params, formatStr);
-    // vsprintf (buf, formatStr, params);
-    //
-    // printf ("%s", buf);
-    //
-    // va_end (params);
-}
-
 const char *defaultFragmentShader[6] = {
      "precision mediump float;                    \n"
      "uniform vec4 color;                         \n"

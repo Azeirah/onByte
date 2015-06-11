@@ -19,7 +19,6 @@ Game::Game() {
     // thread receiveInput(&Game::receiveInput, this);
 }
 
-
 // is blocking so should definitely run in a thread
 void Game::receiveInput () {
     char * receive;

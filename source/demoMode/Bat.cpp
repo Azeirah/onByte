@@ -10,6 +10,10 @@ void Bat::update(float dt, vector<char *> input) {
     totaltime += dt;
     this->position->y = sin(totaltime) * fieldheight;
     this->angle += 0.1;
+
+    for (unsigned int i = 0; i < input.size(); i++) {
+        cout << "Received input: " << input[i] << endl;
+    }
 }
 
 // void Bat::render() {
