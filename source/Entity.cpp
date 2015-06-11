@@ -67,7 +67,7 @@ void Entity::render() {
 void Entity::loadShaders() {
   this->programObject = esLoadProgram(*defaultVertexShader, *defaultFragmentShader);
 
-  assertS(this->programObject != -1, "program object is -1, that means something went wrong...");
+  assertS(this->programObject == 0, "program object is -1, that means something went wrong...");
 
   this->positionLoc   = glGetAttribLocation (this->programObject, "a_position");
   this->mvpLoc        = glGetUniformLocation(this->programObject, "u_mvpMatrix");

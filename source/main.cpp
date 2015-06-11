@@ -1,10 +1,10 @@
 #include "Game.h"
-#include "TestGame.h"
+#include "demoMode/DemoMode.h"
 #include "GameState.h"
 
 int main() {
     Game game;
-    TestGame *testGame = new TestGame("test");
+    DemoMode * testGame = new DemoMode("test");
 
     game.addGameMode(testGame);
     game.switchToGameState("test");

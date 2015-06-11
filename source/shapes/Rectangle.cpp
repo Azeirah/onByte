@@ -1,23 +1,23 @@
-#include "BallFollower.h"
+#include "Rectangle.h"
 
-int BallFollower::generateGeometry(float scale) {
-  int i;
+int Rectangle::generateGeometry(GLfloat width, GLfloat height, GLfloat depth) {
   int numVertices = 24;
-  int numIndices = 8;
+  int numIndices  = 36;
 
   GLfloat cubeVerts[] = {
-      pointA[0],
-      pointA[1],
-      0,
-      pointB[0],
-      pointB[1],
-      0,
-      pointC[0],
-      pointC[1],
-      0,
-      pointD[0],
-      pointD[1],
-      0,
+      -width, -height, -depth,  // A
+      -width, -height, depth,  //
+      width,  -height, depth,  width,  -height, -depth,
+      -width, height,  -depth, -width, height,  depth,
+      width,  height,  depth,  width,  height,  -depth,
+      -width, -height, -depth, -width, height,  -depth,
+      width,  height,  -depth, width,  -height, -depth,
+      -width, -height, depth,  -width, height,  depth,
+      width,  height,  depth,  width,  -height, depth,
+      -width, -height, -depth, -width, -height, depth,
+      -width, height,  depth,  -width, height,  -depth,
+      width,  -height, -depth, width,  -height, depth,
+      width,  height,  depth,  width,  height,  -depth,
   };
 
 
@@ -38,40 +38,24 @@ int BallFollower::generateGeometry(float scale) {
   //     1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
   // };
 
+  // Allocate memory for buffers
   this->vertices = new GLfloat[3 * numVertices];
   memcpy(this->vertices, cubeVerts, sizeof(cubeVerts));
 
-  for (i = 0; i < numVertices * 3; i++) {
-    this->vertices[i] *= scale;
-  }
-
   unsigned char cubeIndices[] = {
-      0, 1, 1, 2, 2, 3, 3, 0,
+      0,  2,  1,  0,  3,  2,  4,  5,  6,  4,  6,  7,  8,  9,  10, 8,  10, 11,
+      12, 15, 14, 12, 14, 13, 16, 17, 18, 16, 18, 19, 20, 23, 22, 20, 22, 21
   };
 
   this->indices = new GLuint[numIndices];
+
   memcpy(this->indices, cubeIndices, sizeof(cubeIndices));
 
   return numIndices;
 }
 
-void BallFollower::update(float dt, vector<Json::Value*> input) {
-    this->position->z = *this->positionToTrack;
-}
-
-BallFollower::BallFollower(GLfloat scale, GLfloat* positionToTrack) {
-    this->fill            = false;
-    this->wireframe       = true;
-    this->numIndices      = this->generateGeometry(scale);
-
-    this->name            = "ballfollower";
-    this->type            = "ballfollower";
-
-    this->position->x     = 0;
-    this->position->y     = 0;
-    this->position->z     = *positionToTrack;
-
-    this->positionToTrack = positionToTrack;
-
-    memcpy(this->color, blue, sizeof(blue));
+Rectangle::Rectangle(float width, float height, float depth) {
+  this->fill        = true;
+  this->wireframe   = false;
+  this->numIndices  = this->generateGeometry(width, height, depth);
 }
