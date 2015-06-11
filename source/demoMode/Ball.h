@@ -9,6 +9,6 @@
 
 class Ball : public Sphere {
 public:
-    void update(float, vector<Json::Value*>);
+    void update(float, vector<char *>);
     Ball();
 };

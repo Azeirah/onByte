@@ -4,7 +4,7 @@ Vector* bounceX = new Vector(-1,  1,  1);
 Vector* bounceY = new Vector( 1, -1,  1);
 Vector* bounceZ = new Vector( 1,  1, -1);
 
-void Ball::update(float dt, vector<Json::Value*> input) {
+void Ball::update(float dt, vector<char *> input) {
     Vector scaledVelocity(this->velocity->x, this->velocity->y, this->velocity->z);
     scaledVelocity.scale(dt * 100);
 

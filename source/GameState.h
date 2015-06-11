@@ -16,7 +16,7 @@ public:
 	// ~GameState();
 
 	// game loop functionality
-	void update(ESContext*, float deltatime, vector<Json::Value*>);
+	void update(ESContext*, float deltatime, vector<char *>);
 	void render(ESContext*);
 
 	// loading shaders (duh..)

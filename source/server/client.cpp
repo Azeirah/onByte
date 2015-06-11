@@ -34,23 +34,20 @@ SocketClient::SocketClient(string host, int port) {
     assertS(succesvolConnection, "Error connecting, maybe there's no socket server running..?");
 }
 
-bool SocketClient::send(Json::Value *data) {
-  string encodedValue = data->toStyledString();
+bool SocketClient::send(char * data) {
+  cout << "Sending " << data << endl;
 
-  cout << "Sending " << encodedValue << endl;
-  int n = write(this->socketFileDescriptor, encodedValue.c_str(), strlen(encodedValue.c_str()) - 1);
+  int n = write(this->socketFileDescriptor, data, strlen(data) - 1);
   assertS(n >= 0, "Error writing to socket");
 
   return n >= 0;
 }
 
-bool SocketClient::receive(Json::Value *receiver) {
-    char buffer[MAX_MESSAGE_LENGTH];
+bool SocketClient::receive(char * data) {
     int n;
-    Json::Reader reader;
 
-    n = read(this->socketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
-    reader.parse(buffer, *receiver, false);
+    n = read(this->socketFileDescriptor, data, MAX_MESSAGE_LENGTH - 1);
+    assertS(n >= 0, "Received no data.");
 
     return n >= 0;
 }

@@ -7,6 +7,6 @@ class BallFollower : public Rectangle {
 public:
     GLfloat* positionToTrack;
 
-    void update(float, vector<Json::Value*>);
+    void update(float, vector<char *>);
     BallFollower(GLfloat *);
 };

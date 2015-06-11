@@ -13,24 +13,22 @@ Game::Game() {
     // poorly chosen name, this is for text rendering, should change this.
     init_resources();
 
-    // initializeFreetype();
-
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
     // this->channel = new SocketServer(1338);
     // thread receiveInput(&Game::receiveInput, this);
 }
 
+
 // is blocking so should definitely run in a thread
 void Game::receiveInput () {
-  Json::Value *receive;
+    char * receive;
 
     while (true) {
         // create a new JsonValue object on the heap to receive inputs with
         // push these values onto the input buffer, which will then be distributed over the right Entities.
         // After distribution, the buffer will be cleared
         // This loop of receive -> distribute -> clear will be executed on every game tick
-        receive = new Json::Value();
         cout << "Received new value" << endl;
         this->channel->receive(receive);
         this->inputBuffer.push_back(receive);

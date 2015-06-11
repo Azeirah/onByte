@@ -37,23 +37,20 @@ SocketServer::SocketServer(int port) {
     assertS(newSocketFileDescriptor >= 0, "Error on accept");
 }
 
-bool SocketServer::send(Json::Value *data) {
-    string encodedValue = data->toStyledString();
-
-    cout << "Sending " << encodedValue << endl;
-    int n = write(this->newSocketFileDescriptor, encodedValue.c_str(), strlen(encodedValue.c_str()) - 1);
+bool SocketServer::send(char * data) {
+    cout << "Sending " << data << endl;
+    int n = write(this->newSocketFileDescriptor, data, strlen(data));
     assertS(n >= 0, "Error writing to socket@client");
 
     return n >= 0;
 }
 
-bool SocketServer::receive(Json::Value *receiver) {
+bool SocketServer::receive(char * receiver) {
     char buffer[MAX_MESSAGE_LENGTH];
     int n;
-    Json::Reader reader;
 
     n = read(this->newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
-    reader.parse(buffer, *receiver, false);
+    assertS(n >= 0, "Error receiving data");
 
     return n >= 0;
 }

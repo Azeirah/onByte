@@ -28,7 +28,7 @@ void Entity::printInfo() {
     cout << "angle is " << this->angle << endl;
 }
 
-void Entity::update(float deltatime, vector<Json::Value*> input) {
+void Entity::update(float deltatime, vector<char *> input) {
 }
 
 void Entity::setCollection(vector<Entity *> *entityCollection) {
@@ -67,7 +67,7 @@ void Entity::render() {
 void Entity::loadShaders() {
   this->programObject = esLoadProgram(*defaultVertexShader, *defaultFragmentShader);
 
-  assertS(this->programObject == 0, "program object is -1, that means something went wrong...");
+  assertS(this->programObject != 0, "program object is wrong, that means something went wrong...");
 
   this->positionLoc   = glGetAttribLocation (this->programObject, "a_position");
   this->mvpLoc        = glGetUniformLocation(this->programObject, "u_mvpMatrix");

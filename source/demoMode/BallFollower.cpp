@@ -1,6 +1,6 @@
 #include "BallFollower.h"
 
-void BallFollower::update(float dt, vector<Json::Value*> input) {
+void BallFollower::update(float dt, vector<char *> input) {
     this->position->z = *this->positionToTrack;
 }
 

@@ -33,6 +33,6 @@ $(EXECUTABLE): $(OBJECTS)
 .cpp.o:
 	$(CC) $(CFLAGS) $< -o $@
 
-# Schoonmaak mevrouw
-clean:
-	rm *o hello
+# # Schoonmaak mevrouw
+# clean:
+# 	rm *o hello

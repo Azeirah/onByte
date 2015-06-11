@@ -16,13 +16,14 @@ void GameState::resume() {
 }
 
 void GameState::loadShaders() {
+    assertS(false == true, "This will obviously fail!");
     cout << "loading in shaders" << endl;
     for (unsigned int i = 0; i < this->entities.size(); i += 1) {
         this->entities[i]->loadShaders();
     }
 }
 
-void GameState::update(ESContext *context, float deltatime, vector<Json::Value*> input) {
+void GameState::update(ESContext *context, float deltatime, vector<char *> input) {
     ESMatrix perspective;
     ESMatrix modelview;
     float aspect;

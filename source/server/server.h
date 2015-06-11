@@ -9,8 +9,9 @@ class SocketServer {
     int                newSocketFileDescriptor;
     struct sockaddr_in serverAddress;
   public:
-    bool               send   (Json::Value *);
-    bool               receive(Json::Value *);
+    bool send   (char *);
+    bool receive(char *);
+
     SocketServer(int port);
     void stop();
 };
