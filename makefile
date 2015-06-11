@@ -1,12 +1,13 @@
 CC=g++
-CC_FLAGS=-g -Wall -Wextra -std=c++11 -O3 -I/usr/include/freetype2
+# CC_FLAGS=-g -Wall -Wextra -std=c++11 -O3 -I/usr/include/freetype2
+CC_FLAGS=-g -Wall -Wextra -std=c++11 -I/usr/include/freetype2
+
 
 LDFLAGS=-g
 
 #FILE NAMES
 EXEC = OnByte
 
-##SOURCES=source/*.cpp source/server/*.cpp source/shapes/*.cpp source/demoMode/*.cpp
 SOURCES = $(wildcard source/*.cpp source/server/*.cpp source/shapes/*.cpp source/demoMode/*.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 

@@ -1,6 +1,6 @@
 #include "server.h"
 
-#define assertS(truthy, message) if (!truthy) {cout << message << " on line " << __LINE__ << " in file " << __FILE__ << endl;}
+#define assertS(truthy, message) if (!(truthy)) {cout << message << " on line " << __LINE__ << " in file " << __FILE__ << ". Check was " << #truthy << endl;}
 
 SocketServer::SocketServer(int port) {
     // declaring variables
@@ -24,8 +24,8 @@ SocketServer::SocketServer(int port) {
     this->serverAddress.sin_port        = htons(port);
 
     // binding socket
-    bool bindResult = bind(this->socketFileDescriptor, (struct sockaddr *) &this->serverAddress, sizeof(this->serverAddress)) < 0;
-    assertS(!bindResult, "Error on binding socket");
+    bool bindResult = bind(this->socketFileDescriptor, (struct sockaddr *) &this->serverAddress, sizeof(this->serverAddress));
+    assertS(bindResult >= 0, "Error on binding socket");
 
     // start listening
     // what's that 5?...
@@ -38,7 +38,6 @@ SocketServer::SocketServer(int port) {
 }
 
 bool SocketServer::send(char * data) {
-    cout << "Sending " << data << endl;
     int n = write(this->newSocketFileDescriptor, data, strlen(data));
     assertS(n >= 0, "Error writing to socket@client");
 
@@ -46,10 +45,9 @@ bool SocketServer::send(char * data) {
 }
 
 bool SocketServer::receive(char * receiver) {
-    char buffer[MAX_MESSAGE_LENGTH];
     int n;
 
-    n = read(this->newSocketFileDescriptor, buffer, MAX_MESSAGE_LENGTH - 1);
+    n = read(this->newSocketFileDescriptor, receiver, MAX_MESSAGE_LENGTH - 1);
     assertS(n >= 0, "Error receiving data");
 
     return n >= 0;

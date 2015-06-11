@@ -1,6 +1,6 @@
 #include "client.h"
 
-#define assertS(truthy, message) if (!truthy) {cout << message << " on line " << __LINE__ << " in file " << __FILE__ << endl;}
+#define assertS(truthy, message) if (!(truthy)) {cout << message << " on line " << __LINE__ << " in file " << __FILE__ << ". Check was " << #truthy << endl;}
 
 SocketClient::SocketClient(string host, int port) {
     // setting member variables
@@ -35,9 +35,7 @@ SocketClient::SocketClient(string host, int port) {
 }
 
 bool SocketClient::send(char * data) {
-  cout << "Sending " << data << endl;
-
-  int n = write(this->socketFileDescriptor, data, strlen(data) - 1);
+  int n = write(this->socketFileDescriptor, data, strlen(data));
   assertS(n >= 0, "Error writing to socket");
 
   return n >= 0;
