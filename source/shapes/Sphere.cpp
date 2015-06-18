@@ -48,16 +48,12 @@ void Sphere::printInfo() {
 }
 
 Sphere::Sphere(int numSlices, float radius) {
-  cout << "creating sphere object, it has " << numSlices << " slices and a radius of " << radius << endl;
-
   this->radius      = radius;
 
   this->fill        = true;
   this->wireframe   = true;
   this->numIndices  = this->generateGeometry(numSlices, radius);
   this->angle       = 90.0f;
-
-  this->velocity    = new Vector(generateFloat(0, 0.01f), generateFloat(0, 0.01f), -0.01f);
 
   this->position->x = 0;
   this->position->y = 0;

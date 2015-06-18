@@ -8,9 +8,10 @@ class Vector {
     GLfloat y;
     GLfloat z;
 
-    void      add(Vector* v2);
-    void multiply(Vector* v2);
-    void    scale(float scale);
+    Vector*      add(Vector* v2);
+    Vector* multiply(Vector* v2);
+    Vector*    scale(float scale);
+    Vector*    clone(Vector* v);
 
     void printInfo();
 

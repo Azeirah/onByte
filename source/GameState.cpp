@@ -16,7 +16,6 @@ void GameState::resume() {
 }
 
 void GameState::loadShaders() {
-    assertS(false == true, "This will obviously fail!");
     cout << "loading in shaders" << endl;
     for (unsigned int i = 0; i < this->entities.size(); i += 1) {
         this->entities[i]->loadShaders();
@@ -51,6 +50,8 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
 
 void GameState::render(ESContext *context) {
     glViewport(0, 0, context->window_width, context->window_height);
+
+    // glClearColor(0.0f, 0.0f, 1.0f, 0.5f);
     glClear(GL_COLOR_BUFFER_BIT);
 
 

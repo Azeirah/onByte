@@ -5,7 +5,7 @@ DemoMode::DemoMode(string name) {
     GameField    * field   = new GameField();
     Bat          * player1 = new Bat(-fielddepth, red,   1);
     Bat          * player2 = new Bat(fielddepth,  green, 2);
-    BallFollower * follow  = new BallFollower(&ball->position->z);
+    BallFollower * follow  = new BallFollower();
 
     this->name = name;
 
@@ -15,3 +15,19 @@ DemoMode::DemoMode(string name) {
     this->addEntity(player2);
     this->addEntity(follow);
 }
+
+// DemoMode::DemoMode(string name) {
+//     Ball         ball{};
+//     GameField    field{};
+//     Bat          player1(-fielddepth, red,   1);
+//     Bat          player2(fielddepth,  green, 2);
+//     BallFollower follow{};
+
+//     this->name = name;
+
+//     this->addEntity((Entity *) &field);
+//     this->addEntity((Entity *) &player1);
+//     this->addEntity((Entity *) &ball);
+//     this->addEntity((Entity *) &player2);
+//     this->addEntity((Entity *) &follow);
+// }

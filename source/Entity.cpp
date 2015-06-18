@@ -51,7 +51,6 @@ void Entity::render() {
     esTranslate(&modelview, this->position->x, this->position->y, this->position->z);
     // gebruik de ingeladen shader
     glUseProgram(this->programObject);
-    // 3x doe iets belangrijks
     glVertexAttribPointer    (this->positionLoc, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), this->vertices);
     glEnableVertexAttribArray(this->positionLoc);
     glUniformMatrix4fv       (this->mvpLoc,      1, GL_FALSE, (GLfloat *) &modelview);

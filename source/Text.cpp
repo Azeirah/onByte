@@ -67,7 +67,7 @@ int init_resources() {
     return 1;
 }
 
-// I like how well annotated this source is, really nice!
+// I like how well annotated this source is, really nice!end
 /**
  * Render text using the currently loaded font and currently set font size.
  * Rendering starts at coordinates (x, y), z is always 0.
@@ -84,6 +84,10 @@ void render_text(const char *text, float x, float y, int fontSize, bool absolute
 
     float sx = 2.0 / SCREENWIDTH;
     float sy = 2.0 / SCREENHEIGHT;
+
+    // ESMatrix modelview = mvpMatrix;
+
+    // esTranslate(&modelview, x, y, 0);
 
     glUseProgram(program);
     FT_Set_Pixel_Sizes(face, 0, fontSize);
@@ -141,7 +145,8 @@ void render_text(const char *text, float x, float y, int fontSize, bool absolute
 
         /* Draw the character on the screen */
         glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        // glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glDrawElements(GL_TRIANGLE_STRIP, 0, 4);
 
         /* Advance the cursor to the start of the next character */
         x += (g->advance.x >> 6) * sx;

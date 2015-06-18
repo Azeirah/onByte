@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "globals.h"
+
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
