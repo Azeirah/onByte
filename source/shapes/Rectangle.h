@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include "../Entity.h"
-#include "../globals.h"
 #include "../onByte.h"
 
 class Rectangle : public Entity {

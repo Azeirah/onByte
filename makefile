@@ -1,6 +1,6 @@
 CC=g++
 # CC_FLAGS=-g -Wall -Wextra -std=c++11 -O3 -I/usr/include/freetype2
-CC_FLAGS=-g -Wall -Wextra -std=c++11 -I/usr/include/freetype2
+CC_FLAGS=-g -O3 -Wall -Wextra -std=c++11 -I/usr/include/freetype2
 
 
 LDFLAGS=-g
@@ -8,7 +8,7 @@ LDFLAGS=-g
 #FILE NAMES
 EXEC = OnByte
 
-SOURCES = $(wildcard source/*.cpp source/server/*.cpp source/shapes/*.cpp source/demoMode/*.cpp)
+SOURCES = $(wildcard source/*.cpp source/server/*.cpp source/shapes/*.cpp source/demoMode/*.cpp source/handbal/*.cpp source/hockey/*.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 
 
@@ -20,7 +20,7 @@ all: $(OBJECTS)
 
 #to obtain object files
 %.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $< -o $@
+	$(CC) $(CC_FLAGS) -c $< -o $@
 
 # # Schoonmaak mevrouw
 clean:

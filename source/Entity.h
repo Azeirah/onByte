@@ -7,9 +7,12 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "esUtil.h"
+#include "GameState.h"
 
 extern const char *defaultFragmentShader[6];
 extern const char *defaultVertexShader[6];
+
+class GameState;
 
 class Entity {
   protected:
@@ -45,6 +48,8 @@ class Entity {
     string name;
     string type;
     Vector* position;
+
+    GameState *gameState;
 
     void         printInfo();
 

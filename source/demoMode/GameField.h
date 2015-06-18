@@ -2,7 +2,9 @@
 
 #include "../shapes/Field.h"
 
-class GameField : public Field {
-public:
-    GameField();
-};
+namespace demo {
+    class GameField : public Field {
+    public:
+        GameField();
+    };
+}

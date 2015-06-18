@@ -14,6 +14,8 @@
 #include <vector>
 #include <thread>
 
+class GameState;
+
 // Game is the startpoint for the whole game project
 // It contains the main game loop as well as the current game state
 // The game state can be used to switch from the menu to the settings or a gamemode
@@ -21,6 +23,7 @@
 class Game {
   private:
     GameState*     currentState;
+    string         currentStateName;
     ESContext*     context1;
     SocketServer*  channel;
     vector<char *> inputBuffer;

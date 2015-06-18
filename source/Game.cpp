@@ -86,11 +86,25 @@ void Game::startGameLoop() {
 void Game::addGameMode(GameState* gameState) {
     assertS(gameState != NULL, "Gamemode should be initialized");
     this->gameStates.insert(pair<string, GameState*>(gameState->name, gameState));
+
+    gameState->game = this;
 }
 
 void Game::switchToGameState(string name) {
-    this->currentState = this->gameStates.at(name);
-    cout << "switching to gameState " << name << endl;
+    // if (this->currentStateName != "") {
+    //     delete this->gameStates[this->currentStateName];
+    //     this->gameStates[this->currentStateName] = NULL;
+    // }
+
+    // cout << "address of state" << this->gameStates[name] << endl;
+
+    // if (this->gameStates[name] == NULL) {
+    //     cout << "Initialize the state" << endl;
+    //     new this->gameStates[name](name);
+    // }
+    this->currentState     = this->gameStates[name];
+    this->currentStateName = name;
+    cout << "switched to gameState " << name << endl;
 
     // load shaders per context
     this->context1->makeCurrent();

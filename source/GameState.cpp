@@ -71,4 +71,7 @@ void GameState::addEntity(Entity *entity) {
     this->entities.push_back(entity);
     cout << "added " << entity->name << endl;
     entity->setCollection(&this->entities);
+    entity->gameState = this;
+    
 }
+

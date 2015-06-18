@@ -9,7 +9,9 @@
 #include "Bat.h"
 #include "BallFollower.h"
 
-class DemoMode : public GameState {
-public:
-    DemoMode(string);
-};
+namespace demo {
+    class DemoMode : public GameState {
+    public:
+        DemoMode(string);
+    };
+}

@@ -145,8 +145,7 @@ void render_text(const char *text, float x, float y, int fontSize, bool absolute
 
         /* Draw the character on the screen */
         glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
-        // glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        glDrawElements(GL_TRIANGLE_STRIP, 0, 4);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
         /* Advance the cursor to the start of the next character */
         x += (g->advance.x >> 6) * sx;

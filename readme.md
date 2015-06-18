@@ -15,3 +15,14 @@ Optimizer op niveau 3
 
 Warnings op max
 -Wall en -Wextra
+
+
+## Dependencies:
+
+- Freetype
+
+sudo apt-get install freetype*
+
+- X11
+- Mesa
+- OpenGL (gl.h)

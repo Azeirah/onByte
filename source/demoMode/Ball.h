@@ -4,11 +4,13 @@
 #include <stdlib.h>
 #include "../globals.h"
 #include "../shapes/Sphere.h"
-
+#include "../collisionDetection.h"
 #include "Bat.h"
 
-class Ball : public Sphere {
-public:
-    void update(float, vector<char *>);
-    Ball();
-};
+namespace demo {
+    class Ball : public Sphere {
+    public:
+        void update(float, vector<char *>);
+        Ball();
+    };
+}

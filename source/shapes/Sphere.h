@@ -1,7 +1,9 @@
+#pragma once
+
 #include <math.h>
 #include <stdlib.h>
 #include "../Entity.h"
-#include "../globals.h"
+#include "../onByte.h"
 
 class Sphere : public Entity {
 public:
