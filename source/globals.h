@@ -58,4 +58,10 @@ extern GLfloat pointF[3];
 extern GLfloat pointG[3];
 extern GLfloat pointH[3];
 
+extern GLfloat BALLSTARTSPEEDZ;
+extern GLfloat BALLSTARTSPEEDX;
+extern GLfloat BALLSTARTSPEEDY;
+extern GLfloat BALLSPEEDMULTIPLIER;
+extern GLfloat BALLBOUNCEEFFECTSCALE;
+
 #endif // GLOBALS_H

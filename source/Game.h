@@ -22,10 +22,10 @@ class GameState;
 // The game loop renders and updates all components for both screens
 class Game {
   private:
-    GameState*     currentState;
-    string         currentStateName;
-    ESContext*     context1;
-    SocketServer*  channel;
+    GameState*       currentState;
+    string           currentStateName;
+    ESContext*       context1;
+    SocketServer*    channel;
     vector<char *> inputBuffer;
 
     void receiveInput();

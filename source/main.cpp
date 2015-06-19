@@ -4,7 +4,7 @@
 #include "GameState.h"
 #include "globals.h"
 
-int main() {
+int main(int argc, char const *argv[]) {
 	Game game;
 	demo::DemoMode *testGame = new demo::DemoMode("demo");
 	handbal::Handbal  *handbal  = new handbal::Handbal("handbal");

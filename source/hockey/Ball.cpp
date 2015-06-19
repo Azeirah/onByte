@@ -5,7 +5,7 @@ namespace hockey {
     Vector* bounceY = new Vector( 1, -1,  1);
     Vector* bounceZ = new Vector( 1,  1, -1);
 
-    Vector* speedUp = new Vector( 1,  1,  1.04f);
+    Vector* speedUp = new Vector( 1,  1,  BALLSPEEDMULTIPLIER);
     Vector* keepXY  = new Vector( 1,  1,  0);
     Vector* stop    = new Vector( 0,  0,  0);
 
@@ -31,7 +31,7 @@ namespace hockey {
         }
 
         if (this->position->z > fielddepth) {
-            if (checkForBallBatCollision((Entity *) this, (Entity *) bat1)) {
+            if (checkForBallBatCollision(this, bat1)) {
                 bounceEffect.clone(this->position)->add(bat1->position)->multiply(keepXY)->scale(0.014f);
 
                 this->velocity->add(&bounceEffect);
@@ -42,9 +42,9 @@ namespace hockey {
                 this->position->y = 0;
                 this->position->z = 0;
 
-                this->velocity->x = generateFloat(0, 0.01f);
-                this->velocity->y = generateFloat(0, 0.01f);
-                this->velocity->z = generateFloat(0.04f, 0.09f);
+                this->velocity->x = generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX);
+                this->velocity->y = generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY);
+                this->velocity->z = generateFloat(-BALLSTARTSPEEDZ, BALLSTARTSPEEDZ);
 
                 this->gameState->game->switchToGameState("demo");
             }

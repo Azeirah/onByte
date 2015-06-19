@@ -10,6 +10,10 @@ namespace handbal {
     Vector* stop    = new Vector( 0,  0,  0);
 
     void Ball::update(float dt, vector<char *> input) {
+        for (int i = 0; i < input.size(); i++) {
+            cout << "In ball, got: '" << input[i] << "'" << endl;
+        }
+
         Vector scaledVelocity(this->velocity->x, this->velocity->y, this->velocity->z);
         Vector bounceEffect;
         scaledVelocity.scale(dt * 100);

@@ -20,7 +20,7 @@ public:
 	string name;
 	std::vector<Entity *> entities;
 	// ~GameState();
-	// 
+	//
 	void setParentGame(Game* game);
 
 	// game loop functionality

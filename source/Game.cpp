@@ -22,7 +22,8 @@ Game::Game() {
 // is blocking so should definitely run in a thread
 void Game::receiveInput () {
     while (true) {
-        char * receive = new char[512];
+        char * receive = new char[32];
+        memset(receive, 0, sizeof(receive) - 1);
         // create a new buffer object on the heap to receive inputs with
         // push these values onto the input buffer, which will then be distributed over the right Entities.
         // After distribution, the buffer will be cleared
@@ -37,6 +38,7 @@ void Game::receiveInput () {
 
 void Game::clearInputBuffer() {
     for (unsigned int i = 0; i < this->inputBuffer.size(); i++) {
+        free(this->inputBuffer[i]);
         delete this->inputBuffer[i];
     }
     cout << "clearing" << endl;
@@ -55,7 +57,6 @@ void Game::startGameLoop() {
     gettimeofday(&t1, &tz);
 
     while (! (this->context1->userInterrupt())) {
-        // this->receiveInput();
         // calculate delta time
         gettimeofday(&t2, &tz);
         deltatime = (float) (t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
@@ -65,9 +66,6 @@ void Game::startGameLoop() {
         this->currentState->update(this->context1, deltatime, this->inputBuffer);
         this->currentState->render(this->context1);
         this->context1->swapBuffer();
-
-        // render_text()
-
 
         totaltime += deltatime;
         frames    += 1;
