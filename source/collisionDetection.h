@@ -1,9 +1,8 @@
 #pragma once
 
+#include "onByte.h"
 #include "Entity.h"
-#include <iostream>
-
-#define COLLISION_FRONT true
-#define COLLISION_BACK  false
+#include "Vector.h"
 
 bool checkForBallBatCollision(Entity* ball, Entity* bat);
+bool bounceOffWall(Entity*, float, Vector*);

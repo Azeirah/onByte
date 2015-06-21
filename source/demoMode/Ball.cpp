@@ -17,26 +17,7 @@ namespace demo {
 
         this->position->add(&scaledVelocity);
 
-        if (this->position->x > fieldwidth - this->radius) {
-            // force a negative value, so it always goes left.
-            this->velocity->x = abs(this->velocity->x);
-        } else if (this->position->x < -fieldwidth + this->radius) {
-            // force positive value, so ball goes right.
-            this->velocity->x = -abs(this->velocity->x);
-        } else if (this->position->y > fieldheight - this->radius) {
-            // force positive value, so ball goes (up?)
-            this->velocity->y = abs(this->velocity->y);
-        } else if (this->position->y < - fieldheight + this->radius) {
-            this->velocity->y = -abs(this->velocity->y);
-        }
-
-        if (this->position->x > fieldwidth - this->radius || this->position->x < -fieldwidth + this->radius) {
-            this->velocity->multiply(bounceX);
-        }
-
-        if (this->position->y > fieldheight - this->radius || this->position->y < -fieldheight + this->radius) {
-            this->velocity->multiply(bounceY);
-        }
+        bounceOffWall(this, this->radius, this->velocity);
 
         Bat *bat1 = (Bat *) this->findEntity("bat1", "bat");
         Bat *bat2 = (Bat *) this->findEntity("bat2", "bat");
@@ -44,7 +25,7 @@ namespace demo {
         // Bat or nearfielddetection
         if (this->position->z > fielddepth) {
             if (checkForBallBatCollision(this, bat1)) {
-                bounceEffect.clone(this->position)->add(bat2->position)->multiply(keepXY)->scale(BALLBOUNCEEFFECTSCALE * dt);
+                bounceEffect.clone(this->position)->add(bat2->position)->multiply(keepXY)->scale(BALLBOUNCEEFFECTSCALE);
 
                 this->velocity->add(&bounceEffect);
                 this->velocity->multiply(bounceZ);
@@ -57,11 +38,11 @@ namespace demo {
 
                 this->velocity->x = generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX);
                 this->velocity->y = generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY);
-                this->velocity->z = generateFloat(-BALLSTARTSPEEDZ, BALLSTARTSPEEDZ);
+                this->velocity->z = BALLSTARTSPEEDZ * (generateFloat(0.0f, 1.0f) > 0.5f? 1.0f : -1.0f);
             }
         } else if (this->position->z < -fielddepth) {
             if (checkForBallBatCollision(this, bat2)) {
-                bounceEffect.clone(this->position)->add(bat1->position)->multiply(keepXY)->scale(BALLBOUNCEEFFECTSCALE * dt);
+                bounceEffect.clone(this->position)->add(bat1->position)->multiply(keepXY)->scale(BALLBOUNCEEFFECTSCALE);
 
                 this->velocity->add(&bounceEffect);
                 this->velocity->multiply(bounceZ);
@@ -75,7 +56,7 @@ namespace demo {
 
                 this->velocity->x = generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX);
                 this->velocity->y = generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY);
-                this->velocity->z = generateFloat(-BALLSTARTSPEEDZ, BALLSTARTSPEEDZ);
+                this->velocity->z = BALLSTARTSPEEDZ * (generateFloat(0.0f, 1.0f) > 0.5f? 1.0f : -1.0f);
 
                 this->gameState->game->switchToGameState("handbal");
             }
@@ -88,7 +69,11 @@ namespace demo {
 
         this->wireframe = false;
 
-        this->velocity = new Vector(generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX), generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY), generateFloat(-BALLSTARTSPEEDZ, BALLSTARTSPEEDZ));
+        this->velocity = new Vector();
+
+        this->velocity->x = generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX);
+        this->velocity->y = generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY);
+        this->velocity->z = BALLSTARTSPEEDZ * (generateFloat(0.0f, 1.0f) > 0.5f? 1.0f : -1.0f);
     }
 }
 

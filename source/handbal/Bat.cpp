@@ -1,6 +1,10 @@
 #include "Bat.h"
 #include <sstream>
 
+#include <FTGL/ftgl.h>
+
+#include <GLES2/gl2.h>
+#include <EGL/egl.h>
 #define SSTR(x) dynamic_cast< std::ostringstream & >( \
         (std::ostringstream() << std::dec << x)).str()
 
@@ -19,7 +23,7 @@ namespace handbal {
 
 
     // void Bat::render() {
-    //     render_text("bat!", this->position->x, this->position->y, FONT_MEDIUM, FONT_ABSOLUTE_POSITION);
+    //     myFont->Render("abcdefghijklmnopqrstuvwxyz");
     // }
 
     Bat::Bat(GLfloat position, float color[4], int batNumber) : Rectangle(batwidth, batheight, batdepth) {

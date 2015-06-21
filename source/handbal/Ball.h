@@ -7,6 +7,7 @@
 #include "../collisionDetection.h"
 #include "Bat.h"
 
+
 namespace handbal {
 	class Ball : public Sphere {
 	public:

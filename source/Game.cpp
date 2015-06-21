@@ -10,9 +10,6 @@ Game::Game() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    // poorly chosen name, this is for text rendering, should change this.
-    init_resources();
-
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
     // this->channel = new SocketServer(1338);
@@ -77,6 +74,8 @@ void Game::startGameLoop() {
             frames    = 0;
         }
 
+        // myFont->Render("hello world!")
+
         // this->clearInputBuffer();
     }
 }
@@ -93,6 +92,8 @@ void Game::switchToGameState(string name) {
     //     delete this->gameStates[this->currentStateName];
     //     this->gameStates[this->currentStateName] = NULL;
     // }
+
+    assertS(this->gameStates[name] != NULL, "Tried to enter an undefined gamestate, either misspelled it in game.switchToGameState, or didn't add it in game.addGameMode");
 
     // cout << "address of state" << this->gameStates[name] << endl;
 

@@ -1,10 +1,6 @@
 #include "Ball.h"
 
 namespace handbal {
-    Vector* bounceX = new Vector(-1,  1,  1);
-    Vector* bounceY = new Vector( 1, -1,  1);
-    Vector* bounceZ = new Vector( 1,  1, -1);
-
     Vector* speedUp = new Vector( 1,  1,  1.04f);
     Vector* keepXY  = new Vector( 1,  1,  0);
     Vector* stop    = new Vector( 0,  0,  0);
@@ -20,37 +16,31 @@ namespace handbal {
 
         this->position->add(&scaledVelocity);
 
-        if (this->position->x > fieldwidth - this->radius || this->position->x < -fieldwidth + this->radius) {
-            this->velocity->multiply(bounceX);
-        }
-
-        if (this->position->y > fieldheight - this->radius || this->position->y < -fieldheight + this->radius) {
-            this->velocity->multiply(bounceY);
-        }
+        bounceOffWall(this, this->radius, this->velocity);
 
         Bat *bat1 = (Bat *) this->findEntity("bat1", "bat");
 
         if (this->position->z < -fielddepth) {
-            this->velocity->multiply(bounceZ);
+            this->velocity->z = abs(this->velocity->z);
         }
 
         if (this->position->z > fielddepth) {
             if (checkForBallBatCollision(this, bat1)) {
-                bounceEffect.clone(this->position)->add(bat1->position)->multiply(keepXY)->scale(0.014f);
+                bounceEffect.clone(this->position)->add(bat1->position)->multiply(keepXY)->scale(BALLBOUNCEEFFECTSCALE);
 
                 this->velocity->add(&bounceEffect);
-                this->velocity->multiply(bounceZ);
-                // this->velocity->multiply(speedUp);
+                this->velocity->z = -abs(this->velocity->z);
+                this->velocity->multiply(speedUp);
             } else {
                 this->position->x = 0;
                 this->position->y = 0;
                 this->position->z = 0;
 
-                this->velocity->x = generateFloat(0, 0.01f);
-                this->velocity->y = generateFloat(0, 0.01f);
-                this->velocity->z = generateFloat(0.04f, 0.09f);
+                this->velocity->x = generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX);
+                this->velocity->y = generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY);
+                this->velocity->z = BALLSTARTSPEEDZ * (generateFloat(0.0f, 1.0f) > 0.5f? 1.0f : -1.0f);
 
-                this->gameState->game->switchToGameState("demo");
+                this->gameState->game->switchToGameState("hockey");
             }
         }
     }
@@ -61,6 +51,12 @@ namespace handbal {
 
         this->wireframe = false;
 
-        this->velocity = new Vector(generateFloat(0, 0.01f), generateFloat(0, 0.01f), generateFloat(0.04f, 0.09f));
+        this->velocity = new Vector();
+
+        this->velocity->x = generateFloat(-BALLSTARTSPEEDX, BALLSTARTSPEEDX);
+        this->velocity->y = generateFloat(-BALLSTARTSPEEDY, BALLSTARTSPEEDY);
+        this->velocity->z = BALLSTARTSPEEDZ * (generateFloat(0.0f, 1.0f) > 0.5f? 1.0f : -1.0f);
+
+        cout << this->velocity->z << endl;
     }
 }
