@@ -56,6 +56,7 @@ void Game::startGameLoop() {
     while (! (this->context1->userInterrupt())) {
         // calculate delta time
         gettimeofday(&t2, &tz);
+        this->channel->send("1:1");
         deltatime = (float) (t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
         t1 = t2;
 
