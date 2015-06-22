@@ -21,7 +21,7 @@ namespace demo {
         //     cout << "Received input: " << input[i] << endl;
         // }
         //
-        server.send("p," + this->name + "," + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
+        // server.send("p," + this->name + "," + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
     }
 
 

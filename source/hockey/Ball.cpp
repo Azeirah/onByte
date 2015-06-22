@@ -54,7 +54,7 @@ namespace hockey {
             }
         }
 
-        server.send("p,ball" + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
+        // server.send("p,ball" + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
     }
 
     Ball::Ball() : Sphere(10, 0.1f) {
