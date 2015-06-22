@@ -31,10 +31,28 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
 
     aspect = (GLfloat) context->window_width / (GLfloat) context->window_height;
 
+    string sendToUnity[5] = {"0,-5,0", "0,-5,0", "0,-5,0", "0,-5,0", "0,-5,0"};
+    string order[5] = {"bat1", "bat2", "bat3", "bat4", "ball"};
+
     // eye love you <3
     for (unsigned int i = 0; i < this->entities.size(); i += 1) {
-        this->entities[i]->update(deltatime, input);
+        Entity* entity = this->entities[i];
+        entity->update(deltatime, input);
+        for (unsigned int j = 0; j < 5; j++) {
+            if (order[j] == entity->name) {
+                sendToUnity[j] = SSTR(entity->position->x) + "," + SSTR(entity->position->y) + "," + SSTR(entity->position->z);
+            }
+        }
     }
+
+    string totalSend = "";
+    for (int i = 0; i < 5; i++) {
+        totalSend += sendToUnity[i] + (i == 5? "": ",");
+    }
+    // totalSend[totalSend.length() - 1] = '\0';
+
+    server.sendString(totalSend);
+
 
     esMatrixLoadIdentity(&perspective);
            esPerspective(&perspective, 50.0f, aspect, 1.0f, 10.0f);

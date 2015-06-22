@@ -16,6 +16,9 @@ SocketServer::SocketServer(int port) {
     this->socketFileDescriptor = socket(AF_INET, SOCK_STREAM, 0);
     assertS(this->socketFileDescriptor >= 0, "Error opening socket");
 
+    int flag = 1;
+    setsockopt(this->socketFileDescriptor, IPPROTO_TCP, TCP_NODELAY, (char*) &flag, sizeof(int));
+
     // configuring server address
     bzero((char *) &serverAddress, sizeof(this->serverAddress));
 
@@ -37,11 +40,12 @@ SocketServer::SocketServer(int port) {
     assertS(newSocketFileDescriptor >= 0, "Error on accept");
 }
 
-bool SocketServer::send(string data) {
-    return this->send(data.c_str());
+bool SocketServer::sendString(string data) {
+    return this->send((char *) data.c_str());
 }
 
 bool SocketServer::send(char * data) {
+    cout << "sending " << data << endl;
     int n = write(this->newSocketFileDescriptor, data, strlen(data));
     assertS(n >= 0, "Error writing to socket@client");
 

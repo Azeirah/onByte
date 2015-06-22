@@ -11,7 +11,7 @@ class SocketServer {
   public:
     bool send   (char *);
     bool receive(char *);
-    bool send   (string);
+    bool sendString(string);
 
     SocketServer(int port);
     void stop();

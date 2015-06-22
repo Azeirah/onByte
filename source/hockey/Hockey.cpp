@@ -5,9 +5,9 @@ namespace hockey {
         Ball         * ball         = new Ball;
         GameField    * field        = new GameField;
         Bat          * player1_bat1 = new Bat( fielddepth       , red  , 1);
-        Bat          * player1_bat2 = new Bat( fielddepth - 1.5f, red  , 1);
-        Bat          * player2_bat1 = new Bat(-fielddepth      ,  green, 1);
-        Bat          * player2_bat2 = new Bat(-fielddepth + 1.5f, green, 1);
+        Bat          * player1_bat2 = new Bat( fielddepth - 1.5f, red  , 2);
+        Bat          * player2_bat1 = new Bat(-fielddepth      ,  green, 3);
+        Bat          * player2_bat2 = new Bat(-fielddepth + 1.5f, green, 4);
         BallFollower * follow       = new BallFollower;
 
         this->name = name;
