@@ -7,6 +7,9 @@
 // anyhow, this includes the definition of GLfloat for ESMatrix
 #include "onByte.h"
 
+// sockets! :D
+#include "server/server.h"
+
 // resolutie
 #define SCREENWIDTH  800
 #define SCREENHEIGHT 600
@@ -23,9 +26,9 @@
 #define TAU          (2 * PI)
 
 // bat sizes
-#define batwidth 0.267f
+#define batwidth  0.267f
 #define batheight 0.2f
-#define batdepth 0.02f
+#define batdepth  0.02f
 
 // size of filed
 #define fieldwidth   0.9f
@@ -63,5 +66,12 @@ extern GLfloat BALLSTARTSPEEDX;
 extern GLfloat BALLSTARTSPEEDY;
 extern GLfloat BALLSPEEDMULTIPLIER;
 extern GLfloat BALLBOUNCEEFFECTSCALE;
+
+extern SocketServer server;
+
+#include <sstream>
+
+#define SSTR(x) dynamic_cast< std::ostringstream & >( \
+        (std::ostringstream() << std::dec << x)).str()
 
 #endif // GLOBALS_H

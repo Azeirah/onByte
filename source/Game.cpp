@@ -105,6 +105,8 @@ void Game::switchToGameState(string name) {
     this->currentStateName = name;
     cout << "switched to gameState " << name << endl;
 
+    server.send("g," + name);
+
     // load shaders per context
     this->context1->makeCurrent();
     this->currentState->loadShaders();

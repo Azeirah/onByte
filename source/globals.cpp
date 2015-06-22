@@ -27,3 +27,5 @@ GLfloat BALLSTARTSPEEDY       = 0.015f;
 GLfloat BALLSTARTSPEEDZ       = 0.09f;
 GLfloat BALLSPEEDMULTIPLIER   = 1.04f;
 GLfloat BALLBOUNCEEFFECTSCALE = 0.009f;
+
+SocketServer server(9001);

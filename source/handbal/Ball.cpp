@@ -24,6 +24,7 @@ namespace handbal {
             this->velocity->z = abs(this->velocity->z);
         }
 
+
         if (this->position->z > fielddepth) {
             if (checkForBallBatCollision(this, bat1)) {
                 bounceEffect.clone(this->position)->add(bat1->position)->multiply(keepXY)->scale(BALLBOUNCEEFFECTSCALE);
@@ -43,6 +44,8 @@ namespace handbal {
                 this->gameState->game->switchToGameState("hockey");
             }
         }
+
+        server.send("p,ball" + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
     }
 
     Ball::Ball() : Sphere(10, 0.1f) {

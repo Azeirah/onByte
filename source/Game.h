@@ -13,6 +13,7 @@
 #include "server/server.h"
 #include <vector>
 #include <thread>
+#include "globals.h"
 
 class GameState;
 

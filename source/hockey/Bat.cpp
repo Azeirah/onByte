@@ -15,6 +15,8 @@ namespace hockey {
 
         this->position->x += dt * 7 * (ball->position->x - this->position->x);
         this->position->y += dt * 7 * (ball->position->y - this->position->y);
+
+        server.send("p," + this->name + "," + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
     }
 
 

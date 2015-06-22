@@ -37,6 +37,10 @@ SocketServer::SocketServer(int port) {
     assertS(newSocketFileDescriptor >= 0, "Error on accept");
 }
 
+bool SocketServer::send(string data) {
+    return this->send(data.c_str());
+}
+
 bool SocketServer::send(char * data) {
     int n = write(this->newSocketFileDescriptor, data, strlen(data));
     assertS(n >= 0, "Error writing to socket@client");

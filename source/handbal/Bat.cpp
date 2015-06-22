@@ -1,12 +1,10 @@
 #include "Bat.h"
 #include <sstream>
 
-#include <FTGL/ftgl.h>
+// #include <FTGL/ftgl.h>
 
-#include <GLES2/gl2.h>
-#include <EGL/egl.h>
-#define SSTR(x) dynamic_cast< std::ostringstream & >( \
-        (std::ostringstream() << std::dec << x)).str()
+// #include <GLES2/gl2.h>
+// #include <EGL/egl.h>
 
 namespace handbal {
     void Bat::update(float dt, vector<char *> input) {

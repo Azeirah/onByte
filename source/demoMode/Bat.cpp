@@ -3,9 +3,6 @@
 #include <sstream>
 
 namespace demo {
-    #define SSTR(x) dynamic_cast< std::ostringstream & >( \
-            (std::ostringstream() << std::dec << x)).str()
-
     void Bat::update(float dt, vector<char *> input) {
         static float totaltime = 0;
         totaltime += dt;
@@ -24,6 +21,7 @@ namespace demo {
         //     cout << "Received input: " << input[i] << endl;
         // }
         //
+        server.send("p," + this->name + "," + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
     }
 
 

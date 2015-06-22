@@ -13,7 +13,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 
 # alle benodigde libraries
-LIBS=-lGLESv2 -lEGL -lm -lX11 -lfreetype -lftgl
+LIBS=-lGLESv2 -lEGL -lm -lX11 -lfreetype
 
 all: $(OBJECTS)
 	$(CC) $(CC_FLAGS) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $(EXEC)

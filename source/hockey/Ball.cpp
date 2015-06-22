@@ -1,5 +1,9 @@
 #include "Ball.h"
 
+#include <sstream>
+#define SSTR(x) dynamic_cast< std::ostringstream & >( \
+        (std::ostringstream() << std::dec << x)).str()
+
 namespace hockey {
     Vector* bounceX = new Vector(-1,  1,  1);
     Vector* bounceY = new Vector( 1, -1,  1);
@@ -49,6 +53,8 @@ namespace hockey {
                 this->gameState->game->switchToGameState("demo");
             }
         }
+
+        server.send("p,ball" + SSTR(this->position->x) + "," + SSTR(this->position->y) + "," + SSTR(this->position->z) + ",g");
     }
 
     Ball::Ball() : Sphere(10, 0.1f) {
