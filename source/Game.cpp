@@ -12,8 +12,8 @@ Game::Game() {
 
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
-    // this->channel = new SocketServer(1338);
-    // thread * receiveInput = new thread(&Game::receiveInput, this);
+    this->channel = new SocketServer(1338);
+    thread * receiveInput = new thread(&Game::receiveInput, this);
 }
 
 // is blocking so should definitely run in a thread
@@ -76,7 +76,7 @@ void Game::startGameLoop() {
 
         // myFont->Render("hello world!")
 
-        // this->clearInputBuffer();
+        this->clearInputBuffer();
     }
 }
 
