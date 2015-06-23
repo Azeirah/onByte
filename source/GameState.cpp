@@ -23,8 +23,6 @@ void GameState::loadShaders() {
 }
 
 void GameState::update(ESContext *context, float deltatime, vector<char *> input) {
-    ESMatrix modelview;
-
     // copy the input to prevent any kinds of weird thread memory read/write violations.
     vector<string> inputCopy;
 

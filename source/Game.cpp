@@ -30,7 +30,11 @@ void Game::receiveInput () {
     // }
     char * receive = new char[32];
     tty.receive(receive);
-    this->inputBuffer.push_back(receive);
+    if (strlen(receive) == 0) {
+        delete receive;
+    } else {
+        this->inputBuffer.push_back(receive);
+    }
 }
 
 void Game::clearInputBuffer() {
