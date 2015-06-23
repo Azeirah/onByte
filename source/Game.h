@@ -15,6 +15,9 @@
 #include <thread>
 #include "globals.h"
 
+// for input
+#include "TTY.h"
+
 class GameState;
 
 // Game is the startpoint for the whole game project
@@ -28,6 +31,7 @@ class Game {
     ESContext*       context1;
     SocketServer*    channel;
     vector<char *>   inputBuffer;
+    TTY              tty;
 
     void receiveInput();
   public:

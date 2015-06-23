@@ -1,6 +1,6 @@
 #include "../client.h"
 #include <unistd.h>
-#// I've provided two separate programs to demonstrate usage of a socket client (c.cpp) and a socket server (s.cpp)
+// I've provided two separate programs to demonstrate usage of a socket client (c.cpp) and a socket server (s.cpp)
 // usage:
 // ./s 2000
 // ./c "localhost" 2000

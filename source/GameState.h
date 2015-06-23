@@ -6,7 +6,7 @@
 #include "globals.h"
 #include "Game.h"
 
-#define halfEyeWidth 0.03f
+#define halfEyeWidth 0.05f
 
 class Game;
 class Entity;

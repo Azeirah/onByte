@@ -97,7 +97,6 @@ void GameState::render(ESContext *context, int eye) {
     glViewport(0, 0, context->window_width, context->window_height);
     glClear(GL_COLOR_BUFFER_BIT);
 
-
     for (unsigned int i = 0; i < this->entities.size(); i += 1) {
         this->entities[i]->render();
     }
