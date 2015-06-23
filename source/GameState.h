@@ -6,6 +6,8 @@
 #include "globals.h"
 #include "Game.h"
 
+#define halfEyeWidth 0.03f
+
 class Game;
 class Entity;
 
@@ -24,7 +26,7 @@ public:
 
 	// game loop functionality
 	void update(ESContext*, float deltatime, vector<char *>);
-	void render(ESContext*);
+	void render(ESContext*, int);
 
 	// loading shaders (duh..)
 	void loadShaders();

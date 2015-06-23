@@ -25,7 +25,6 @@ void Game::receiveInput () {
         // push these values onto the input buffer, which will then be distributed over the right Entities.
         // After distribution, the buffer will be cleared
         // This loop of receive -> distribute -> clear will be executed on every game tick
-        cout << "Received " << receive << endl;
         this->channel->receive(receive);
         this->inputBuffer.push_back(receive);
     }
@@ -55,10 +54,15 @@ void Game::startGameLoop() {
         deltatime = (float) (t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
         t1 = t2;
 
+        // glViewport(0, 0, this->context1->window_width, this->context1->window_height);
+        // glClear(GL_COLOR_BUFFER_BIT);
+
         this->context1->makeCurrent();
         this->currentState->update(this->context1, deltatime, this->inputBuffer);
-        this->currentState->render(this->context1);
+        this->currentState->render(this->context1, -1);
+        this->currentState->render(this->context1,  1);
         this->context1->swapBuffer();
+
 
         totaltime += deltatime;
         frames    += 1;

@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
     char * receive = new char[20];
     char * send    = new char[20];
 
-    send = "Client";
+    send = "Test";
 
     SocketClient *client = new SocketClient("localhost", 1338);
 
