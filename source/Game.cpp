@@ -25,7 +25,7 @@ void Game::receiveInput () {
         // push these values onto the input buffer, which will then be distributed over the right Entities.
         // After distribution, the buffer will be cleared
         // This loop of receive -> distribute -> clear will be executed on every game tick
-        cout << "address of receive " << static_cast<void *>(receive) << endl;
+        cout << "Received " << receive << endl;
         this->channel->receive(receive);
         this->inputBuffer.push_back(receive);
     }
