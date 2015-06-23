@@ -88,9 +88,9 @@ void GameState::render(ESContext *context, int eye) {
 
     esMatrixMultiply(&mvpMatrix, &modelview, &perspective);
 
-    if (eye == -1) {
+    if (eye == 1) {
         glColorMask(false, true, true, false);
-    } else if (eye == 1) {
+    } else if (eye == -1) {
         glColorMask(true, false, false, false);
     }
 
