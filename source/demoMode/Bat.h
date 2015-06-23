@@ -12,7 +12,7 @@ namespace demo {
     public:
     Bat(GLfloat position, float color[4], int batNumber);
 
-    void update(float, vector<char *>);
+    void update(float, vector<string>);
     };
 
 }

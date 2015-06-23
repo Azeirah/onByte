@@ -10,7 +10,7 @@
 namespace hockey {
 	class Ball : public Sphere {
 	public:
-	    void update(float, vector<char *>);
+	    void update(float, vector<string>);
 	    Ball();
 	};
 }

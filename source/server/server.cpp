@@ -1,6 +1,6 @@
 #include "server.h"
 
-#define assertS(truthy, message) if (!(truthy)) {cout << message << " on line " << __LINE__ << " in file " << __FILE__ << ". Check was " << #truthy << endl;}
+#define assertS(truthy, message) if (!(truthy)) {cout << message << " on line " << __LINE__ << " in file " << __FILE__ << ".cpp, Check was " << #truthy << endl;}
 
 SocketServer::SocketServer(int port) {
     // declaring variables
@@ -46,7 +46,7 @@ int SocketServer::sendString(string data) {
 
 int SocketServer::send(char * data) {
     int n = write(this->newSocketFileDescriptor, data, strlen(data));
-    assertS(n >= 0, "Error writing to socket@client");
+    assertS(n >= 0, "Error writing to socket");
 
     return n;
 }

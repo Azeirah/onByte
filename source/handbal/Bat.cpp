@@ -7,7 +7,7 @@
 // #include <EGL/egl.h>
 
 namespace handbal {
-    void Bat::update(float dt, vector<char *> input) {
+    void Bat::update(float dt, vector<string> input) {
         static float totaltime = 0;
 
         totaltime += dt;

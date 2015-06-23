@@ -1,7 +1,7 @@
 #include "BallFollower.h"
 
 namespace hockey {
-	void BallFollower::update(float dt, vector<char *> input) {
+	void BallFollower::update(float dt, vector<string> input) {
 	    this->position->z = this->findEntity("ball", "ball")->position->z;
 	}
 

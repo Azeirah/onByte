@@ -8,7 +8,7 @@ namespace demo {
     Vector* speedUp = new Vector( 1,  1,  BALLSPEEDMULTIPLIER);
     Vector* keepXY  = new Vector( 1,  1,  0);
 
-    void Ball::update(float dt, vector<char *> input) {
+    void Ball::update(float dt, vector<string> input) {
         Vector scaledVelocity(this->velocity->x, this->velocity->y, this->velocity->z);
         Vector bounceEffect;
         Vector wallBounce;

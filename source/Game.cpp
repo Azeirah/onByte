@@ -12,8 +12,8 @@ Game::Game() {
 
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
-    // this->channel = new SocketServer(1338);
-    // thread * receiveInput = new thread(&Game::receiveInput, this);
+    this->channel         = new SocketServer(1338);
+    thread * receiveInput = new thread(&Game::receiveInput, this);
 }
 
 // is blocking so should definitely run in a thread
@@ -25,21 +25,16 @@ void Game::receiveInput () {
         // push these values onto the input buffer, which will then be distributed over the right Entities.
         // After distribution, the buffer will be cleared
         // This loop of receive -> distribute -> clear will be executed on every game tick
+        cout << "address of receive " << static_cast<void *>(receive) << endl;
         this->channel->receive(receive);
-        if (strlen(receive) > 1) {
-            cout << "Receiving " << receive << endl;
-        }
         this->inputBuffer.push_back(receive);
     }
 }
 
 void Game::clearInputBuffer() {
     for (unsigned int i = 0; i < this->inputBuffer.size(); i++) {
-        free(this->inputBuffer[i]);
         delete this->inputBuffer[i];
     }
-    cout << "clearing" << endl;
-    cout << "size of buffer" << this->inputBuffer.size() << endl;
     this->inputBuffer.clear();
 }
 
@@ -56,7 +51,7 @@ void Game::startGameLoop() {
     while (! (this->context1->userInterrupt())) {
         // calculate delta time
         gettimeofday(&t2, &tz);
-        this->channel->send("1:1");
+        // this->channel->send("1:1");
         deltatime = (float) (t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
         t1 = t2;
 
@@ -74,10 +69,6 @@ void Game::startGameLoop() {
             totaltime -= 4.0f;
             frames    = 0;
         }
-
-        // myFont->Render("hello world!")
-
-        this->clearInputBuffer();
     }
 }
 

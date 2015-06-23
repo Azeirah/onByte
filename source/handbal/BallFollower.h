@@ -6,7 +6,7 @@ namespace handbal {
 	// another rectangle, "wooh!" for reuse
 	class BallFollower : public Rectangle {
 	public:
-	    void update(float, vector<char *>);
+	    void update(float, vector<string>);
 	    BallFollower();
 	};
 }

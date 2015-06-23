@@ -28,7 +28,7 @@ void Entity::printInfo() {
     cout << "angle is " << this->angle << endl;
 }
 
-void Entity::update(float deltatime, vector<char *> input) {
+void Entity::update(float deltatime, vector<string> input) {
 }
 
 void Entity::setCollection(vector<Entity *> *entityCollection) {

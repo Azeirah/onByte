@@ -27,6 +27,15 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
     ESMatrix modelview;
     float aspect;
 
+    // copy the input to prevent any kinds of weird thread memory read/write violations.
+    vector<string> inputCopy;
+
+    for (unsigned int i = 0; i < input.size(); i++) {
+        inputCopy.push_back(string(input[i], strlen(input[i])));
+    }
+
+    // clear game's input buffer after copying everything inside it.
+
     context->makeCurrent();
 
     aspect = (GLfloat) context->window_width / (GLfloat) context->window_height;
@@ -37,7 +46,7 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
     // eye love you <3
     for (unsigned int i = 0; i < this->entities.size(); i += 1) {
         Entity* entity = this->entities[i];
-        entity->update(deltatime, input);
+        entity->update(deltatime, inputCopy);
         for (unsigned int j = 0; j < 5; j++) {
             if (order[j] == entity->name) {
                 sendToUnity[j] = SSTR(entity->position->x) + "," + SSTR(entity->position->y) + "," + SSTR(entity->position->z);
@@ -45,10 +54,12 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
         }
     }
 
-    string totalSend = "";
-    for (int i = 0; i < 5; i++) {
-        totalSend += sendToUnity[i] + (i == 5? "": ",");
-    }
+    this->game->clearInputBuffer();
+
+    // string totalSend = "";
+    // for (int i = 0; i < 5; i++) {
+    //     totalSend += sendToUnity[i] + (i == 5? "": ",");
+    // }
     // totalSend[totalSend.length() - 1] = '\0';
 
     // if (server.sendString(totalSend) == -1) {

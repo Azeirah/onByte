@@ -3,7 +3,7 @@
 #include <sstream>
 
 namespace demo {
-    void Bat::update(float dt, vector<char *> input) {
+    void Bat::update(float dt, vector<string> input) {
         static float totaltime = 0;
         totaltime += dt;
         // this->position->y = sin(totaltime) * fieldheight;

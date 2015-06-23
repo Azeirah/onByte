@@ -27,14 +27,14 @@ class Game {
     string           currentStateName;
     ESContext*       context1;
     SocketServer*    channel;
-    vector<char *> inputBuffer;
+    vector<char *>   inputBuffer;
 
     void receiveInput();
-    void clearInputBuffer();
   public:
-  	map<string, GameState *> gameStates;
+    map<string, GameState *> gameStates;
     Game();
 
+    void clearInputBuffer();
     void addGameMode(GameState*);
     void switchToGameState(string);
     void startGameLoop();
