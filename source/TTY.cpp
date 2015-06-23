@@ -1,7 +1,7 @@
 #include "TTY.h"
 
 TTY::TTY() {
-    this->tty = open("/dev/ttyS0", O_RDWR | O_NONBLOCK | O_NOCTTY);
+    this->tty = open("/dev/ttyS2", O_RDWR | O_NONBLOCK | O_NOCTTY);
 
     if (this->tty == -1) {
         cout << "Error while opening file.\n" << endl;
