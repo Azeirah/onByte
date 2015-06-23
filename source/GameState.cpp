@@ -51,8 +51,11 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
     }
     // totalSend[totalSend.length() - 1] = '\0';
 
-    server.sendString(totalSend);
-
+    // if (server.sendString(totalSend) == -1) {
+    //     // client has disconnected
+    //     server.stop();
+    //     server = SocketServer(9001);
+    // }
 
     esMatrixLoadIdentity(&perspective);
            esPerspective(&perspective, 50.0f, aspect, 1.0f, 10.0f);

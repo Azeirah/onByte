@@ -14,9 +14,10 @@ int main(int argc, char const *argv[]) {
 
     SocketClient *client = new SocketClient("localhost", 1338);
 
+    // wait for five seconds and then disconnect
     usleep(5000000);
-    client->send(send);
+    // client->send(send);
 
-    while (true) {};
+    // while (true) {};
 
 }

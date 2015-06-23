@@ -40,16 +40,15 @@ SocketServer::SocketServer(int port) {
     assertS(newSocketFileDescriptor >= 0, "Error on accept");
 }
 
-bool SocketServer::sendString(string data) {
+int SocketServer::sendString(string data) {
     return this->send((char *) data.c_str());
 }
 
-bool SocketServer::send(char * data) {
-    cout << "sending " << data << endl;
+int SocketServer::send(char * data) {
     int n = write(this->newSocketFileDescriptor, data, strlen(data));
     assertS(n >= 0, "Error writing to socket@client");
 
-    return n >= 0;
+    return n;
 }
 
 bool SocketServer::receive(char * receiver) {

@@ -9,9 +9,9 @@ class SocketServer {
     int                newSocketFileDescriptor;
     struct sockaddr_in serverAddress;
   public:
-    bool send   (char *);
+    int send   (char *);
     bool receive(char *);
-    bool sendString(string);
+    int sendString(string);
 
     SocketServer(int port);
     void stop();
