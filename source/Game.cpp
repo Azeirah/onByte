@@ -10,6 +10,8 @@ Game::Game() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    cout << "Bat server waiting!" << endl;
+
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
     this->channel         = new SocketServer(8124);

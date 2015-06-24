@@ -28,4 +28,5 @@ GLfloat BALLSTARTSPEEDZ       = 0.009f;
 GLfloat BALLSPEEDMULTIPLIER   = 1.04f;
 GLfloat BALLBOUNCEEFFECTSCALE = 0.009f;
 
+cout << "waiting for oculus server!" << endl;
 SocketServer server(9001);
