@@ -46,7 +46,7 @@
     document.body.appendChild(playerDisplay);
 
     magicMousey(function (event) {
-        s.send(player + "" + event.dx / 850 + ":" + (- (event.dy / 850)))
+        s.sendString(player + "" + event.dx / 850 + ":" + (- (event.dy / 850)))
         // s.send("reply1:000000:" + event.dx + "+" + event.dy + "\n");
     });
     </script>
