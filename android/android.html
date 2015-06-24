@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://files.martijnbrekelmans.com/cdn/drawingCollection.js"></script>
+</head>
+<body>
+    <script>
+    var s = new WebSocket(getParameterByName("socket") || "ws://localhost:9002");
+    var player = parseInt(getParameterByName("player"), 10) || 1;
+
+    magicMousey(function (event) {
+        s.send(player + "" + event.dx / 1000 + ":" + (- (event.dy / 1000)))
+        // s.send("reply1:000000:" + event.dx + "+" + event.dy + "\n");
+    });
+    </script>
+</body>
+</html>

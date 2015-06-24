@@ -1,0 +1,14 @@
+{
+  "name": "android",
+  "version": "0.0.0",
+  "description": "",
+  "main": "passer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ws": "latest"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
+}

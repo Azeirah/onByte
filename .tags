@@ -1,0 +1,288 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BALLBOUNCEEFFECTSCALE	source/globals.cpp	/^GLfloat BALLBOUNCEEFFECTSCALE = 0.009f;$/;"	v
+BALLSPEEDMULTIPLIER	source/globals.cpp	/^GLfloat BALLSPEEDMULTIPLIER   = 1.04f;$/;"	v
+BALLSTARTSPEEDX	source/globals.cpp	/^GLfloat BALLSTARTSPEEDX       = 0.015f;$/;"	v
+BALLSTARTSPEEDY	source/globals.cpp	/^GLfloat BALLSTARTSPEEDY       = 0.015f;$/;"	v
+BALLSTARTSPEEDZ	source/globals.cpp	/^GLfloat BALLSTARTSPEEDZ       = 0.09f;$/;"	v
+Ball	source/demoMode/Ball.cpp	/^    Ball::Ball() : Sphere(10, 0.1f) {$/;"	f	class:demo::Ball
+Ball	source/demoMode/Ball.h	/^    class Ball : public Sphere {$/;"	c	namespace:demo
+Ball	source/handbal/Ball.cpp	/^    Ball::Ball() : Sphere(10, 0.1f) {$/;"	f	class:handbal::Ball
+Ball	source/handbal/Ball.h	/^	class Ball : public Sphere {$/;"	c	namespace:handbal
+Ball	source/hockey/Ball.cpp	/^    Ball::Ball() : Sphere(10, 0.1f) {$/;"	f	class:hockey::Ball
+Ball	source/hockey/Ball.h	/^	class Ball : public Sphere {$/;"	c	namespace:hockey
+BallFollower	source/demoMode/BallFollower.cpp	/^    BallFollower::BallFollower() : Rectangle(fieldwidth, fieldheight, 0.002f) {$/;"	f	class:demo::BallFollower
+BallFollower	source/demoMode/BallFollower.h	/^    class BallFollower : public Rectangle {$/;"	c	namespace:demo
+BallFollower	source/handbal/BallFollower.cpp	/^	BallFollower::BallFollower() : Rectangle(fieldwidth, fieldheight, 0.002f) {$/;"	f	class:handbal::BallFollower
+BallFollower	source/handbal/BallFollower.h	/^	class BallFollower : public Rectangle {$/;"	c	namespace:handbal
+BallFollower	source/hockey/BallFollower.cpp	/^	BallFollower::BallFollower() : Rectangle(fieldwidth, fieldheight, 0.002f) {$/;"	f	class:hockey::BallFollower
+BallFollower	source/hockey/BallFollower.h	/^	class BallFollower : public Rectangle {$/;"	c	namespace:hockey
+Bat	source/demoMode/Bat.cpp	/^    Bat::Bat(GLfloat position, float color[4], int batNumber) : Rectangle(batwidth, batheight, batdepth) {$/;"	f	class:demo::Bat
+Bat	source/demoMode/Bat.h	/^    class Bat : public Rectangle {$/;"	c	namespace:demo
+Bat	source/handbal/Bat.cpp	/^    Bat::Bat(GLfloat position, float color[4], int batNumber) : Rectangle(batwidth, batheight, batdepth) {$/;"	f	class:handbal::Bat
+Bat	source/handbal/Bat.h	/^	class Bat : public Rectangle {$/;"	c	namespace:handbal
+Bat	source/hockey/Bat.cpp	/^    Bat::Bat(GLfloat position, float color[4], int batNumber) : Rectangle(batwidth, batheight, batdepth) {$/;"	f	class:hockey::Bat
+Bat	source/hockey/Bat.h	/^	class Bat : public Rectangle {$/;"	c	namespace:hockey
+CC	makefile	/^CC=g++$/;"	m
+CC_FLAGS	makefile	/^CC_FLAGS=-g -O3 -Wall -Wextra -std=c++11 -I\/usr\/include\/freetype2$/;"	m
+DemoMode	source/demoMode/DemoMode.cpp	/^    DemoMode::DemoMode(string name) {$/;"	f	class:demo::DemoMode
+DemoMode	source/demoMode/DemoMode.h	/^    class DemoMode : public GameState {$/;"	c	namespace:demo
+ENTITY_H	source/Entity.h	2;"	d
+ESContext	source/ESContext.cpp	/^ESContext::ESContext(GLboolean isPlayerOne) {$/;"	f	class:ESContext
+ESContext	source/ESContext.h	/^class ESContext {$/;"	c
+ESMatrix	source/globals.h	/^} ESMatrix;$/;"	t	typeref:struct:__anon1
+ES_TRANSFORM_H	source/esTransform.h	4;"	d
+ES_WINDOW_ALPHA	source/ESContext.h	13;"	d
+ES_WINDOW_DEPTH	source/ESContext.h	15;"	d
+ES_WINDOW_MULTISAMPLE	source/ESContext.h	19;"	d
+ES_WINDOW_RGB	source/ESContext.h	11;"	d
+ES_WINDOW_STENCIL	source/ESContext.h	17;"	d
+EXEC	makefile	/^EXEC = OnByte$/;"	m
+Entity	source/Entity.cpp	/^Entity::Entity() {$/;"	f	class:Entity
+Entity	source/Entity.h	/^class Entity {$/;"	c
+FULLSCREEN	source/globals.h	22;"	d
+Field	source/shapes/Field.cpp	/^Field::Field(float scale) {$/;"	f	class:Field
+Field	source/shapes/Field.h	/^class Field : public Entity {$/;"	c
+GLOBALS_H	source/globals.h	4;"	d
+Game	source/Game.cpp	/^Game::Game() {$/;"	f	class:Game
+Game	source/Game.h	/^class Game {$/;"	c
+GameField	source/demoMode/GameField.cpp	/^    GameField::GameField() : Field(1.0f) {$/;"	f	class:demo::GameField
+GameField	source/demoMode/GameField.h	/^    class GameField : public Field {$/;"	c	namespace:demo
+GameField	source/handbal/GameField.cpp	/^	GameField::GameField() : Field(1.0f) {$/;"	f	class:handbal::GameField
+GameField	source/handbal/GameField.h	/^	class GameField : public Field {$/;"	c	namespace:handbal
+GameField	source/hockey/GameField.cpp	/^	GameField::GameField() : Field(1.0f) {$/;"	f	class:hockey::GameField
+GameField	source/hockey/GameField.h	/^	class GameField : public Field {$/;"	c	namespace:hockey
+GameState	source/GameState.h	/^class GameState {$/;"	c
+Handbal	source/handbal/Handbal.cpp	/^    Handbal::Handbal(string name) {$/;"	f	class:handbal::Handbal
+Handbal	source/handbal/Handbal.h	/^	class Handbal : public GameState {$/;"	c	namespace:handbal
+Hockey	source/hockey/Hockey.cpp	/^    Hockey::Hockey(string name) {$/;"	f	class:hockey::Hockey
+Hockey	source/hockey/Hockey.h	/^	class Hockey : public GameState {$/;"	c	namespace:hockey
+LDFLAGS	makefile	/^LDFLAGS=-g$/;"	m
+LIBS	makefile	/^LIBS=-lGLESv2 -lEGL -lm -lX11 -lfreetype$/;"	m
+MAX_MESSAGE_LENGTH	source/server/socketCommons.h	14;"	d
+OBJECTS	makefile	/^OBJECTS = $(SOURCES:.cpp=.o)$/;"	m
+PI	source/globals.h	25;"	d
+Rectangle	source/shapes/Rectangle.cpp	/^Rectangle::Rectangle(float width, float height, float depth) {$/;"	f	class:Rectangle
+Rectangle	source/shapes/Rectangle.h	/^class Rectangle : public Entity {$/;"	c
+SCREENHEIGHT	source/globals.h	15;"	d
+SCREENNAME1	source/globals.h	18;"	d
+SCREENNAME2	source/globals.h	19;"	d
+SCREENWIDTH	source/globals.h	14;"	d
+SECOND	source/server/socketPingPongtest/c.cpp	9;"	d	file:
+SOURCES	makefile	/^SOURCES = $(wildcard source\/*.cpp source\/server\/*.cpp source\/shapes\/*.cpp source\/demoMode\/*.cpp source\/handbal\/*.cpp source\/hockey\/*.cpp)$/;"	m
+SSTR	source/globals.h	74;"	d
+SSTR	source/hockey/Ball.cpp	4;"	d	file:
+SSTR	source/hockey/Bat.cpp	4;"	d	file:
+STR	source/util.h	10;"	d
+STR_EXPAND	source/util.h	9;"	d
+SocketClient	source/server/client.cpp	/^SocketClient::SocketClient(string host, int port) {$/;"	f	class:SocketClient
+SocketClient	source/server/client.h	/^class SocketClient {$/;"	c
+SocketServer	source/server/server.cpp	/^SocketServer::SocketServer(int port) {$/;"	f	class:SocketServer
+SocketServer	source/server/server.h	/^class SocketServer {$/;"	c
+Sphere	source/shapes/Sphere.cpp	/^Sphere::Sphere(int numSlices, float radius) {$/;"	f	class:Sphere
+Sphere	source/shapes/Sphere.h	/^class Sphere : public Entity {$/;"	c
+TAU	source/globals.h	26;"	d
+TTY	source/TTY.cpp	/^TTY::TTY() {$/;"	f	class:TTY
+TTY	source/TTY.h	/^class TTY {$/;"	c
+Vector	source/Vector.cpp	/^Vector::Vector(float x, float y, float z) {$/;"	f	class:Vector
+Vector	source/Vector.h	/^class Vector {$/;"	c
+add	source/Vector.cpp	/^Vector* Vector::add(Vector* v2) {$/;"	f	class:Vector
+addEntity	source/GameState.cpp	/^void GameState::addEntity(Entity *entity) {$/;"	f	class:GameState
+addGameMode	source/Game.cpp	/^void Game::addGameMode(GameState* gameState) {$/;"	f	class:Game
+angle	source/Entity.h	/^    GLfloat angle;$/;"	m	class:Entity
+assertS	source/server/client.cpp	3;"	d	file:
+assertS	source/server/server.cpp	3;"	d	file:
+assertS	source/util.h	11;"	d
+batdepth	source/globals.h	31;"	d
+batheight	source/globals.h	30;"	d
+batwidth	source/globals.h	29;"	d
+blue	source/globals.cpp	/^float blue[4]                 = {0.549f, 0.408f, 1.0f  , 0.5f};$/;"	v
+bounceOffWall	source/collisionDetection.cpp	/^bool bounceOffWall(Entity* ball, float radius, Vector* velocity) {$/;"	f
+bounceX	source/demoMode/Ball.cpp	/^    Vector* bounceX = new Vector(-1,  1,  1);$/;"	m	namespace:demo	file:
+bounceX	source/hockey/Ball.cpp	/^    Vector* bounceX = new Vector(-1,  1,  1);$/;"	m	namespace:hockey	file:
+bounceY	source/demoMode/Ball.cpp	/^    Vector* bounceY = new Vector( 1, -1,  1);$/;"	m	namespace:demo	file:
+bounceY	source/hockey/Ball.cpp	/^    Vector* bounceY = new Vector( 1, -1,  1);$/;"	m	namespace:hockey	file:
+bounceZ	source/demoMode/Ball.cpp	/^    Vector* bounceZ = new Vector( 1,  1, -1);$/;"	m	namespace:demo	file:
+bounceZ	source/hockey/Ball.cpp	/^    Vector* bounceZ = new Vector( 1,  1, -1);$/;"	m	namespace:hockey	file:
+channel	source/Game.h	/^    SocketServer*    channel;$/;"	m	class:Game
+checkForBallBatCollision	source/collisionDetection.cpp	/^bool checkForBallBatCollision(Entity* ball, Entity* bat) {$/;"	f
+clearInputBuffer	source/Game.cpp	/^void Game::clearInputBuffer() {$/;"	f	class:Game
+clone	source/Vector.cpp	/^Vector* Vector::clone(Vector* v) {$/;"	f	class:Vector
+color	source/Entity.h	/^    GLfloat color[4];$/;"	m	class:Entity
+colorLoc	source/Entity.h	/^    GLint colorLoc;$/;"	m	class:Entity
+colorSize	source/globals.cpp	/^int colorSize                 = sizeof(white);$/;"	v
+context1	source/Game.h	/^    ESContext*       context1;$/;"	m	class:Game
+createEGLContext	source/ESContext.cpp	/^EGLBoolean ESContext::createEGLContext (EGLint attribList[]) {$/;"	f	class:ESContext
+createWindow	source/ESContext.cpp	/^void ESContext::createWindow(string title, GLint width, GLint height, GLuint flags) {$/;"	f	class:ESContext
+currentState	source/Game.h	/^    GameState*       currentState;$/;"	m	class:Game
+currentStateName	source/Game.h	/^    string           currentStateName;$/;"	m	class:Game
+defaultFragmentShader	source/esUtil.cpp	/^const char *defaultFragmentShader[6] = {$/;"	v
+defaultVertexShader	source/esUtil.cpp	/^const char *defaultVertexShader[6] = {$/;"	v
+demo	source/demoMode/Ball.cpp	/^namespace demo {$/;"	n	file:
+demo	source/demoMode/Ball.h	/^namespace demo {$/;"	n
+demo	source/demoMode/BallFollower.cpp	/^namespace demo {$/;"	n	file:
+demo	source/demoMode/BallFollower.h	/^namespace demo {$/;"	n
+demo	source/demoMode/Bat.cpp	/^namespace demo {$/;"	n	file:
+demo	source/demoMode/Bat.h	/^namespace demo {$/;"	n
+demo	source/demoMode/DemoMode.cpp	/^namespace demo {$/;"	n	file:
+demo	source/demoMode/DemoMode.h	/^namespace demo {$/;"	n
+demo	source/demoMode/GameField.cpp	/^namespace demo {$/;"	n	file:
+demo	source/demoMode/GameField.h	/^namespace demo {$/;"	n
+eglContext	source/ESContext.h	/^    EGLContext          eglContext;$/;"	m	class:ESContext
+eglDisplay	source/ESContext.h	/^    EGLDisplay          eglDisplay;$/;"	m	class:ESContext
+eglSurface	source/ESContext.h	/^    EGLSurface          eglSurface;$/;"	m	class:ESContext
+entities	source/GameState.h	/^	std::vector<Entity *> entities;$/;"	m	class:GameState
+entityCollection	source/Entity.h	/^    vector<Entity *> *entityCollection;$/;"	m	class:Entity
+esFrustum	source/esTransform.cpp	/^void esFrustum(ESMatrix *result, float left, float right, float bottom, float top, float nearZ, float farZ) {$/;"	f
+esLoadProgram	source/esUtil.cpp	/^GLuint esLoadProgram(const char *vertShaderSrc, const char *fragShaderSrc) {$/;"	f
+esLoadShader	source/esUtil.cpp	/^GLuint esLoadShader(GLenum type, const char *shaderSrc) {$/;"	f
+esMatrixLoadIdentity	source/esTransform.cpp	/^void esMatrixLoadIdentity(ESMatrix *result) {$/;"	f
+esMatrixMultiply	source/esTransform.cpp	/^void esMatrixMultiply(ESMatrix *result, ESMatrix *srcA, ESMatrix *srcB) {$/;"	f
+esOrtho	source/esTransform.cpp	/^void esOrtho(ESMatrix *result, float left, float right, float bottom, float top, float nearZ, float farZ) {$/;"	f
+esPerspective	source/esTransform.cpp	/^void esPerspective(ESMatrix *result, float fovy, float aspect, float nearZ, float farZ) {$/;"	f
+esRotate	source/esTransform.cpp	/^void esRotate(ESMatrix *result, GLfloat angle, GLfloat x, GLfloat y, GLfloat z) {$/;"	f
+esScale	source/esTransform.cpp	/^void esScale(ESMatrix *result, GLfloat sx, GLfloat sy, GLfloat sz) {$/;"	f
+esTranslate	source/esTransform.cpp	/^void esTranslate(ESMatrix *result, GLfloat tx, GLfloat ty, GLfloat tz) {$/;"	f
+fielddepth	source/globals.h	36;"	d
+fielddepth	source/shapes/Field.cpp	5;"	d	file:
+fieldheight	source/globals.h	35;"	d
+fieldheight	source/shapes/Field.cpp	4;"	d	file:
+fieldwidth	source/globals.h	34;"	d
+fieldwidth	source/shapes/Field.cpp	3;"	d	file:
+fill	source/Entity.h	/^    bool fill;$/;"	m	class:Entity
+findEntity	source/Entity.cpp	/^Entity* Entity::findEntity(string name, string type) {$/;"	f	class:Entity
+game	source/GameState.h	/^	Game *game;$/;"	m	class:GameState
+gameState	source/Entity.h	/^    GameState *gameState;$/;"	m	class:Entity
+gameStates	source/Game.h	/^    map<string, GameState *> gameStates;$/;"	m	class:Game
+generateFloat	source/util.cpp	/^float generateFloat(float low, float high) {$/;"	f
+generateGeometry	source/shapes/Field.cpp	/^int Field::generateGeometry(float scale) {$/;"	f	class:Field
+generateGeometry	source/shapes/Rectangle.cpp	/^int Rectangle::generateGeometry(GLfloat width, GLfloat height, GLfloat depth) {$/;"	f	class:Rectangle
+generateGeometry	source/shapes/Sphere.cpp	/^int Sphere::generateGeometry(int numSlices, float radius) {$/;"	f	class:Sphere
+getName	source/Entity.cpp	/^string Entity::getName() {$/;"	f	class:Entity
+getType	source/Entity.cpp	/^string Entity::getType() {$/;"	f	class:Entity
+green	source/globals.cpp	/^float green[4]                = {0.333f, 1.0f  , 0.451f, 0.5f};$/;"	v
+hWnd	source/ESContext.h	/^    EGLNativeWindowType hWnd;$/;"	m	class:ESContext
+halfEyeWidth	source/GameState.h	9;"	d
+handbal	source/handbal/Ball.cpp	/^namespace handbal {$/;"	n	file:
+handbal	source/handbal/Ball.h	/^namespace handbal {$/;"	n
+handbal	source/handbal/BallFollower.cpp	/^namespace handbal {$/;"	n	file:
+handbal	source/handbal/BallFollower.h	/^namespace handbal {$/;"	n
+handbal	source/handbal/Bat.cpp	/^namespace handbal {$/;"	n	file:
+handbal	source/handbal/Bat.h	/^namespace handbal {$/;"	n
+handbal	source/handbal/GameField.cpp	/^namespace handbal {$/;"	n	file:
+handbal	source/handbal/GameField.h	/^namespace handbal {$/;"	n
+handbal	source/handbal/Handbal.cpp	/^namespace handbal {$/;"	n	file:
+handbal	source/handbal/Handbal.h	/^namespace handbal {$/;"	n
+hockey	source/hockey/Ball.cpp	/^namespace hockey {$/;"	n	file:
+hockey	source/hockey/Ball.h	/^namespace hockey {$/;"	n
+hockey	source/hockey/BallFollower.cpp	/^namespace hockey {$/;"	n	file:
+hockey	source/hockey/BallFollower.h	/^namespace hockey {$/;"	n
+hockey	source/hockey/Bat.cpp	/^namespace hockey {$/;"	n	file:
+hockey	source/hockey/Bat.h	/^namespace hockey {$/;"	n
+hockey	source/hockey/GameField.cpp	/^namespace hockey {$/;"	n	file:
+hockey	source/hockey/GameField.h	/^namespace hockey {$/;"	n
+hockey	source/hockey/Hockey.cpp	/^namespace hockey {$/;"	n	file:
+hockey	source/hockey/Hockey.h	/^namespace hockey {$/;"	n
+host	source/server/client.h	/^    string             host;$/;"	m	class:SocketClient
+indices	source/Entity.h	/^    GLuint *indices;$/;"	m	class:Entity
+inputBuffer	source/Game.h	/^    vector<char *>   inputBuffer;$/;"	m	class:Game
+isPlayerOne	source/ESContext.h	/^    GLboolean           isPlayerOne;$/;"	m	class:ESContext
+keepXY	source/demoMode/Ball.cpp	/^    Vector* keepXY  = new Vector( 1,  1,  0);$/;"	m	namespace:demo	file:
+keepXY	source/handbal/Ball.cpp	/^    Vector* keepXY  = new Vector( 1,  1,  0);$/;"	m	namespace:handbal	file:
+keepXY	source/hockey/Ball.cpp	/^    Vector* keepXY  = new Vector( 1,  1,  0);$/;"	m	namespace:hockey	file:
+loadShaders	source/Entity.cpp	/^void Entity::loadShaders() {$/;"	f	class:Entity
+loadShaders	source/GameState.cpp	/^void GameState::loadShaders() {$/;"	f	class:GameState
+m	source/globals.h	/^    GLfloat m[4][4];$/;"	m	struct:__anon1
+main	source/main.cpp	/^int main(int argc, char const *argv[]) {$/;"	f
+main	source/server/socketPingPongtest/c.cpp	/^int main(int argc, char const *argv[]) {$/;"	f
+main	source/server/socketPingPongtest/s.cpp	/^int main(int argc, char const *argv[]) {$/;"	f
+makeCurrent	source/ESContext.cpp	/^void ESContext::makeCurrent() {$/;"	f	class:ESContext
+multiply	source/Vector.cpp	/^Vector* Vector::multiply(Vector* v2) {$/;"	f	class:Vector
+mvpLoc	source/Entity.h	/^    GLint mvpLoc;$/;"	m	class:Entity
+mvpMatrix	source/globals.cpp	/^ESMatrix mvpMatrix;$/;"	v
+name	source/Entity.h	/^    string name;$/;"	m	class:Entity
+name	source/GameState.h	/^	string name;$/;"	m	class:GameState
+newSocketFileDescriptor	source/server/server.h	/^    int                newSocketFileDescriptor;$/;"	m	class:SocketServer
+numIndices	source/Entity.h	/^    int numIndices;$/;"	m	class:Entity
+pause	source/GameState.cpp	/^void GameState::pause() {$/;"	f	class:GameState
+pointA	source/globals.cpp	/^GLfloat pointA[3]             = {-fieldwidth,  fieldheight, -fielddepth};$/;"	v
+pointB	source/globals.cpp	/^GLfloat pointB[3]             = {fieldwidth,   fieldheight, -fielddepth};$/;"	v
+pointC	source/globals.cpp	/^GLfloat pointC[3]             = {fieldwidth,  -fieldheight, -fielddepth};$/;"	v
+pointD	source/globals.cpp	/^GLfloat pointD[3]             = {-fieldwidth, -fieldheight, -fielddepth};$/;"	v
+pointE	source/globals.cpp	/^GLfloat pointE[3]             = {-fieldwidth,  fieldheight, fielddepth};$/;"	v
+pointF	source/globals.cpp	/^GLfloat pointF[3]             = {fieldwidth,   fieldheight, fielddepth};$/;"	v
+pointG	source/globals.cpp	/^GLfloat pointG[3]             = {fieldwidth,  -fieldheight, fielddepth};$/;"	v
+pointH	source/globals.cpp	/^GLfloat pointH[3]             = {-fieldwidth, -fieldheight, fielddepth};$/;"	v
+port	source/server/client.h	/^    int                port;$/;"	m	class:SocketClient
+port	source/server/server.h	/^    int                port;$/;"	m	class:SocketServer
+position	source/Entity.h	/^    Vector* position;$/;"	m	class:Entity
+positionLoc	source/Entity.h	/^    GLint positionLoc;$/;"	m	class:Entity
+printInfo	source/Entity.cpp	/^void Entity::printInfo() {$/;"	f	class:Entity
+printInfo	source/Vector.cpp	/^void Vector::printInfo() {$/;"	f	class:Vector
+printInfo	source/shapes/Sphere.cpp	/^void Sphere::printInfo() {$/;"	f	class:Sphere
+programObject	source/Entity.h	/^    GLuint programObject;$/;"	m	class:Entity
+radius	source/shapes/Sphere.h	/^    float   radius;$/;"	m	class:Sphere
+receive	source/TTY.cpp	/^void TTY::receive (char *receiver) {$/;"	f	class:TTY
+receive	source/server/client.cpp	/^bool SocketClient::receive(char * data) {$/;"	f	class:SocketClient
+receive	source/server/server.cpp	/^bool SocketServer::receive(char * receiver) {$/;"	f	class:SocketServer
+receiveInput	source/Game.cpp	/^void Game::receiveInput () {$/;"	f	class:Game
+red	source/globals.cpp	/^float red[4]                  = {1.0f  , 0.38f , 0.333f, 0.5f};$/;"	v
+render	source/Entity.cpp	/^void Entity::render() {$/;"	f	class:Entity
+render	source/GameState.cpp	/^void GameState::render(ESContext *context, int eye) {$/;"	f	class:GameState
+resume	source/GameState.cpp	/^void GameState::resume() {$/;"	f	class:GameState
+running	source/GameState.h	/^	bool running;$/;"	m	class:GameState
+scale	source/Vector.cpp	/^Vector* Vector::scale(float scale) {$/;"	f	class:Vector
+send	source/server/client.cpp	/^bool SocketClient::send(char * data) {$/;"	f	class:SocketClient
+send	source/server/server.cpp	/^int SocketServer::send(char * data) {$/;"	f	class:SocketServer
+sendString	source/TTY.cpp	/^void TTY::sendString (string data) {$/;"	f	class:TTY
+sendString	source/server/server.cpp	/^int SocketServer::sendString(string data) {$/;"	f	class:SocketServer
+server	source/server/client.h	/^    struct hostent     *server;$/;"	m	class:SocketClient	typeref:struct:SocketClient::hostent
+serverAddress	source/server/client.h	/^    struct sockaddr_in serverAddress;$/;"	m	class:SocketClient	typeref:struct:SocketClient::sockaddr_in
+serverAddress	source/server/server.h	/^    struct sockaddr_in serverAddress;$/;"	m	class:SocketServer	typeref:struct:SocketServer::sockaddr_in
+setCollection	source/Entity.cpp	/^void Entity::setCollection(vector<Entity *> *entityCollection) {$/;"	f	class:Entity
+socketFileDescriptor	source/server/client.h	/^    int                socketFileDescriptor;$/;"	m	class:SocketClient
+socketFileDescriptor	source/server/server.h	/^    int                socketFileDescriptor;$/;"	m	class:SocketServer
+speedUp	source/demoMode/Ball.cpp	/^    Vector* speedUp = new Vector( 1,  1,  BALLSPEEDMULTIPLIER);$/;"	m	namespace:demo	file:
+speedUp	source/handbal/Ball.cpp	/^    Vector* speedUp = new Vector( 1,  1,  1.04f);$/;"	m	namespace:handbal	file:
+speedUp	source/hockey/Ball.cpp	/^    Vector* speedUp = new Vector( 1,  1,  BALLSPEEDMULTIPLIER);$/;"	m	namespace:hockey	file:
+start	source/GameState.cpp	/^void GameState::start() {$/;"	f	class:GameState
+startGameLoop	source/Game.cpp	/^void Game::startGameLoop() {$/;"	f	class:Game
+stop	source/TTY.cpp	/^void TTY::stop() {$/;"	f	class:TTY
+stop	source/handbal/Ball.cpp	/^    Vector* stop    = new Vector( 0,  0,  0);$/;"	m	namespace:handbal	file:
+stop	source/hockey/Ball.cpp	/^    Vector* stop    = new Vector( 0,  0,  0);$/;"	m	namespace:hockey	file:
+stop	source/server/client.cpp	/^void SocketClient::stop() {$/;"	f	class:SocketClient
+stop	source/server/server.cpp	/^void SocketServer::stop() {$/;"	f	class:SocketServer
+swapBuffer	source/ESContext.cpp	/^void ESContext::swapBuffer() {$/;"	f	class:ESContext
+switchToGameState	source/Game.cpp	/^void Game::switchToGameState(string name) {$/;"	f	class:Game
+translate	source/util.cpp	/^float translate(float in, float min, float max, float newMin, float newMax) {$/;"	f
+tty	source/Game.h	/^    TTY              tty;$/;"	m	class:Game
+tty	source/TTY.h	/^    int tty;$/;"	m	class:TTY
+type	source/Entity.h	/^    string type;$/;"	m	class:Entity
+update	source/Entity.cpp	/^void Entity::update(float deltatime, vector<string> input) {$/;"	f	class:Entity
+update	source/GameState.cpp	/^void GameState::update(ESContext *context, float deltatime, vector<char *> input) {$/;"	f	class:GameState
+update	source/demoMode/Ball.cpp	/^    void Ball::update(float dt, vector<string> input) {$/;"	f	class:demo::Ball
+update	source/demoMode/BallFollower.cpp	/^    void BallFollower::update(float dt, vector<string> input) {$/;"	f	class:demo::BallFollower
+update	source/demoMode/Bat.cpp	/^    void Bat::update(float dt, vector<string> input) {$/;"	f	class:demo::Bat
+update	source/handbal/Ball.cpp	/^    void Ball::update(float dt, vector<string> input) {$/;"	f	class:handbal::Ball
+update	source/handbal/BallFollower.cpp	/^	void BallFollower::update(float dt, vector<string> input) {$/;"	f	class:handbal::BallFollower
+update	source/handbal/Bat.cpp	/^    void Bat::update(float dt, vector<string> input) {$/;"	f	class:handbal::Bat
+update	source/hockey/Ball.cpp	/^    void Ball::update(float dt, vector<string> input) {$/;"	f	class:hockey::Ball
+update	source/hockey/BallFollower.cpp	/^	void BallFollower::update(float dt, vector<string> input) {$/;"	f	class:hockey::BallFollower
+update	source/hockey/Bat.cpp	/^    void Bat::update(float dt, vector<string> input) {$/;"	f	class:hockey::Bat
+userInterrupt	source/ESContext.cpp	/^EGLBoolean ESContext::userInterrupt() {$/;"	f	class:ESContext
+velocity	source/shapes/Sphere.h	/^    Vector* velocity;$/;"	m	class:Sphere
+vertices	source/Entity.h	/^    GLfloat *vertices;$/;"	m	class:Entity
+white	source/globals.cpp	/^float white[4]                = {1.0f  , 1.0f  , 1.0f  , 0.5f};$/;"	v
+winCreate	source/ESContext.cpp	/^EGLBoolean ESContext::winCreate(string title) {$/;"	f	class:ESContext
+window_height	source/ESContext.h	/^    GLint               window_height;$/;"	m	class:ESContext
+window_width	source/ESContext.h	/^    GLint               window_width;$/;"	m	class:ESContext
+wireframe	source/Entity.h	/^    bool wireframe;$/;"	m	class:Entity
+x	source/Vector.h	/^    GLfloat x;$/;"	m	class:Vector
+x_display	source/ESContext.h	/^    Display*            x_display;$/;"	m	class:ESContext
+y	source/Vector.h	/^    GLfloat y;$/;"	m	class:Vector
+yellow	source/globals.cpp	/^float yellow[4]               = {1.0f  , 0.886f, 0.333f, 0.5f};$/;"	v
+z	source/Vector.h	/^    GLfloat z;$/;"	m	class:Vector

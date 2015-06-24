@@ -12,29 +12,30 @@ Game::Game() {
 
     // this is blocking, sorry :(
     // you'll need to connect to an input client before the game can run.
-    // this->channel         = new SocketServer(1338);
-    // thread * receiveInput = new thread(&Game::receiveInput, this);
+    this->channel         = new SocketServer(8124);
+    thread * receiveInput = new thread(&Game::receiveInput, this);
 }
 
 // is blocking so should definitely run in a thread
 void Game::receiveInput () {
-    // while (true) {
-    //     char * receive = new char[32];
-    //     memset(receive, 0, sizeof(receive) - 1);
-    //     // create a new buffer object on the heap to receive inputs with
-    //     // push these values onto the input buffer, which will then be distributed over the right Entities.
-    //     // After distribution, the buffer will be cleared
-    //     // This loop of receive -> distribute -> clear will be executed on every game tick
-    //     this->channel->receive(receive);
-    //     this->inputBuffer.push_back(receive);
-    // }
-    char * receive = new char[32];
-    tty.receive(receive);
-    if (strlen(receive) == 0) {
-        delete receive;
-    } else {
+    while (true) {
+        char * receive = new char[32];
+        memset(receive, 0, sizeof(receive) - 1);
+        // create a new buffer object on the heap to receive inputs with
+        // push these values onto the input buffer, which will then be distributed over the right Entities.
+        // After distribution, the buffer will be cleared
+        // This loop of receive -> distribute -> clear will be executed on every game tick
+        this->channel->receive(receive);
+        // cout << "Received " << receive << endl;
         this->inputBuffer.push_back(receive);
     }
+    // char * receive = new char[32];
+    // tty.receive(receive);
+    // if (strlen(receive) == 0) {
+    //     delete receive;
+    // } else {
+    //     this->inputBuffer.push_back(receive);
+    // }
 }
 
 void Game::clearInputBuffer() {
@@ -61,10 +62,7 @@ void Game::startGameLoop() {
         deltatime = (float) (t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
         t1 = t2;
 
-        this->receiveInput();
-
-        // glViewport(0, 0, this->context1->window_width, this->context1->window_height);
-        // glClear(GL_COLOR_BUFFER_BIT);
+        // this->receiveInput();
 
         this->context1->makeCurrent();
         this->currentState->update(this->context1, deltatime, this->inputBuffer);
@@ -72,7 +70,7 @@ void Game::startGameLoop() {
         this->currentState->render(this->context1,  1);
         this->context1->swapBuffer();
 
-        this->clearInputBuffer();
+        // this->clearInputBuffer();
 
 
         totaltime += deltatime;

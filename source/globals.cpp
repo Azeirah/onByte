@@ -24,7 +24,7 @@ GLfloat pointH[3]             = {-fieldwidth, -fieldheight, fielddepth};
 
 GLfloat BALLSTARTSPEEDX       = 0.015f;
 GLfloat BALLSTARTSPEEDY       = 0.015f;
-GLfloat BALLSTARTSPEEDZ       = 0.09f;
+GLfloat BALLSTARTSPEEDZ       = 0.009f;
 GLfloat BALLSPEEDMULTIPLIER   = 1.04f;
 GLfloat BALLBOUNCEEFFECTSCALE = 0.009f;
 

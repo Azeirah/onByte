@@ -31,7 +31,6 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
     }
 
     // clear game's input buffer after copying everything inside it.
-    this->game->clearInputBuffer();
 
     context->makeCurrent();
 
@@ -49,6 +48,7 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
         }
     }
 
+    this->game->clearInputBuffer();
 
     // string totalSend = "";
     // for (int i = 0; i < 5; i++) {
