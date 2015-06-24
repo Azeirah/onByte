@@ -4,14 +4,49 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="http://files.martijnbrekelmans.com/cdn/drawingCollection.js"></script>
+
+    <style>
+        body {
+          text-align: center;
+          line-height: 100vh;
+          vertical-align: middle;
+        }
+
+        h1 {
+          font-family: Helvetica;
+          font-size: 10vw;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: moz-none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        #p1 {
+          color: red;
+        }
+
+        #p2 {
+          color: green;
+        }
+    </style>
 </head>
 <body>
     <script>
     var s = new WebSocket(getParameterByName("socket") || "ws://localhost:9002");
     var player = parseInt(getParameterByName("player"), 10) || 1;
 
+    var element = document.createElement.bind(document);
+
+    var playerDisplay = element("h1");
+    playerDisplay.innerHTML = "Player " + player;
+    playerDisplay.setAttribute("id", "p" + player);
+
+    document.body.appendChild(playerDisplay);
+
     magicMousey(function (event) {
-        s.send(player + "" + event.dx / 1000 + ":" + (- (event.dy / 1000)))
+        s.send(player + "" + event.dx / 850 + ":" + (- (event.dy / 850)))
         // s.send("reply1:000000:" + event.dx + "+" + event.dy + "\n");
     });
     </script>

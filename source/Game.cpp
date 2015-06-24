@@ -19,7 +19,7 @@ Game::Game() {
 // is blocking so should definitely run in a thread
 void Game::receiveInput () {
     while (true) {
-        char * receive = new char[32];
+        char * receive = new char[64];
         memset(receive, 0, sizeof(receive) - 1);
         // create a new buffer object on the heap to receive inputs with
         // push these values onto the input buffer, which will then be distributed over the right Entities.
@@ -39,9 +39,9 @@ void Game::receiveInput () {
 }
 
 void Game::clearInputBuffer() {
-    for (unsigned int i = 0; i < this->inputBuffer.size(); i++) {
-        delete this->inputBuffer[i];
-    }
+    // for (unsigned int i = 0; i < this->inputBuffer.size(); i++) {
+    //     delete this->inputBuffer[i];
+    // }
     this->inputBuffer.clear();
 }
 
