@@ -50,17 +50,17 @@ void GameState::update(ESContext *context, float deltatime, vector<char *> input
 
     this->game->clearInputBuffer();
 
-    // string totalSend = "";
-    // for (int i = 0; i < 5; i++) {
-    //     totalSend += sendToUnity[i] + (i == 5? "": ",");
-    // }
-    // totalSend[totalSend.length() - 1] = '\0';
+    string totalSend = "";
+    for (int i = 0; i < 5; i++) {
+        totalSend += sendToUnity[i] + (i == 5? "": ",");
+    }
+    totalSend[totalSend.length() - 1] = '\0';
 
-    // if (server.sendString(totalSend) == -1) {
-    //     // client has disconnected
-    //     server.stop();
-    //     server = SocketServer(9001);
-    // }
+    if (server.sendString(totalSend) == -1) {
+        // client has disconnected
+        server.stop();
+        server = SocketServer(9001);
+    }
 }
 
 void GameState::render(ESContext *context, int eye) {
